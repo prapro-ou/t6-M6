@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 45287df2fc61d3347a06f35eb8439a63
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - molkkyRb: {fileID: 1766023535245728483, guid: f32a974fbdc108a42a6d5396527ee383, type: 3}
+  - powerSlider: {fileID: 2069260465512305527, guid: 3705582e5e43b07478be5b4149f4d00d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
