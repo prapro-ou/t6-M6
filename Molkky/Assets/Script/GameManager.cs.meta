@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d5e12856dbec22f4e905ec6cbc2dc65c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerController: {instanceID: 0}
+  - molkkyRb: {fileID: 1766023535245728483, guid: f32a974fbdc108a42a6d5396527ee383, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

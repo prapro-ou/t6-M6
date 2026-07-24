@@ -1,0 +1,14 @@
+# Unityが生成する不要フォルダ
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Bb]uild/
+**/[Bb]uilds/
+**/[L]ogs/
+**/[Uu]serSettings/
+
+# Visual Studioなどの開発環境ファイル
+**/.vs/
+**/.vscode/
+*.csproj
+*.sln
