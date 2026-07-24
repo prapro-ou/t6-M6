@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
- void LaunchMolkky()
+void LaunchMolkky()
     {
         isCanControl = false;
         currentState = State.Launched;
@@ -141,11 +141,13 @@ public class PlayerController : MonoBehaviour
         molkkyRb.transform.SetParent(null);
         molkkyRb.isKinematic = false;
 
-        // 💡 ★ここを修正！正面方向(transform.forward)に少し上向き(Vector3.up * 0.3f)を足す
-        Vector3 throwDirection = (transform.forward + Vector3.up * 0.3f).normalized;
+        // 💡 1. 打ち出し角度を調整 (Y方向を 0.3f から 0.45f〜0.5f に増やして綺麗な放物線にする)
+        Vector3 throwDirection = (transform.forward + Vector3.up * 0.45f).normalized;
 
-        // 力を加える
-        molkkyRb.AddForce(throwDirection * currentPower, ForceMode.Impulse);
+        // 💡 2. 発射の力をさらに底上げ（currentPower に 1.5倍〜2倍などの倍率をかけることも可能です）
+        float finalPower = currentPower * 1.5f; // 必要に応じて倍率（1.5fなど）を調整
+
+        molkkyRb.AddForce(throwDirection * finalPower, ForceMode.Impulse);
 
         if (gameManager != null)
         {

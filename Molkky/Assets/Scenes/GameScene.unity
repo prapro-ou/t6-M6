@@ -2036,7 +2036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   molkkyRb: {fileID: 1746441285}
   powerSlider: {fileID: 76649338}
-  maxForce: 40
+  maxForce: 20
   chargeSpeed: 40
   gameManager: {fileID: 174430317}
   rotateSpeed: 50
