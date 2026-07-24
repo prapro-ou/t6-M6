@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [Header("UI設定")]
     public TextMeshProUGUI scoreText;
     
-    // 💡 ターン交代用のUIボタン（インスペクターで登録します）
     [Header("ターン交代UI")]
     public GameObject nextTurnButtonUI;
 
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour
         p1Score = 0; p1Misses = 0;
         p2Score = 0; p2Misses = 0;
 
-        // 💡 最初はターン交代ボタンを消しておく
         if (nextTurnButtonUI != null)
         {
             nextTurnButtonUI.SetActive(false);
@@ -157,30 +155,30 @@ public class GameManager : MonoBehaviour
         // 勝敗・失格のチェック
         if (p1Misses >= 3)
         {
-            scoreText.text = " Player 2 WIN! \n";
+            scoreText.text = "<size=120%><color=red>Player 2 WIN!</color></size>\n(Player 1 Disqualified)";
             isGameFinished = true;
         }
         else if (p2Misses >= 3)
         {
-            scoreText.text = " Player 1 WIN! \n";
+            scoreText.text = "<size=120%><color=red>Player 1 WIN!</color></size>\n(Player 2 Disqualified)";
             isGameFinished = true;
         }
         else if (p1Score == 50)
         {
-            scoreText.text = " Player 1 WIN!! \n";
+            scoreText.text = "<size=150%><color=yellow>Player 1 WIN!!</color></size>";
             isGameFinished = true;
         }
         else if (p2Score == 50)
         {
-            scoreText.text = " Player 2 WIN!! \n";
+            scoreText.text = "<size=150%><color=yellow>Player 2 WIN!!</color></size>";
             isGameFinished = true;
         }
 
-        UpdateScoreUI();
-
-        // 💡 ゲームが終わっていなければ、ターン交代ボタンを表示する
+        // 💡 修正ポイント：ゲームが終わっていない場合のみ、通常スコアの更新と次ターンボタンの表示を行う！
         if (!isGameFinished)
         {
+            UpdateScoreUI();
+
             if (nextTurnButtonUI != null)
             {
                 nextTurnButtonUI.SetActive(true);
@@ -190,9 +188,11 @@ public class GameManager : MonoBehaviour
         isCheckingTurnEnd = false;
     }
 
-    // 💡 ★ボタンを押した時に呼ばれる関数（ここでピンを再配置し、プレイヤーを交代します）
     public void OnNextTurnButtonPressed()
     {
+        // 💡 ゲーム終了時はボタンを押しても何もしないようにガード
+        if (isGameFinished) return;
+
         // 1. 傾いたピンを立て直す（再配置）
         foreach (Skittle s in skittles)
         {
@@ -215,11 +215,10 @@ public class GameManager : MonoBehaviour
         Debug.Log($"ターン交代完了！次のプレイヤー: Player {currentPlayer}");
     }
 
-   void UpdateScoreUI()
+    void UpdateScoreUI()
     {
         if (scoreText != null)
         {
-            // 💡 日本語部分を英語表記に変更
             scoreText.text = $"<color=yellow>Turn: Player {currentPlayer} </color>\n" +
                              $"Player 1: {p1Score} / 50 (Miss: {p1Misses}/3)\n" +
                              $"Player 2: {p2Score} / 50 (Miss: {p2Misses}/3)";

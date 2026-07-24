@@ -71,7 +71,7 @@ public class Skittle : MonoBehaviour
         Vector3 newPos = startPos;
 
         // シーン内のすべてのスキットルを取得して距離を調べる
-        Skittle[] allSkittles = FindObjectsByType<Skittle>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        Skittle[] allSkittles = Object.FindObjectsByType<Skittle>(FindObjectsInactive.Exclude);
 
         foreach (Skittle other in allSkittles)
         {

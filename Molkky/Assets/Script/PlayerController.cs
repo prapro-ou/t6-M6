@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,23 +10,26 @@ public class PlayerController : MonoBehaviour
     public float maxForce = 40f;
     public float chargeSpeed = 20f;
 
+    [Header("ゲームマネージャーの参照")]
+    public GameManager gameManager;
+
     [Header("回転スピードの設定")]
-    public float rotateSpeed = 50f; // 💡 移動ではなく回転の速度にします
+    public float rotateSpeed = 50f;
 
     [Header("★モルックの手元の位置（手動設定用）")]
     public Vector3 customDefaultLocalPosition = new Vector3(0f, 0f, 0f);
     public Vector3 customDefaultLocalRotation = new Vector3(0f, 0f, 0f);
 
     private float currentPower = 0f;
-    private bool isAiming = true;
-    private bool isSettingPower = false;
     private bool isChargingUp = true;
 
-    // 入力値を保存する変数
+    // 💡 状態管理フラグ
+    public bool isCanControl = true; // 操作可能かどうか（投げた瞬間に false にする）
+    private enum State { Aiming, SettingPower, Launched }
+    private State currentState = State.Aiming;
+
     private float inputX = 0f;
     private float inputY = 0f;
-
-    // 現在の回転角度を記録する変数
     private float currentRotationX = 0f;
     private float currentRotationY = 0f;
 
@@ -36,13 +40,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // 💡 ★最優先ガード1：投げた後（isCanControl == false）は Update 内の処理を完全遮断！
+        if (!isCanControl || currentState == State.Launched)
+        {
+            return;
+        }
+
+        // ガード2：ゲーム開始前・終了時
         if (!GameManager.isGameStarted || GameManager.isGameFinished)
         {
             return;
         }
 
+        // ガード3：NEXT PLAYER ボタン表示中
+        if (gameManager != null && gameManager.nextTurnButtonUI != null && gameManager.nextTurnButtonUI.activeSelf)
+        {
+            return;
+        }
 
-        // 💡 New Input SystemでのWASD・矢印キーの入力を正しく取得
+        // --- 入力処理 ---
         if (Keyboard.current != null)
         {
             inputX = 0f;
@@ -54,31 +70,31 @@ public class PlayerController : MonoBehaviour
             if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed) inputY = 1f;
         }
 
-        if (isAiming)
+        // 1. 狙い（エイム）状態
+        if (currentState == State.Aiming)
         {
-            // 💡 修正ポイント：位置（X）を動かすのではなく、角度（Rotation）を変化させます
-            currentRotationY += inputX * rotateSpeed * Time.deltaTime; // 左右（A/D）で首振り
-            currentRotationX -= inputY * rotateSpeed * Time.deltaTime; // 上下（W/S）で仰角調整
+            currentRotationY += inputX * rotateSpeed * Time.deltaTime;
+            currentRotationX -= inputY * rotateSpeed * Time.deltaTime;
 
-            // 上下の角度がひっくり返らないように制限（下10度〜上45度まで）
             currentRotationX = Mathf.Clamp(currentRotationX, -45f, 0f);
             currentRotationY = Mathf.Clamp(currentRotationY, -45f, 45f);
 
-            // 計算した角度をプレイヤー（Launcher）の回転に適用
             transform.localRotation = Quaternion.Euler(currentRotationX, currentRotationY, 0f);
 
-            // 1回目のスペースキー：チャージ開始
+            // スペースキーが押されたら「パワー調整」へ移行
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                isAiming = false;
-                isSettingPower = true;
+                currentState = State.SettingPower;
                 currentPower = 0f;
                 isChargingUp = true;
+
+                // UIのフォーカスを外す（スペースキーがUIに連動するのを防止）
+                if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
             }
         }
-        else if (isSettingPower)
+        // 2. パワー調整状態
+        else if (currentState == State.SettingPower)
         {
-            // ゲージの往復チャージ処理
             if (isChargingUp)
             {
                 currentPower += chargeSpeed * Time.deltaTime;
@@ -98,9 +114,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            powerSlider.value = currentPower / maxForce;
+            if (powerSlider != null)
+            {
+                powerSlider.value = currentPower / maxForce;
+            }
 
-            // 2回目のスペースキー：狙ったパワーで発射！
+            // スペースキーが押されたら「発射」
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 LaunchMolkky();
@@ -108,30 +127,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LaunchMolkky()
+ void LaunchMolkky()
     {
-        isSettingPower = false;
+        isCanControl = false;
+        currentState = State.Launched;
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        // 親子関係を解除
+        molkkyRb.transform.SetParent(null);
         molkkyRb.isKinematic = false;
 
-        // 💡 修正ポイント：プレイヤー自身が向いている「正面方向（transform.forward）」に向けて真っ直ぐ発射します！
-        // これにより、上下左右で狙った方向に正しく飛ぶようになります。
-        molkkyRb.AddForce(transform.forward * currentPower, ForceMode.Impulse);
+        // 💡 ★ここを修正！正面方向(transform.forward)に少し上向き(Vector3.up * 0.3f)を足す
+        Vector3 throwDirection = (transform.forward + Vector3.up * 0.3f).normalized;
 
-        // GameManagerに発射を通知
-        GameObject.Find("GameManager").GetComponent<GameManager>().OnMolkkyLaunched();
+        // 力を加える
+        molkkyRb.AddForce(throwDirection * currentPower, ForceMode.Impulse);
+
+        if (gameManager != null)
+        {
+            gameManager.OnMolkkyLaunched();
+        }
+        else
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().OnMolkkyLaunched();
+        }
     }
 
     public void ResetMolkky()
     {
         molkkyRb.gameObject.SetActive(false);
 
-        // 位置と角度を手元にリセット
-        molkkyRb.transform.localPosition = customDefaultLocalPosition;
+        // 発射台の子に戻す
+        molkkyRb.transform.SetParent(transform);
 
-        // 💡 モルック自体は「横向きに寝かせた状態(X:90)」を維持して手元に戻します
+        // 位置・角度リセット
+        molkkyRb.transform.localPosition = customDefaultLocalPosition;
         molkkyRb.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
 
-        // プレイヤー自身の回転（狙い）も正面にリセット
         transform.localRotation = Quaternion.identity;
         currentRotationX = 0f;
         currentRotationY = 0f;
@@ -139,8 +175,13 @@ public class PlayerController : MonoBehaviour
         molkkyRb.isKinematic = true;
         molkkyRb.gameObject.SetActive(true);
 
-        isAiming = true;
-        isSettingPower = false;
-        powerSlider.value = 0f;
+        // 💡 状態をリセットして操作可能（true）に戻す
+        isCanControl = true;
+        currentState = State.Aiming;
+
+        if (powerSlider != null)
+        {
+            powerSlider.value = 0f;
+        }
     }
 }

@@ -2003,10 +2003,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1746441284}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
 --- !u!1 &1276775290
 GameObject:
@@ -2039,11 +2036,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   molkkyRb: {fileID: 1746441285}
   powerSlider: {fileID: 76649338}
-  maxForce: 20
+  maxForce: 40
   chargeSpeed: 40
+  gameManager: {fileID: 174430317}
   rotateSpeed: 50
   customDefaultLocalPosition: {x: 0, y: 0, z: 0}
   customDefaultLocalRotation: {x: 0, y: 0, z: 90}
+  isCanControl: 1
 --- !u!4 &1276775292
 Transform:
   m_ObjectHideFlags: 0
@@ -2535,29 +2534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6775ddf9c5765094cb6de20daf4a8ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skittle
---- !u!1 &1746441282 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
-  m_PrefabInstance: {fileID: 1216835893}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1746441283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8451974433629900503, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
   m_PrefabInstance: {fileID: 1216835893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1746441284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746441282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6b61f4ad47edd4b84f2dcc412403d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MolkkyThrower
-  throwForce: 20
 --- !u!54 &1746441285 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 8264877332122422887, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}

@@ -8,3 +8,4 @@ RunExternalCompiler: end
 compileSnippet complete
  ok=1 outsize=698
 
+Cmd: shutdown
