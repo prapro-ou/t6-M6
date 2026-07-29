@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using System.Collections;
 
 public class Skittle : MonoBehaviour
@@ -30,38 +29,40 @@ public class Skittle : MonoBehaviour
     }
 
     // 💡 ② 再配置（リセット）対象にするかどうかの判定（1度でも傾いているか）
+    // ※将来的に「傾いたピンだけ再配置する」ルールにする場合に活用できます
     public bool IsDownForReset()
     {
         // わずかでも（1度以上）傾いていたら、再配置対象とする
         return Vector3.Angle(transform.up, Vector3.up) > 1f;
     }
 
-    // 💡 ピンをその場で（または元の位置に）立て直す関数
+    // 💡 ピンをその場で（または元の位置に）無条件で立て直す関数
     public void StandUp()
     {
-        // 1度でも傾いていたら再配置する
-        if (IsDownForReset())
-        {
-            Debug.Log($"ピン {skittleNumber} 番が傾いていたため、再配置します。");
+        // 現在は無条件で全ピンを再配置（もし条件付きに戻したい場合は if (IsDownForReset()) で囲んでください）
+        Debug.Log($"ピン {skittleNumber} 番を再配置します。");
 
-            // 1. まず完全に動きを止めて、物理を一時停止
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true;
+        // 1. まず完全に動きを止めて、物理を一時停止
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.isKinematic = true;
 
-            // 2. 角度を「真上」かつ「指定した正面の向き」に向け直す
-            transform.localRotation = Quaternion.Euler(0f, targetYRotation, 0f);
+        // 2. 角度を「ワールド空間の真上」かつ「指定した正面の向き」に向け直す
+        transform.rotation = Quaternion.Euler(0f, targetYRotation, 0f);
 
-            // 3. 重なりを防止した安全な位置（X, Z）を計算する
-            Vector3 targetPosition = transform.position;
-            targetPosition = GetOverlapResolvedPosition(targetPosition);
+        // 3. 地面へのめり込みを防ぐため、先に少しだけ上に浮かせる
+        Vector3 targetPosition = transform.position;
+        targetPosition.y += 0.1f;
 
-            // 4. 地面へのめり込みを防ぐため、少しだけ上に浮かす
-            targetPosition.y += 0.3f;
-            transform.position = targetPosition;
+        // 4. 重なりを防止した安全な位置（X, Z）を計算する
+        targetPosition = GetOverlapResolvedPosition(targetPosition);
+        transform.position = targetPosition;
 
-            StartCoroutine(SafeActivatePhysics());
-        }
+        // 5. 物理エンジンに新しい位置・角度を即座に反映させる
+        Physics.SyncTransforms();
+
+        // 6. 物理演算を安全に再開
+        StartCoroutine(SafeActivatePhysics());
     }
 
     // 💡 重なりをチェックして少しずつずらす関数
@@ -75,7 +76,7 @@ public class Skittle : MonoBehaviour
 
         foreach (Skittle other in allSkittles)
         {
-            // 自分自身や、まだ動いていない（倒れていない）ピンはスキップ
+            // 自分自身はスキップ
             if (other == this) continue;
 
             // 高さ（Y）を無視して平面（X, Z）の距離を計算
@@ -102,13 +103,13 @@ public class Skittle : MonoBehaviour
     // 💡 物理挙動を安全に再開するコルーチン
     IEnumerator SafeActivatePhysics()
     {
-        // 0.01秒だけ待つことで、Unityが位置と角度の上書きを完全に完了するのを待ちます
+        // Unityが位置と角度の上書きを完全に完了するのを待つ
         yield return new WaitForFixedUpdate();
 
         // 安全が確保されたあとに物理演算を再開！
         rb.isKinematic = false;
 
-        // 念のため、再開時の速度も完全にゼロに固定します
+        // 念のため、再開時の速度も完全にゼロに固定
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }

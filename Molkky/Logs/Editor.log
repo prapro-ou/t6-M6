@@ -4,8 +4,8 @@ OS: 'Windows 11  (10.0.26200) Professional' Language: 'ja' Physical Memory: 1620
 BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-07-24T06:31:41Z
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou" at "2026-07-24T06:31:41.8810814Z"
+Date: 2026-07-29T04:00:01Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou" at "2026-07-29T04:00:01.9231622Z"
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.5.0f1\Editor\Unity.exe
@@ -19,9 +19,9 @@ production
 -licensingIpc
 LicenseClient-ikesakutarou
 -hubSessionId
-ae2577a1-f6ce-4497-978f-2e84f70f41a0
+b65071be-d785-4a20-9d21-e6ea12a776b5
 -accessToken
-0Dls6vheE-r-gBCI-1_2EjDj0FV1kyLuKCCb7bhtMs400ef
+93xLYGreCfgeSBviH10N4UuVGRwDnmIM6URC9wVLcIY00ef
 Successfully changed project path to: C:\Users\ikesakutarou\t6-M6\Molkky
 C:/Users/ikesakutarou/t6-M6/Molkky
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -60,16 +60,16 @@ C:/Users/ikesakutarou/t6-M6/Molkky
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
-Player connection [17672]  Target information:
+Player connection [9408]  Target information:
 
-Player connection [17672]  * "[IP] 10.23.112.218 [Port] 55504 [Flags] 2 [Guid] 546998867 [EditorId] 546998867 [Version] 1048832 [Id] WindowsEditor(7,池朔太郎) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [9408]  * "[IP] 10.23.112.38 [Port] 55504 [Flags] 2 [Guid] 2186980279 [EditorId] 2186980279 [Version] 1048832 [Id] WindowsEditor(7,池朔太郎) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [17672] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [17672] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [9408] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [9408] Host joined alternative multi-casting on [225.0.0.222:34997]...
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
-[Package Manager] Connected to IPC stream "Upm-5980" after 0.6 seconds.
+[Package Manager] Connected to IPC stream "Upm-18532" after 0.8 seconds.
 [Licensing::Module] Licensing is not yet initialized.
 [Licensing::Client] Error: HandshakeResponse reported an error:
 	ResponseCode: 505
@@ -77,23 +77,23 @@ Input System module state changed to: Initialized.
 [Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-ikesakutarou"
 [Licensing::IpcConnector] LicenseClient-ikesakutarou channel disconnected successfully.
 [Licensing::IpcConnector] Channel LicenseClient-ikesakutarou-6000.5.0 doesn't exist
-[Licensing::Module] Successfully launched the LicensingClient (PId: 13696)
+[Licensing::Module] Successfully launched the LicensingClient (PId: 11628)
 Starting IPC server.
 Waiting for clients to connect on \\.\pipe\Unity-LicenseClient-ikesakutarou-6000.5.0, press Ctrl-C to exit.
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou-6000.5.0" at "2026-07-24T06:31:47.6856554Z"
-[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 13696, path: "C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou-6000.5.0" at "2026-07-29T04:00:07.4450805Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 11628, path: "C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
 [Licensing::Module] LicensingClient has failed validation; ignoring
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.18.1+9fbee8e
-  Session Id:              44019cf5033c4853b9cc8fb8b7866064
-  Correlation Id:          fef4c1099c43e0250c9600ebfe522b69
-  External correlation Id: 798499128749436710
+  Session Id:              12f926c70fc948e98e1ed18a754528ad
+  Correlation Id:          1eb70ab3bc9a6b4e9c3bf673bb60bfd4
+  External correlation Id: 3065310968206435030
   Machine Id:              VZgJXSmVxX7U+tBjatLkCvjor/o=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ikesakutarou-6000.5.0" (connect: 1.29s, validation: 0.56s, handshake: 0.03s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou-6000.5.0-notifications" at "2026-07-24T06:31:48.2798459Z"
-[Licensing::Module] Connected to LicensingClient (PId: 13696, launch time: 0.01, total connection time: 1.88s)
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ikesakutarou-6000.5.0" (connect: 1.29s, validation: 0.29s, handshake: 0.03s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou-6000.5.0-notifications" at "2026-07-29T04:00:07.7636406Z"
+[Licensing::Module] Connected to LicensingClient (PId: 11628, launch time: 0.01, total connection time: 1.61s)
 [Licensing::Client] Successfully updated the access token
-[Licensing::Module] Successfully updated the access token 0Dls6vheE-...
+[Licensing::Module] Successfully updated the access token 93xLYGreCf...
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: F4-S82E-258Q-RRPW-KWCH-XXXX
@@ -117,8 +117,8 @@ Waiting for clients to connect on \\.\pipe\Unity-LicenseClient-ikesakutarou-6000
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
-[Licensing::Module] Licensing Background thread has ended after 6.55s
-[Licensing::Module] Licensing is initialized (took 5.38s).
+[Licensing::Module] Licensing Background thread has ended after 6.06s
+[Licensing::Module] Licensing is initialized (took 4.70s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: F4-S82E-258Q-RRPW-KWCH-XXXX
@@ -137,7 +137,8 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Artifact Garbage Collection - Removed 57 unused hashed content files
+Artifact Garbage Collection - Removed 1 unused hashed content files
+Refreshing native plugins compatible for Editor in 3.02 ms, found 0 plugins.
 Initialize engine version: 6000.5.0f1 (88b47c5e7076)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/ikesakutarou/t6-M6/Molkky/Assets
@@ -161,7 +162,7 @@ Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Managed
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
 Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56980
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56532
 CodeReloadManager initialized
 ImportWorker Server TCP listen port: 0
 AcceleratorClientConnectionCallback - disconnected - :0
@@ -169,30 +170,30 @@ Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.008090 seconds.
+Registered in 0.013212 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.929 seconds
-Domain Reload Profiling: 2158ms
-	BeginReloadAssembly (282ms)
-		CreateAndSetChildDomain (23ms)
-	RebuildCommonClasses (10ms)
-	RebuildNativeTypeToScriptingClass (33ms)
-	initialDomainReloadingComplete (208ms)
-	LoadAllAssembliesAndSetupDomain (689ms)
-		LoadAssemblies (258ms)
-		AnalyzeDomain (518ms)
-			TypeCache.Refresh (514ms)
-				TypeCache.ScanAssembly (482ms)
-	FinalizeReload (936ms)
+- Finished resetting the current domain, in  0.969 seconds
+Domain Reload Profiling: 2427ms
+	BeginReloadAssembly (380ms)
+		CreateAndSetChildDomain (30ms)
+	RebuildCommonClasses (14ms)
+	RebuildNativeTypeToScriptingClass (41ms)
+	initialDomainReloadingComplete (259ms)
+	LoadAllAssembliesAndSetupDomain (759ms)
+		LoadAssemblies (343ms)
+		AnalyzeDomain (546ms)
+			TypeCache.Refresh (542ms)
+				TypeCache.ScanAssembly (505ms)
+	FinalizeReload (974ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			BeforeProcessingInitializeOnLoad (181ms)
-			ProcessInitializeOnLoadAttributes (226ms)
-			ProcessInitializeOnLoadMethodAttributes (331ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (189ms)
+			ProcessInitializeOnLoadAttributes (247ms)
+			ProcessInitializeOnLoadMethodAttributes (363ms)
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: F4-S82E-258Q-RRPW-KWCH-XXXX
@@ -275,8 +276,7 @@ Application.AssetDatabase Initial Refresh Start
     com.unity.2d.sprite@1.0.0 (location: C:\Users\ikesakutarou\t6-M6\Molkky\Library\PackageCache\com.unity.2d.sprite@053a968eab56)
     com.unity.mathematics@1.4.0 (location: C:\Users\ikesakutarou\t6-M6\Molkky\Library\PackageCache\com.unity.mathematics@981956d94fb6)
 [Subsystems] No new subsystems found in resolved package list.
-[Package Manager] Done registering packages in 0.29 seconds
-[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+[Package Manager] Done registering packages in 0.27 seconds
 info: Microsoft.Hosting.Lifetime[14]
       Now listening on: http://localhost:80
 info: Microsoft.Hosting.Lifetime[0]
@@ -292,8 +292,8 @@ info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
 info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
       Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
 info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - 200 - application/grpc 70.8646ms
-Refreshing native plugins compatible for Editor in 20.15 ms, found 5 plugins.
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping - 200 - application/grpc 73.7211ms
+Refreshing native plugins compatible for Editor in 26.88 ms, found 5 plugins.
 Starting: C:\Program Files\Unity\Hub\Editor\6000.5.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
 WorkingDir: C:/Users/ikesakutarou/t6-M6/Molkky
 info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
@@ -311,258 +311,163 @@ info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
 info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
       Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
 info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 321.6237ms
-info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
-      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - application/grpc -
-info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
-      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - application/grpc -
-info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
-      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
-info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
-      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 144 defines and 369 references
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 142 defines and 393 references
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      running Unity.Jobs.CodeGen.JobsILPostProcessor
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      running Unity.Jobs.CodeGen.JobsILPostProcessor
-info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
-      Resolved Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with Library\Bee\artifacts\1900b0aE.dag\Unity.Collections.dll
-info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
-      Resolved UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with C:\Program Files\Unity\Hub\Editor\6000.5.0f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll
-info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
-      Resolved UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with C:\Program Files\Unity\Hub\Editor\6000.5.0f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll
-info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
-      Resolved Unity.Scripting, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with C:\Program Files\Unity\Hub\Editor\6000.5.0f1\Editor\Data\Managed\UnityEngine\Unity.Scripting.dll
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
-info: Unity.ILPP.Runner.PostProcessingPipeline[0]
-      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
-info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
-      Resolved Unity.Burst.Cecil.Rocks, Version=0.11.6.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library\PackageCache\com.unity.burst@6bb9aca3ef38\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll
-info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
-      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
-info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
-      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
-info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - 200 - application/grpc 2937.9229ms
-info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - 200 - application/grpc 2938.1162ms
-ExitCode: 0 Duration: 7s91ms
-[1247/1640  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
-[1632/1640  3s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
-[1634/1640  3s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
-Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 144 defines and 369 references
-
-processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
-
-running Unity.Jobs.CodeGen.JobsILPostProcessor
-
-running zzzUnity.Burst.CodeGen.BurstILPostProcessor
-[1635/1640  3s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
-Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 142 defines and 393 references
-
-processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
-
-running Unity.Jobs.CodeGen.JobsILPostProcessor
-
-running zzzUnity.Burst.CodeGen.BurstILPostProcessor
-[1638/1640  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
-[1639/1640  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
-*** Tundra build success (6.98 seconds), 6 items updated, 1640 evaluated
-AssetDatabase: script compilation time: 8.521601s
-Total cache size 266817116
-Total cache size after purge 266817116, took 00:00:00.5061149
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 304.3699ms
+ExitCode: 0 Duration: 1s271ms
+[1249/1640  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (1.12 seconds), 1 items updated, 1640 evaluated
+AssetDatabase: script compilation time: 2.685547s
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory is not a mono symbol file
-Refreshing native plugins compatible for Editor in 21.56 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 24.89 ms, found 5 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 22.42 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 36.47 ms, found 5 plugins.
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
 [MODES] Loading mode Default (0) for mode-current-id-Molkky
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  9.608 seconds
-Domain Reload Profiling: 13618ms
-	BeginReloadAssembly (647ms)
-		DisableScriptedObjects (130ms)
-		CreateAndSetChildDomain (104ms)
-	RebuildCommonClasses (18ms)
-	RebuildNativeTypeToScriptingClass (31ms)
-	initialDomainReloadingComplete (483ms)
-	LoadAllAssembliesAndSetupDomain (2827ms)
-		LoadAssemblies (1609ms)
-		AnalyzeDomain (1149ms)
-			TypeCache.Refresh (863ms)
-				TypeCache.ScanAssembly (793ms)
-			BuildScriptInfoCaches (257ms)
-			ResolveRequiredComponents (22ms)
-	FinalizeReload (9611ms)
+- Finished resetting the current domain, in 11.584 seconds
+Domain Reload Profiling: 15182ms
+	BeginReloadAssembly (623ms)
+		DisableScriptedObjects (83ms)
+		CreateAndSetChildDomain (189ms)
+	RebuildCommonClasses (16ms)
+	RebuildNativeTypeToScriptingClass (30ms)
+	initialDomainReloadingComplete (326ms)
+	LoadAllAssembliesAndSetupDomain (2601ms)
+		LoadAssemblies (1494ms)
+		AnalyzeDomain (1023ms)
+			TypeCache.Refresh (778ms)
+				TypeCache.ScanAssembly (736ms)
+			BuildScriptInfoCaches (215ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (11588ms)
 		SetupLoadedEditorAssemblies (0ms)
 			InitializePlatformSupportModulesInManaged (4ms)
-			BeforeProcessingInitializeOnLoad (302ms)
-			ProcessInitializeOnLoadAttributes (6635ms)
-			ProcessInitializeOnLoadMethodAttributes (1512ms)
-			AfterProcessingInitializeOnLoad (9ms)
-		AwakeInstancesAfterBackupRestoration (62ms)
+			BeforeProcessingInitializeOnLoad (261ms)
+			ProcessInitializeOnLoadAttributes (8511ms)
+			ProcessInitializeOnLoadMethodAttributes (1542ms)
+			AfterProcessingInitializeOnLoad (24ms)
+			EditorAssembliesLoaded (4ms)
+		AwakeInstancesAfterBackupRestoration (96ms)
 Starting new worker id: 0 with log in C:/Users/ikesakutarou/t6-M6/Molkky/Logs/AssetImportWorkerHW0.log
-Refreshing native plugins compatible for Editor in 17.98 ms, found 5 plugins.
 
-Asset Pipeline Refresh (id=4672f5e35ae3c824ab4b7521b4f0894f): Total: 26.364 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+Asset Pipeline Refresh (id=20d98604360c749489d674efbe691efd): Total: 21.558 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
 	(Values over 0.05ms)
 	Summary:
 		Imports: total=0 (actual=0, local cache=0, cache server=0)
-		Asset DB Process Time: managed=0 ms, native=11572 ms
-		Asset DB Callback time: managed=1184 ms, native=331 ms
-		Scripting: domain reloads=1, domain reload time=4496 ms, compile time=8525 ms, other=253 ms
-		Project Asset Count: scripts=2160, non-scripts=5548
-		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Asset DB Process Time: managed=0 ms, native=14244 ms
+		Asset DB Callback time: managed=108 ms, native=282 ms
+		Scripting: domain reloads=1, domain reload time=4005 ms, compile time=2696 ms, other=219 ms
+		Project Asset Count: scripts=2160, non-scripts=5551
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
 		Scan Filter Count: 0
-	InvokePackagesCallback: 313.071ms
-	ApplyChangesToAssetFolders: 1.238ms
-	Scan: 407.217ms
-	Collect global state as custom dependencies: 7.934ms
-	OnSourceAssetsModified: 1.844ms
-	CategorizeScriptCompilationAssets: 200.478ms
-	ProcessAssetsWithTransientArtifactChanges: 296.480ms
-	CategorizeAssets: 200.405ms
-	CompileScripts: 8524.727ms
-	ImportOutOfDateAssets: 9896.521ms (9700.394ms without children)
-		ReloadNativeAssets: 0.098ms
-		UnloadImportedAssets: 1.508ms
-		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 2.597ms
-		ImportSchedulerStart: 191.914ms
-	PostProcessAllAssets: 1191.116ms
-		VCAutoAddAssetPostprocess 4.993ms
-		XRBuildSystem.XRAssetImported 1.812ms
-		PostProcessCallbackCreateDeferredMaterials 0.068ms
-		MonoPostProcessAllAssets: 1182.769ms
-			AssetPostprocessor.OnPostprocessAllAssets 236.347ms
-			AssetReferenceReimportMonitor.OnPostprocessAllAssets 77.930ms
-			StyleCatalogPostProcessor.OnPostprocessAllAssets 54.231ms
-			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 28.008ms
-			SyncVS.PostprocessSyncProject 27.208ms
-			BuilderAssetPostprocessor.OnPostprocessAllAssets 15.817ms
-			AssetChangedListener.OnPostprocessAllAssets 13.377ms
-			GraphRefreshPostprocessor.OnPostprocessAllAssets 8.550ms
-			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 5.910ms
-			SpriteSlicePostprocessor.OnPostprocessAllAssets 5.720ms
-			SpeedTree9Postprocessor.OnPostprocessAllAssets 4.012ms
-			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 3.601ms
-			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 2.807ms
-			AssetChangeDetector.OnPostprocessAllAssets 2.694ms
-			MaterialPostprocessor.OnPostprocessAllAssets 2.325ms
-			SkillsProjectAssetPostprocessor.OnPostprocessAllAssets 2.029ms
-			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 1.660ms
-			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 1.529ms
-			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 1.302ms
-			InputActionAssetPostprocessor.OnPostprocessAllAssets 1.200ms
-			ModelAssetProcessor.OnPostprocessAllAssets 1.121ms
-			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 1.077ms
-			UVCSAssetPostprocessor.OnPostprocessAllAssets 1.067ms
-			SampleDependencyImporterPostProcessor.OnPostprocessAllAssets 1.040ms
-			TextAssetPostProcessor.OnPostprocessAllAssets 0.990ms
-			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.850ms
-			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.834ms
-			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.791ms
-			PostProcessor.OnPostprocessAllAssets 0.767ms
-			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.688ms
-			AudioMixerPostprocessor.OnPostprocessAllAssets 0.652ms
-			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.476ms
-			AssetEvents.OnPostprocessAllAssets 0.472ms
-			SamplePostprocessor.OnPostprocessAllAssets 0.462ms
-			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.450ms
-			TrackSelectedAssetsProcessor.OnPostprocessAllAssets 0.420ms
-			ConfigAssetsTracker.OnPostprocessAllAssets 0.419ms
-			SpeedTreePostProcessor.OnPostprocessAllAssets 0.340ms
-			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.276ms
-			AudioContainerPostProcessor.OnPostprocessAllAssets 0.150ms
-	PostAssetChangesProfiler: 23.765ms
-	UnloadStreamsBegin: 8.942ms
-	PersistCurrentRevisions: 0.774ms
-	GenerateScriptTypeHashes: 5.147ms
-	GenerateScriptTypeSerializationHashes: 9.269ms
-	Untracked: 5259.208ms
+	InvokePackagesCallback: 297.458ms
+	ApplyChangesToAssetFolders: 1.571ms
+	Scan: 579.607ms
+	Collect global state as custom dependencies: 12.036ms
+	CategorizeScriptCompilationAssets: 290.038ms
+	ProcessAssetsWithTransientArtifactChanges: 355.906ms
+	CategorizeAssets: 209.095ms
+	CompileScripts: 2695.840ms
+	ImportOutOfDateAssets: 11903.264ms (11691.841ms without children)
+		ReloadNativeAssets: 0.101ms
+		UnloadImportedAssets: 1.377ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 2.517ms
+		ImportSchedulerStart: 207.419ms
+	PostProcessAllAssets: 108.401ms
+		MonoPostProcessAllAssets: 108.236ms
+			SyncVS.PostprocessSyncProject 31.246ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 29.835ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 4.368ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 3.984ms
+			GraphRefreshPostprocessor.OnPostprocessAllAssets 3.937ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 2.893ms
+			AssetChangeDetector.OnPostprocessAllAssets 1.985ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.954ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.604ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.508ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.496ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.402ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.385ms
+	UnloadStreamsBegin: 6.914ms
+	PersistCurrentRevisions: 0.568ms
+	GenerateScriptTypeHashes: 9.956ms
+	GenerateScriptTypeSerializationHashes: 20.601ms
+	Untracked: 5068.374ms
 
 Application.AssetDatabase Initial Refresh End
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Scanning for USB devices : 3.475ms
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Scanning for USB devices : 3.865ms
 Initializing Unity extensions:
 Unloading 72 Unused Serialized files (Serialized files now loaded: 0)
 Loaded scene 'Assets/Scenes/GameScene.unity'
-	Deserialize:            126.829 ms
-	Integration:            815.916 ms
-	Integration of assets:  7.733 ms
-	Thread Wait Time:       -0.014 ms
-	Total Operation Time:   950.463 ms
-Worker ready: AssetImportWorkerHW0 0
-Unloading 10423 unused Assets / (25.3 MB). Loaded Objects now: 11626.
-Memory consumption went from 0.60 GB to 0.58 GB.
-Total: 103.235500 ms (FindLiveObjects: 2.311600 ms CreateObjectMapping: 12.007600 ms MarkObjects: 33.904800 ms  DeleteObjects: 55.004700 ms)
+	Deserialize:            195.579 ms
+	Integration:            1095.416 ms
+	Integration of assets:  21.941 ms
+	Thread Wait Time:       -2.680 ms
+	Total Operation Time:   1310.256 ms
+Unloading 10423 unused Assets / (20.8 MB). Loaded Objects now: 11638.
+Memory consumption went from 0.56 GB to 0.54 GB.
+Total: 79.554700 ms (FindLiveObjects: 1.898500 ms CreateObjectMapping: 12.409300 ms MarkObjects: 35.092700 ms  DeleteObjects: 29.219500 ms)
 
 [LAYOUT] About to load UserSettings\Layouts\default-6000.dwlt, keepMainWindow=False
+Worker ready: AssetImportWorkerHW0 0
 [LAYOUT] About to save layout C:\Users\ikesakutarou\t6-M6\Molkky\UserSettings\Layouts\default-6000.dwlt
 [LAYOUT] About to save layout C:/Users/ikesakutarou/AppData/Roaming/Unity/Editor-5.x/Preferences\Layouts\current\default-6000.dwlt
 [MODES] ModeService[default].InitializeCurrentMode
 [MODES] ModeService[default].RaiseModeChanged(default, default)
 <RI> Initializing input.
 Using Windows.Gaming.Input
-[Project] Loading completed in 45.639 seconds
-	Project init time: 				41.439 seconds
+[Project] Loading completed in 43.756 seconds
+	Project init time: 				38.414 seconds
 		Template init time: 		0.000 seconds
-		Package Manager init time: 		5.974 seconds
-		Asset Database init time: 		1.515 seconds
-		Global illumination init time: 	0.008 seconds
-		Assemblies load time: 			2.330 seconds
-		Unity extensions init time: 	0.063 seconds
-		Asset Database refresh time: 	26.364 seconds
-	Scene opening time: 			3.679 seconds
-##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1784874747482,"processId":5980,"projectLoad":45.6392515,"projectInit":41.4392532,"templateInit":0.0,"packageManagerInit":5.9739728,"assetDatabaseInit":1.5146893,"globalIlluminationInit":0.0080359,"assembliesLoad":2.3304852,"unityExtensionsInit":0.0625039,"assetDatabaseRefresh":26.3644285,"sceneOpening":3.6786074}
-##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1784874747482,"processId":5980,"editorVersion":"6000.5.0f1 (88b47c5e7076)","branch":"6000.5/staging","buildType":"Release","platform":"Windows"}
+		Package Manager init time: 		5.530 seconds
+		Asset Database init time: 		1.839 seconds
+		Global illumination init time: 	0.016 seconds
+		Assemblies load time: 			2.728 seconds
+		Unity extensions init time: 	0.086 seconds
+		Asset Database refresh time: 	21.559 seconds
+	Scene opening time: 			4.770 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1785297645636,"processId":18532,"projectLoad":43.7556232,"projectInit":38.4144595,"templateInit":0.0,"packageManagerInit":5.5304596,"assetDatabaseInit":1.8391301,"globalIlluminationInit":0.0157235,"assembliesLoad":2.7278238,"unityExtensionsInit":0.0856254,"assetDatabaseRefresh":21.5586054,"sceneOpening":4.7704269}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1785297645638,"processId":18532,"editorVersion":"6000.5.0f1 (88b47c5e7076)","branch":"6000.5/staging","buildType":"Release","platform":"Windows"}
 
-Asset Pipeline Refresh (id=c783658b67b43e3438b4be53745d5135): Total: 0.472 seconds - Initiated by RefreshV2(AllowForceSynchronousImport)
+Asset Pipeline Refresh (id=2ba005a099286d145971f42a4f3b6760): Total: 0.439 seconds - Initiated by RefreshV2(AllowForceSynchronousImport)
 	(Values over 0.05ms)
 	Summary:
 		Imports: total=0 (actual=0, local cache=0, cache server=0)
-		Asset DB Process Time: managed=0 ms, native=469 ms
+		Asset DB Process Time: managed=0 ms, native=436 ms
 		Asset DB Callback time: managed=0 ms, native=2 ms
 		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
-		Project Asset Count: scripts=2160, non-scripts=5548
+		Project Asset Count: scripts=2160, non-scripts=5551
 		Asset File Changes: new=0, changed=0, moved=0, deleted=0
 		Scan Filter Count: 0
-	InvokePackagesCallback: 8.202ms
-	ApplyChangesToAssetFolders: 0.514ms
-	Collect global state as custom dependencies: 0.424ms
-	ProcessAssetsWithTransientArtifactChanges: 0.330ms
-	CategorizeAssets: 158.784ms
-	CompileScripts: 0.089ms
-	ImportOutOfDateAssets: 163.961ms (27.502ms without children)
-		ReloadNativeAssets: 0.201ms
-		UnloadImportedAssets: 0.392ms
-		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.992ms
-		ImportSchedulerStart: 133.867ms
-	GatherAllCurrentPrimaryImportResultRevisions: 1.019ms
-	UnloadStreamsBegin: 3.918ms
-	PersistCurrentRevisions: 0.609ms
-	Untracked: 106.394ms
+	InvokePackagesCallback: 7.072ms
+	ApplyChangesToAssetFolders: 0.420ms
+	Collect global state as custom dependencies: 0.258ms
+	ProcessAssetsWithTransientArtifactChanges: 0.233ms
+	CategorizeAssets: 136.381ms
+	CompileScripts: 0.079ms
+	ImportOutOfDateAssets: 173.699ms (28.519ms without children)
+		ReloadNativeAssets: 0.122ms
+		UnloadImportedAssets: 0.645ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 2.012ms
+		ImportSchedulerStart: 142.393ms
+	GatherAllCurrentPrimaryImportResultRevisions: 1.110ms
+	UnloadStreamsBegin: 4.285ms
+	PersistCurrentRevisions: 0.675ms
+	Untracked: 94.942ms
 
 Start Indexing on Editor startup
 [Indexing] Starting Initial Indexing for Assets
-[INFO ] [relay] relay.startup port=9001 mcpClientPort=9002 editorPid=5980
+[INFO ] [relay] relay.startup port=9001 mcpClientPort=9002 editorPid=18532
 [INFO ] [relay] log === RELAY SERVER STARTED === (unity-ai-relay v1.0.12-build.96)
 [INFO ] [relay] log Starting relay server...
-[INFO ] [relay] log Command line arguments: ["bun","B:/~BUN/root/relay_win.exe","--relay","--port","9001","--mcp-client-port","9002","--editor-pid","5980","--shutdown-delay","180","--log-dir","C:\\Users\\ikesakutarou\\t6-M6\\Molkky\\Logs"]
-[INFO ] [relay] log Parsed config: {"port":9001,"mcpClientPort":9002,"editorPid":"5980","shutdownDelaySeconds":180}
+[INFO ] [relay] log Command line arguments: ["bun","B:/~BUN/root/relay_win.exe","--relay","--port","9001","--mcp-client-port","9002","--editor-pid","18532","--shutdown-delay","180","--log-dir","C:\\Users\\ikesakutarou\\t6-M6\\Molkky\\Logs"]
+[INFO ] [relay] log Parsed config: {"port":9001,"mcpClientPort":9002,"editorPid":"18532","shutdownDelaySeconds":180}
 [INFO ] [relay] log Initializing relay components...
 [INFO ] [relay] log Creating RelayEditor...
 [INFO ] [relay] log WebSocket server started
@@ -570,28 +475,19 @@ Start Indexing on Editor startup
 [INFO ] [relay] log MCP Client initialized at port: 9002
 [WARN ] [relay] log [shell-env] Shell environment did not contain a PATH variable
 [INFO ] [relay] log Unity MCP Relay server started | Port: 9002 | Endpoints: /mcp/start-server, /mcp/stop-server, /mcp/server-status, /mcp/call-tool
-[INFO ] [relay] log Unity client connected with ID: editor-5980-3w0d64 (relay 1.0.12-build.96)
-[INFO ] [relay] connection.established clientId=editor-5980-3w0d64 port=9001
-Created GICache directory at C:/Users/ikesakutarou/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.058s, timestamps: [46.205 - 46.262]
+[INFO ] [relay] log Unity client connected with ID: editor-18532-zuqvv6 (relay 1.0.12-build.96)
+[INFO ] [relay] connection.established clientId=editor-18532-zuqvv6 port=9001
+Created GICache directory at C:/Users/ikesakutarou/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.066s, timestamps: [49.456 - 49.522]
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Client] Successfully resolved entitlement details
-Starting new worker id: 1 with log in C:/Users/ikesakutarou/t6-M6/Molkky/Logs/AssetImportWorkerHW1.log
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Client] Successfully updated the access token
-[Licensing::Module] Successfully updated access token: "0Dls6vhe"... (expires: 2026-07-24T08:13:03Z)
-[Worker0] Imported GUID: 99c9720ab356a0642a771bea13969a05 - Path: Assets/Scenes/GameScene.unity - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'fba3b9168df36ef3f3fcc4236bb8554f') in 0.2023242 seconds
-[Worker0] Imported GUID: 6775ddf9c5765094cb6de20daf4a8ae9 - Path: Assets/Script/Skittle.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'f76ebd63a5271a5d6b0d64d867befdab') in 0.087246 seconds
-[Worker0] Imported GUID: 45287df2fc61d3347a06f35eb8439a63 - Path: Assets/Script/PlayerController.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '0848a7edc9ad11025e4b0142af3bafa6') in 0.0445164 seconds
-[Worker0] Imported GUID: d5e12856dbec22f4e905ec6cbc2dc65c - Path: Assets/Script/GameManager.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'eaf117049f047f34b1f7d933c8f3e683') in 0.0482289 seconds
-Worker ready: AssetImportWorkerHW1 1
-Request Asset Garbage Collect because used heap size increased from 0.58 GB to 1.25 GB, exceeding the threshold of 256.0 MB.
-Unloading 44 Unused Serialized files (Serialized files now loaded: 0)
+[Licensing::Module] Successfully updated access token: "93xLYGre"... (expires: 2026-07-29T05:59:28Z)
+Starting new worker id: 1 with log in C:/Users/ikesakutarou/t6-M6/Molkky/Logs/AssetImportWorkerHW1.log
 UPID Received 'ca0305d8-fd50-418a-928d-79e1b140c2d6'.
-Unloading 79 unused Assets / (17.0 MB). Loaded Objects now: 12973.
-Memory consumption went from 1.25 GB to 1.23 GB.
-Total: 71.309600 ms (FindLiveObjects: 1.545200 ms CreateObjectMapping: 4.928600 ms MarkObjects: 55.956500 ms  DeleteObjects: 8.875900 ms)
-
+[Worker0] Imported GUID: 99c9720ab356a0642a771bea13969a05 - Path: Assets/Scenes/GameScene.unity - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: '8b05d815063f1f2d1cd18e46493fdf2d') in 0.3041578 seconds
+[Worker0] Imported GUID: 6775ddf9c5765094cb6de20daf4a8ae9 - Path: Assets/Script/Skittle.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B -> (ImportResultId: 'd9125919533d42fbe21dbb2f8b12b8ff') in 0.1283946 seconds
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
@@ -700,387 +596,22 @@ UnityEngine.UnitySynchronizationContext:ExecuteTasks ()
 
 (Filename: ./Library/PackageCache/com.unity.ai.assistant@6fee27370e6a/Modules/Unity.AI.ModelSelector/Services/Stores/Actions/ModelSelectorSuperProxyActions.cs Line: 487)
 
-Error reason is 'NoSubscription' and no additional error information was provided (https://generators.ai.unity.com).
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-Unity.AI.ModelSelector.Services.Stores.Actions.ModelSelectorSuperProxyActions/<>c/<<-cctor>b__8_0>d:MoveNext () (at ./Library/PackageCache/com.unity.ai.assistant@6fee27370e6a/Modules/Unity.AI.ModelSelector/Services/Stores/Actions/ModelSelectorSuperProxyActions.cs:487)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
-System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
-System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
-System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
-System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
-System.Threading.Tasks.Task:FinishContinuations ()
-System.Threading.Tasks.Task:FinishStageThree ()
-System.Threading.Tasks.Task`1<AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>>:TrySetResult (AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>)
-System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>>:SetResult (AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>)
-AiEditorToolsSdk.Components.GenerativeModels.GenerativeModelsComponentV2/<GetModelsAsync>d__5:MoveNext ()
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
-System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
-System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
-System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
-System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
-System.Threading.Tasks.Task:FinishContinuations ()
-System.Threading.Tasks.Task:FinishStageThree ()
-System.Threading.Tasks.Task`1<AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>>:TrySetResult (AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>)
-System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>>:SetResult (AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>)
-AiEditorToolsSdk.Application.InternalServices.SdkOperation.SdkOperationService/<ExecuteRequest>d__4`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>:MoveNext ()
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
-System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
-System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
-System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
-System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
-System.Threading.Tasks.Task:FinishContinuations ()
-System.Threading.Tasks.Task:FinishStageThree ()
-System.Threading.Tasks.Task`1<AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>>:TrySetResult (AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>)
-System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>>:SetResult (AiEditorToolsSdk.Components.Common.Responses.Wrappers.OperationResult`1<AiEditorToolsSdk.Components.GenerativeModels.Responses.ModelListV2.ModelListFullResult>)
-AiEditorToolsSdk.Application.Gateways.GenerativeModels.V2.GenerativeModelsGatewayV2/<GetModelsAsync>d__4:MoveNext ()
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
-System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
-System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
-System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
-System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
-System.Threading.Tasks.Task:FinishContinuations ()
-System.Threading.Tasks.Task:FinishStageThree ()
-System.Threading.Tasks.Task`1<AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>>:TrySetResult (AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>)
-System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>>:SetResult (AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>)
-AiEditorToolsSdk.Application.InternalServices.ApiClientProcessor.ApiClientProcessorService/<ProcessApiRequest>d__5`1<SuperProxyClientV1Namespace.ModelListFullResponse>:MoveNext ()
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
-System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
-System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
-System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
-System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
-System.Threading.Tasks.Task:FinishContinuations ()
-System.Threading.Tasks.Task:FinishStageThree ()
-System.Threading.Tasks.Task`1<AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>>:TrySetResult (AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>)
-System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>>:SetResult (AiEditorToolsSdk.Domain.Core.Results.Result`2<SuperProxyClientV1Namespace.ModelListFullResponse, AiEditorToolsSdk.Domain.Core.Errors.ApiError>)
-AiEditorToolsSdk.Application.InternalServices.ApiClientProcessor.ApiClientProcessorService/<ProcessApiRequestImpl>d__6`1<SuperProxyClientV1Namespace.ModelListFullResponse>:MoveNext ()
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
-System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
-System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
-System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
-System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
-System.Threading.Tasks.Task:FinishContinuations ()
-System.Threading.Tasks.Task:FinishStageThree ()
-System.Threading.Tasks.Task:FinishStageTwo ()
-System.Threading.Tasks.Task:Finish (bool)
-System.Threading.Tasks.Task:TrySetException (object)
-System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<SuperProxyClientV1Namespace.ModelListFullResponse>:SetException (System.Exception)
-AiEditorToolsSdk.Application.Gateways.GenerativeModels.V2.GenerativeModelsGatewayV2/<>c__DisplayClass4_0/<<GetModelsAsync>b__0>d:MoveNext ()
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
-System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
-System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
-System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation/<>c:<.cctor>b__7_0 (object)
-UnityEngine.UnitySynchronizationContext/WorkRequest:Invoke ()
-UnityEngine.UnitySynchronizationContext:Exec ()
-UnityEngine.UnitySynchronizationContext:ExecuteTasks ()
+Request Asset Garbage Collect because used heap size increased from 0.54 GB to 0.80 GB, exceeding the threshold of 256.0 MB.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Opening scene 'Assets/Scenes/TitleScene.unity'
+Unloading 115 unused Assets / (17.0 MB). Loaded Objects now: 12914.
+Memory consumption went from 0.80 GB to 0.78 GB.
+Total: 68.884700 ms (FindLiveObjects: 1.931000 ms CreateObjectMapping: 5.416900 ms MarkObjects: 50.275800 ms  DeleteObjects: 11.258100 ms)
 
-(Filename: ./Library/PackageCache/com.unity.ai.assistant@6fee27370e6a/Modules/Unity.AI.ModelSelector/Services/Stores/Actions/ModelSelectorSuperProxyActions.cs Line: 487)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/TitleScene.unity'
+	Deserialize:            6.446 ms
+	Integration:            655.066 ms
+	Integration of assets:  0.008 ms
+	Thread Wait Time:       0.096 ms
+	Total Operation Time:   661.616 ms
+Unloading 26 unused Assets / (Unknown). Loaded Objects now: 12656.
+Memory consumption went from 0.78 GB to 0.78 GB.
+Total: 61.220400 ms (FindLiveObjects: 1.957400 ms CreateObjectMapping: 5.182100 ms MarkObjects: 53.417200 ms  DeleteObjects: 0.659900 ms)
 
-Reloading assemblies for play mode.
-Reloading assemblies after forced synchronous recompile.
-Begin MonoManager ReloadAssembly
-[INFO ] [relay] log Domain reload signal received from client editor-5980-3w0d64
-[INFO ] [relay] log Client disconnected - blocking and caching for recovery
-[WARN ] [relay] connection.lost clientId=null
-[WARN ] [relay] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
-[INFO ] [relay] log Auto-shutdown timer started due to client disconnection
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory is not a mono symbol file
-Refreshing native plugins compatible for Editor in 21.15 ms, found 5 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 17.69 ms, found 5 plugins.
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 15669559352791-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-[MODES] ModeService[none].Initialize
-[MODES] ModeService[none].LoadModes
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  6.724 seconds
-Domain Reload Profiling: 9994ms
-	BeginReloadAssembly (2168ms)
-		DisableScriptedObjects (339ms)
-		CreateAndSetChildDomain (1283ms)
-	RebuildCommonClasses (20ms)
-	RebuildNativeTypeToScriptingClass (32ms)
-	initialDomainReloadingComplete (389ms)
-	LoadAllAssembliesAndSetupDomain (659ms)
-		LoadAssemblies (529ms)
-		AnalyzeDomain (51ms)
-			TypeCache.Refresh (20ms)
-			ResolveRequiredComponents (20ms)
-	FinalizeReload (6726ms)
-		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			BeforeProcessingInitializeOnLoad (347ms)
-			ProcessInitializeOnLoadAttributes (2373ms)
-			ProcessInitializeOnLoadMethodAttributes (1446ms)
-			AfterProcessingInitializeOnLoad (9ms)
-		AwakeInstancesAfterBackupRestoration (1314ms)
-No restricted APIs configured; Validation skipped.
-Checking 39 assemblies for restricted APIs found 0 usage(s) in 6 ms
-Refreshing native plugins compatible for Editor in 21.94 ms, found 5 plugins.
-
-Asset Pipeline Refresh (id=6395a6b4a925b2a45b02a968c692981a): Total: 16.543 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
-	(Values over 0.05ms)
-	Summary:
-		Imports: total=0 (actual=0, local cache=0, cache server=0)
-		Asset DB Process Time: managed=0 ms, native=8203 ms
-		Asset DB Callback time: managed=3081 ms, native=1594 ms
-		Scripting: domain reloads=1, domain reload time=3659 ms, compile time=4 ms, other=0 ms
-		Project Asset Count: scripts=2160, non-scripts=5548
-		Asset File Changes: new=0, changed=0, moved=0, deleted=0
-		Scan Filter Count: 0
-	InvokePackagesCallback: 11.435ms
-	ApplyChangesToAssetFolders: 0.730ms
-	Collect global state as custom dependencies: 6.224ms
-	ProcessAssetsWithTransientArtifactChanges: 841.632ms
-	CategorizeAssets: 198.525ms
-	CompileScripts: 3.690ms
-	ImportOutOfDateAssets: 6958.534ms (6812.895ms without children)
-		CollectScriptTypesHashes: 4.340ms
-		ReloadNativeAssets: 3.176ms
-		UnloadImportedAssets: 3.848ms
-		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 2.786ms
-		ImportSchedulerStart: 135.751ms
-	PostProcessAllAssets: 4627.769ms
-		AssemblyValidation.PostprocessAllAssets 209.998ms
-		PostprocessAssetsUpdateCachedIcon 64.582ms
-		PostProcessCallbackCreateDeferredMaterials 62.424ms
-		RaytracingShaderImportPostprocess 37.728ms
-		ShaderAssetModifiedCallback 35.394ms
-		ComputeShaderImportPostprocess 31.857ms
-		SpeedTreeImporter.PostprocessAllAssets 27.125ms
-		LocalizationDatabase.AssetDatabasePostprocessCallback 14.954ms
-		BlockShaderImporter.PostprocessAllAssets 13.833ms
-		XRBuildSystem.XRAssetImported 1.455ms
-		MonoPostProcessAllAssets: 3074.612ms
-			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 666.154ms
-			SyncVS.PostprocessSyncProject 642.472ms
-			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 134.339ms
-			PostProcessor.OnPostprocessAllAssets 134.059ms
-			AssetPostprocessor.OnPostprocessAllAssets 122.838ms
-			MaterialPostprocessor.OnPostprocessAllAssets 122.319ms
-			AssetReferenceReimportMonitor.OnPostprocessAllAssets 109.975ms
-			InputActionAssetPostprocessor.OnPostprocessAllAssets 107.306ms
-			TextAssetPostProcessor.OnPostprocessAllAssets 77.298ms
-			SpriteSlicePostprocessor.OnPostprocessAllAssets 68.060ms
-			AssetChangedListener.OnPostprocessAllAssets 55.957ms
-			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 29.881ms
-			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 20.319ms
-			SpeedTree9Postprocessor.OnPostprocessAllAssets 18.215ms
-			BuilderAssetPostprocessor.OnPostprocessAllAssets 14.671ms
-			GraphRefreshPostprocessor.OnPostprocessAllAssets 5.948ms
-			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 5.758ms
-			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 5.591ms
-			AssetChangeDetector.OnPostprocessAllAssets 2.753ms
-			SkillsProjectAssetPostprocessor.OnPostprocessAllAssets 2.007ms
-			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 1.756ms
-			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 1.657ms
-			ModelAssetProcessor.OnPostprocessAllAssets 1.451ms
-			StyleCatalogPostProcessor.OnPostprocessAllAssets 1.252ms
-			UVCSAssetPostprocessor.OnPostprocessAllAssets 1.228ms
-			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 1.100ms
-			SpeedTreePostProcessor.OnPostprocessAllAssets 0.900ms
-			AudioMixerPostprocessor.OnPostprocessAllAssets 0.887ms
-			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.885ms
-			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.832ms
-			SampleDependencyImporterPostProcessor.OnPostprocessAllAssets 0.821ms
-			AssetEvents.OnPostprocessAllAssets 0.789ms
-			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.551ms
-			SamplePostprocessor.OnPostprocessAllAssets 0.523ms
-			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.476ms
-			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.428ms
-			ConfigAssetsTracker.OnPostprocessAllAssets 0.396ms
-			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.390ms
-			TrackSelectedAssetsProcessor.OnPostprocessAllAssets 0.195ms
-			AudioContainerPostProcessor.OnPostprocessAllAssets 0.188ms
-	PostAssetChangesProfiler: 45.719ms
-	GatherAllCurrentPrimaryImportResultRevisions: 0.602ms
-	UnloadStreamsBegin: 3.350ms
-	PersistCurrentRevisions: 0.624ms
-	GenerateScriptTypeHashes: 10.432ms
-	GenerateScriptTypeSerializationHashes: 17.683ms
-	Untracked: 3816.848ms
-
-Loaded scene 'Temp/__Backupscenes/0.backup'
-	Deserialize:            14.749 ms
-	Integration:            944.977 ms
-	Integration of assets:  0.105 ms
-	Thread Wait Time:       -0.018 ms
-	Total Operation Time:   959.813 ms
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Client] Successfully resolved entitlement details
-[INFO ] [relay] log Unity client connected with ID: editor-5980-fboeqi (relay 1.0.12-build.96)
-[INFO ] [relay] connection.established clientId=editor-5980-fboeqi port=9001
-[Licensing::Client] Successfully resolved entitlement details
-TrimDiskCacheJob: Current cache size 0mb
---- Player 1 の投擲終了：得点計算開始 ---
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-GameManager/<TurnEndRoutine>d__20:MoveNext () (at Assets/Script/GameManager.cs:106)
-UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
-
-(Filename: Assets/Script/GameManager.cs Line: 106)
-
-Player 1: ミス！1本も倒せませんでした。
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-GameManager/<TurnEndRoutine>d__20:MoveNext () (at Assets/Script/GameManager.cs:138)
-UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
-
-(Filename: Assets/Script/GameManager.cs Line: 138)
-
-Unloading 29 Unused Serialized files (Serialized files now loaded: 0)
-Loaded scene 'Temp/__Backupscenes/0.backup'
-	Deserialize:            9.144 ms
-	Integration:            585.328 ms
-	Integration of assets:  0.068 ms
-	Thread Wait Time:       -0.026 ms
-	Total Operation Time:   594.513 ms
-Unloading 9252 unused Assets / (11.8 MB). Loaded Objects now: 12828.
-Memory consumption went from 0.75 GB to 0.74 GB.
-Total: 71.340900 ms (FindLiveObjects: 2.942200 ms CreateObjectMapping: 12.253000 ms MarkObjects: 47.797900 ms  DeleteObjects: 8.344400 ms)
-
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 15669559352791-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Asset Pipeline Refresh (id=7ad1c609497bab44183cbf777b842545): Total: 0.082 seconds - Initiated by RefreshV2(AllowForceSynchronousImport)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-Asset Pipeline Refresh (id=f4d8ce430b97b7340a8e34bea46ebba0): Total: 0.031 seconds - Initiated by RefreshV2(AllowForceSynchronousImport)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-Importing 'GUID: 0000000000000000b000000000000000 - Path: ProjectSettings/EditorBuildSettings.asset' with importer (LibraryAssetImporter)
-Imported 'GUID: 0000000000000000b000000000000000' -> (Import Result ID: '541f0aa03b4be460d0fe9007ce7a638d') in 0.014 seconds [static dependencies only]. Details - ImportResultOutputID=4647dd083cfc32cebcd7526e8846440c DependenciesID=1079207d88d50fb71db1e1182d3de812 StaticDependenciesID=e92df6a8cdf153797870494d84f2c9d1 
-Refreshing native plugins compatible for Editor in 19.36 ms, found 5 plugins.
-
-Asset Pipeline Refresh (id=f3e0c762fcb2a8a42a33c1033ff82186): Total: 0.337 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
-	(Values over 0.05ms)
-	Summary:
-		Imports: total=1 (actual=1, local cache=0, cache server=0)
-		Asset DB Process Time: managed=4 ms, native=237 ms
-		Asset DB Callback time: managed=40 ms, native=54 ms
-		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
-		Project Asset Count: scripts=2160, non-scripts=5548
-		Asset File Changes: new=0, changed=0, moved=0, deleted=0
-		Scan Filter Count: 1
-	ApplyChangesToAssetFolders: 0.293ms
-	Scan: 45.239ms
-	Collect global state as custom dependencies: 0.174ms
-	ProcessAssetsWithTransientArtifactChanges: 0.150ms
-	CategorizeAssets: 6.936ms
-	ImportOutOfDateAssets: 180.049ms (28.829ms without children)
-		ImportManagerImport: 19.995ms (3.308ms without children)
-			UpdateCategorizedAssets: 0.078ms
-		ReloadNativeAssets: 0.130ms
-		UnloadImportedAssets: 0.403ms
-		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 2.095ms
-		ImportSchedulerStart: 128.590ms
-	PostProcessAllAssets: 69.014ms
-		XRBuildSystem.XRAssetImported 28.564ms
-		MonoPostProcessAllAssets: 40.148ms
-			SyncVS.PostprocessSyncProject 26.141ms
-			AssetChangedListener.OnPostprocessAllAssets 10.895ms
-			ModelAssetProcessor.OnPostprocessAllAssets 0.370ms
-			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.332ms
-			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.264ms
-			GraphRefreshPostprocessor.OnPostprocessAllAssets 0.216ms
-			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 0.200ms
-			AssetPostprocessor.OnPostprocessAllAssets 0.144ms
-			SamplePostprocessor.OnPostprocessAllAssets 0.081ms
-			StyleCatalogPostProcessor.OnPostprocessAllAssets 0.073ms
-			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.072ms
-			PostProcessor.OnPostprocessAllAssets 0.061ms
-			SpriteSlicePostprocessor.OnPostprocessAllAssets 0.054ms
-	PostAssetChangesProfiler: 25.365ms
-	GatherAllCurrentPrimaryImportResultRevisions: 0.775ms
-	PersistCurrentRevisions: 0.755ms
-	Untracked: 7.628ms
-
-Importing 'GUID: 99c9720ab356a0642a771bea13969a05 - Path: Assets/Scenes/GameScene.unity' with importer (DefaultImporter)
-Imported 'GUID: 99c9720ab356a0642a771bea13969a05' -> (Import Result ID: 'bfa555e64f9168bf1d5677a8b65efc5f') in 0.011 seconds [static dependencies only]. Details - ImportResultOutputID=204cd3d35d55972754313a6d1042cb8d DependenciesID=7399b6904977cc570b1b020d326d9a25 StaticDependenciesID=d49afbb7280031254d4ebdb1de1e090f 
-Refreshing native plugins compatible for Editor in 25.36 ms, found 5 plugins.
-
-Asset Pipeline Refresh (id=df071bc3a4af8744995c14cbc20b9807): Total: 0.350 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
-	(Values over 0.05ms)
-	Summary:
-		Imports: total=1 (actual=1, local cache=0, cache server=0)
-		Asset DB Process Time: managed=0 ms, native=303 ms
-		Asset DB Callback time: managed=16 ms, native=29 ms
-		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
-		Project Asset Count: scripts=2160, non-scripts=5548
-		Asset File Changes: new=0, changed=1, moved=0, deleted=0
-		Scan Filter Count: 3
-	ApplyChangesToAssetFolders: 0.302ms
-	Scan: 43.033ms
-	Collect global state as custom dependencies: 0.136ms
-	OnSourceAssetsModified: 1.643ms
-	ProcessAssetsWithTransientArtifactChanges: 0.141ms
-	CategorizeAssets: 59.632ms
-	ImportOutOfDateAssets: 183.133ms (25.285ms without children)
-		ImportManagerImport: 17.662ms (1.593ms without children)
-		ReloadNativeAssets: 0.102ms
-		UnloadImportedAssets: 0.465ms
-		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 2.296ms
-		ImportSchedulerStart: 137.274ms
-	PostProcessAllAssets: 17.148ms
-		XRBuildSystem.XRAssetImported 1.733ms
-		MonoPostProcessAllAssets: 14.972ms
-			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 7.548ms
-			SyncVS.PostprocessSyncProject 4.519ms
-			AssetChangedListener.OnPostprocessAllAssets 0.733ms
-			ModelAssetProcessor.OnPostprocessAllAssets 0.370ms
-			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.169ms
-			AssetPostprocessor.OnPostprocessAllAssets 0.157ms
-			GraphRefreshPostprocessor.OnPostprocessAllAssets 0.152ms
-			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 0.143ms
-			SpriteSlicePostprocessor.OnPostprocessAllAssets 0.077ms
-			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.064ms
-	PostAssetChangesProfiler: 26.896ms
-	GatherAllCurrentPrimaryImportResultRevisions: 0.741ms
-	PersistCurrentRevisions: 0.770ms
-	Untracked: 15.878ms
-
+Worker ready: AssetImportWorkerHW1 1

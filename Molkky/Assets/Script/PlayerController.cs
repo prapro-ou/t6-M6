@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             currentRotationY += inputX * rotateSpeed * Time.deltaTime;
             currentRotationX -= inputY * rotateSpeed * Time.deltaTime;
 
-            currentRotationX = Mathf.Clamp(currentRotationX, -45f, 0f);
+            currentRotationX = Mathf.Clamp(currentRotationX, -45f, 5f);
             currentRotationY = Mathf.Clamp(currentRotationY, -45f, 45f);
 
             transform.localRotation = Quaternion.Euler(currentRotationX, currentRotationY, 0f);
@@ -142,7 +142,7 @@ void LaunchMolkky()
         molkkyRb.isKinematic = false;
 
         // 💡 1. 打ち出し角度を調整 (Y方向を 0.3f から 0.45f〜0.5f に増やして綺麗な放物線にする)
-        Vector3 throwDirection = (transform.forward + Vector3.up * 0.45f).normalized;
+        Vector3 throwDirection = (transform.forward + Vector3.up * 0.15f).normalized;
 
         // 💡 2. 発射の力をさらに底上げ（currentPower に 1.5倍〜2倍などの倍率をかけることも可能です）
         float finalPower = currentPower * 1.5f; // 必要に応じて倍率（1.5fなど）を調整
