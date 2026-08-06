@@ -25,7 +25,7 @@ public class Skittle : MonoBehaviour
     public bool IsDownForScore()
     {
         // 垂直からほぼ横たわっている（85度〜95度付近）状態を得点対象とする
-        return Vector3.Angle(transform.up, Vector3.up) >= 90f;
+        return Vector3.Angle(transform.up, Vector3.up) >= 89f;
     }
 
     // 💡 ② 再配置（リセット）対象にするかどうかの判定（1度でも傾いているか）

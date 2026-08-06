@@ -214,6 +214,8 @@ public class GameManager : MonoBehaviour
     {
         if (scoreText != null)
         {
+            if (isGameFinished) return;
+
             scoreText.text = $"<color=yellow>Turn: Player {currentPlayer} </color>\n" +
                              $"Player 1: {p1Score} / 50 (Miss: {p1Misses}/3)\n" +
                              $"Player 2: {p2Score} / 50 (Miss: {p2Misses}/3)";
