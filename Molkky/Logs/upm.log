@@ -1,0 +1,74 @@
+[2026-08-13T12:41:43.840Z][INFO] Command-line: 'C:\\Program Files\\Unity\\Hub\\Editor\\6000.5.0f1\\Editor\\Data\\Resources\\PackageManager\\Server\\UnityPackageManager.exe' server -s 13948 --ipc-path Unity-Upm-13948 -l 2 --log-file C:\\Users\\ikesakutarou\\t6-M6\\Molkky/Logs/upm.log
+[2026-08-13T12:41:43.937Z][INFO] IPC server started (IPC path=Unity-Upm-13948).
+[2026-08-13T12:41:43.938Z][INFO] Hint: To connect to this UPM instance, launch Unity with the command-line parameter -upmIpcPath Upm-13948.
+[2026-08-13T12:41:53.895Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:41:54.217Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-13T12:41:54.231Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:41:54.527Z][INFO] config:project:get-registries --> 200 (310 ms)
+[2026-08-13T12:41:54.912Z][INFO] project:list-packages --> 200 (1018 ms)
+[2026-08-13T12:41:55.198Z][INFO] project:list-packages --> 200 (967 ms)
+[2026-08-13T12:42:04.661Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:42:04.689Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:42:05.309Z][INFO] project:list-packages --> 200 (648 ms)
+[2026-08-13T12:42:05.311Z][INFO] project:list-packages --> 200 (622 ms)
+[2026-08-13T12:42:09.931Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:42:10.304Z][INFO] project:list-packages --> 200 (373 ms)
+[2026-08-13T12:42:11.383Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-13T12:42:11.394Z][INFO] config:project:get-registries --> 200 (11 ms)
+[2026-08-13T12:42:19.754Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:42:21.519Z][INFO] project:list-packages --> 200 (1765 ms)
+[2026-08-13T12:42:22.457Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-08-13T12:42:23.303Z][INFO] packages:get-packageinfo --> 200 (846 ms)
+[2026-08-13T12:43:29.850Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:43:30.332Z][INFO] project:list-packages --> 200 (481 ms)
+[2026-08-13T12:43:31.903Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:43:32.238Z][INFO] project:list-packages --> 200 (335 ms)
+[2026-08-13T12:43:33.220Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-13T12:43:33.231Z][INFO] config:project:get-registries --> 200 (12 ms)
+[2026-08-13T12:43:45.512Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-08-13T12:43:45.992Z][INFO] packages:get-packageinfo --> 200 (480 ms)
+[2026-08-13T12:52:02.137Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:52:02.540Z][INFO] project:list-packages --> 200 (403 ms)
+[2026-08-13T12:52:04.032Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T12:52:04.428Z][INFO] project:list-packages --> 200 (396 ms)
+[2026-08-13T12:52:05.224Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-13T12:52:05.233Z][INFO] config:project:get-registries --> 200 (9 ms)
+[2026-08-13T12:52:11.751Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-08-13T12:52:12.354Z][INFO] packages:get-packageinfo --> 200 (603 ms)
+[2026-08-13T13:00:40.061Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T13:00:40.437Z][INFO] project:list-packages --> 200 (376 ms)
+[2026-08-13T13:00:41.963Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-13T13:00:42.322Z][INFO] project:list-packages --> 200 (359 ms)
+[2026-08-13T13:00:43.199Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-13T13:00:43.212Z][INFO] config:project:get-registries --> 200 (13 ms)
+[2026-08-13T13:00:49.146Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-08-13T13:00:49.808Z][INFO] packages:get-packageinfo --> 200 (662 ms)

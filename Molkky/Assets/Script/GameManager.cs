@@ -78,6 +78,13 @@ public class GameManager : MonoBehaviour
 
     public void OnMolkkyLaunched()
     {
+        // 今回のモルックがBombタイプなら、投げた瞬間に爆発できる状態にする
+        if (molkkyItemHandler != null && molkkyItemHandler.currentType == MolkkyType.Bomb && molkkyItemHandler.bombModel != null)
+        {
+            BombImpact bomb = molkkyItemHandler.bombModel.GetComponent<BombImpact>();
+            if (bomb != null) bomb.Arm();
+        }
+
         StartCoroutine(EnableCheckDelay());
     }
 
@@ -85,14 +92,13 @@ public class GameManager : MonoBehaviour
     {
         if (canCheckStop && !isCheckingTurnEnd)
         {
-            if (molkkyRb.linearVelocity.magnitude < 0.05f)
-            {
-                StartCoroutine(TurnEndRoutine(4f));
-            }
-
             if (molkkyRb.transform.position.y < -10f)
             {
                 StartCoroutine(TurnEndRoutine(0f));
+            }
+            else if (molkkyRb.linearVelocity.magnitude < 0.05f)
+            {
+                StartCoroutine(TurnEndRoutine(4f));
             }
         }
     }
@@ -218,7 +224,7 @@ int lastDownedNumber = 0;
 
             if (nextTurnButtonUI != null)
             {
-                nextTurnButtonUI.SetActive(true);
+                nextTurnButtonUI.SetActive(false);
             }
         }
         else

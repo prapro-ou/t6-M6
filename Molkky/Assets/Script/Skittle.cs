@@ -11,6 +11,10 @@ public class Skittle : MonoBehaviour
     [Tooltip("立ち上がったときに数字が正面を向くよう、必要に応じて90, 180, 270などに変更してください")]
     public float targetYRotation = 0f;
 
+    [Header("飛びすぎ防止の設定")]
+    [Tooltip("初期位置からこの距離（メートル）以上離れていたら、再配置時に初期位置へ戻します")]
+    public float maxDistanceFromInitial = 3f;
+
     private Rigidbody rb;
     private Vector3 initialPosition;
 
@@ -52,6 +56,17 @@ public class Skittle : MonoBehaviour
 
         // 3. 地面へのめり込みを防ぐため、先に少しだけ上に浮かせる
         Vector3 targetPosition = transform.position;
+
+        // 初期位置から離れすぎていたら、再配置の基準位置を初期位置に戻す
+        float distanceFromInitial = Vector3.Distance(
+            new Vector3(transform.position.x, initialPosition.y, transform.position.z),
+            initialPosition);
+        if (distanceFromInitial > maxDistanceFromInitial)
+        {
+            Debug.Log($"ピン {skittleNumber} 番は初期位置から{distanceFromInitial:F1}m離れているため、初期位置に戻します。");
+            targetPosition = initialPosition;
+        }
+
         targetPosition.y += 0.1f;
 
         // 4. 重なりを防止した安全な位置（X, Z）を計算する
