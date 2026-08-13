@@ -36,8 +36,9 @@ public class GameManager : MonoBehaviour
     private bool isCheckingTurnEnd = false;
     private bool canCheckStop = false;
 
-    public static bool isGameStarted = false;
     public GameObject startMenuUI;
+    public static bool isGameStarted = false;
+
 
     void Awake()
     {
@@ -125,15 +126,24 @@ public class GameManager : MonoBehaviour
 
         playerController.ResetMolkky();
 
-        int downedCount = 0;
-        int lastDownedNumber = 0;
+       int downedCount = 0;
+int lastDownedNumber = 0;
 
         foreach (Skittle s in skittles)
         {
-            if (s != null && s.IsDownForScore())
+            if (s != null)
             {
-                downedCount++;
-                lastDownedNumber = s.skittleNumber;
+                bool isDown = s.IsDownForScore();
+                // 角度（Vector3.Angle）も一緒にログに出すと原因が一目瞭然になります
+                float angle = Vector3.Angle(s.transform.up, Vector3.up);
+                
+                Debug.Log($"【{s.gameObject.name}】 角度: {angle}度 -> 倒れ判定: {isDown}");
+
+                if (isDown)
+                {
+                    downedCount++;
+                    lastDownedNumber = s.skittleNumber;
+                }
             }
         }
 
@@ -202,14 +212,24 @@ public class GameManager : MonoBehaviour
         if (currentPlayer == 1) p1NextItem = MolkkyType.Normal;
         else p2NextItem = MolkkyType.Normal;
 
-        UpdateScoreUI();
-
-        if (nextTurnButtonUI != null)
+     if (!isGameFinished)
         {
-            nextTurnButtonUI.SetActive(false);
+            UpdateScoreUI();
+
+            if (nextTurnButtonUI != null)
+            {
+                nextTurnButtonUI.SetActive(true);
+            }
+        }
+        else
+        {
+            // 勝利時は「NEXT TURN」ボタンを出さないように隠す
+            if (nextTurnButtonUI != null)
+            {
+                nextTurnButtonUI.SetActive(false);
+            }
         }
     }
-
     void UpdateScoreUI()
     {
         if (scoreText != null)

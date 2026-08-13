@@ -1110,6 +1110,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 462945774}
     m_Modifications:
+    - target: {fileID: 2870378095995698933, guid: 79627a143b51108419518c181351f891, type: 3}
+      propertyPath: force
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870378095995698933, guid: 79627a143b51108419518c181351f891, type: 3}
+      propertyPath: radius
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3444010381185356499, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1154,6 +1162,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1347000520}
+    - target: {fileID: 5567191436503751985, guid: 79627a143b51108419518c181351f891, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 39ab0892b565fde498519f7f6f797280, type: 2}
     - target: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_Name
       value: Bomb
@@ -1224,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MolkkyItemHandler
   normalModel: {fileID: 1974900622}
-  bombModel: {fileID: 0}
+  bombModel: {fileID: 1273698870}
   rocketModel: {fileID: 1356359302}
   currentType: 0
 --- !u!54 &462945776
@@ -6256,6 +6268,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1273698870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
+  m_PrefabInstance: {fileID: 460626188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1276775290
 GameObject:
   m_ObjectHideFlags: 0
@@ -14593,6 +14610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal
       objectReference: {fileID: 0}
+    - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8451974433629900503, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14715,6 +14736,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3614593326597633905, guid: 37057503884141f4ebf6086f27f0ea0b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 39ab0892b565fde498519f7f6f797280, type: 2}
     - target: {fileID: 4102519476922737116, guid: 37057503884141f4ebf6086f27f0ea0b, type: 3}
       propertyPath: m_Mesh
       value: 
