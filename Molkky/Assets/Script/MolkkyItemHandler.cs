@@ -4,7 +4,9 @@ public enum MolkkyType
 {
     Normal,
     Bomb,
-    Rocket
+    Rocket,
+    Darkness,
+    Wind
 }
 
 public class MolkkyItemHandler : MonoBehaviour

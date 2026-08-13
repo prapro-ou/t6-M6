@@ -40,6 +40,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // 一時的に追加
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GameManager.instance.GetItem(MolkkyType.Wind);
+        }
+        
+        if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            GameManager.instance.GetItem(MolkkyType.Darkness);
+        }
+        // ここまで
+
         // 💡 ★最優先ガード1：投げた後（isCanControl == false）は Update 内の処理を完全遮断！
         if (!isCanControl || currentState == State.Launched)
         {
