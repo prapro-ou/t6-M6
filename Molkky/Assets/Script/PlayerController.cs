@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody molkkyRb;
     public Slider powerSlider;
-    public float maxForce = 40f;
-    public float chargeSpeed = 20f;
+    public Image sliderFillImage;
+    public float maxForce = 40f;       // パワーの最大値
+    public float chargeSpeed = 15f;    // ゲージの基本の速さ
+    public float speedPerPoint = 0.3f; // 1点ごとに加算されるゲージの速さ
 
     [Header("ゲームマネージャーの参照")]
     public GameManager gameManager;
@@ -107,9 +109,12 @@ public class PlayerController : MonoBehaviour
         // 2. パワー調整状態
         else if (currentState == State.SettingPower)
         {
+            int currentScore = GetCurrentPlayerScore();
+            float currentChargeSpeed = chargeSpeed + (currentScore * speedPerPoint);
+
             if (isChargingUp)
             {
-                currentPower += chargeSpeed * Time.deltaTime;
+                currentPower += currentChargeSpeed * Time.deltaTime;
                 if (currentPower >= maxForce)
                 {
                     currentPower = maxForce;
@@ -118,7 +123,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                currentPower -= chargeSpeed * Time.deltaTime;
+                currentPower -= currentChargeSpeed * Time.deltaTime;
                 if (currentPower <= 0f)
                 {
                     currentPower = 0f;
@@ -128,7 +133,13 @@ public class PlayerController : MonoBehaviour
 
             if (powerSlider != null)
             {
-                powerSlider.value = currentPower / maxForce;
+                float fillRatio = currentPower / maxForce;
+                powerSlider.value = fillRatio;
+
+                if (sliderFillImage != null)
+                {
+                    sliderFillImage.fillAmount = fillRatio;
+                }
             }
 
             // スペースキーが押されたら「発射」
@@ -139,7 +150,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-void LaunchMolkky()
+    private int GetCurrentPlayerScore()
+    {
+        if (gameManager != null)
+        {
+            return gameManager.currentScore;
+        }
+        return 0;
+    }
+
+    void LaunchMolkky()
     {
         isCanControl = false;
         currentState = State.Launched;

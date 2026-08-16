@@ -5,31 +5,32 @@ public class BombImpact : MonoBehaviour
     [SerializeField] private float radius = 3f;
     [SerializeField] private float force = 30f;
 
-    // この距離以上ワープしたら再使用とみなす
-    [SerializeField] private float resetDistance = 1f;
+    [Header("爆発エフェクト")]
+    [Tooltip("爆発時に再生するパーティクルのプレハブ（Particle Systemを含むオブジェクト）")]
+    [SerializeField] private GameObject explosionEffectPrefab;
 
+    // 次のExplode()呼び出しを有効にする（一度爆発すると再度Arm()するまで爆発しない）
     private bool exploded = false;
-    private Vector3 lastPosition;
 
-    private void Awake()
+    // モルックを投げた瞬間にGameManagerから呼ばれる
+    public void Arm()
     {
-        lastPosition = transform.position;
+        exploded = false;
     }
 
-    private void Update()
-    {
-        if (Vector3.Distance(transform.position, lastPosition) > resetDistance)
-        {
-            exploded = false;
-        }
-
-        lastPosition = transform.position;
-    }
-
-    private void OnCollisionEnter(Collision collision)
+    // 衝突を検知した側（MolkkyItemHandler）から呼び出す
+    public void Explode()
     {
         if (exploded) return;
         exploded = true;
+
+        Debug.Log("[Bomb] 爆発します！");
+
+        if (explosionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
+        }
 
         Collider[] targets = Physics.OverlapSphere(transform.position, radius);
 

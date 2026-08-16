@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2740092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
+  m_PrefabInstance: {fileID: 460626188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &21748541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1776406738154325927, guid: cf76875808bc1b044ab4d50a758263e1, type: 3}
@@ -1243,6 +1248,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1347000520}
+    - target: {fileID: 7909581535819568271, guid: 79627a143b51108419518c181351f891, type: 3}
+      propertyPath: m_VersionIndex
+      value: 5572
+      objectReference: {fileID: 0}
     - target: {fileID: 8120188149351417441, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1301,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MolkkyItemHandler
   normalModel: {fileID: 1974900622}
-  bombModel: {fileID: 0}
+  bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
   currentType: 0
 --- !u!54 &462945776
@@ -1896,12 +1905,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1ab9f66e82bb9c84ebca34440a5f392b, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2220,7 +2229,6 @@ MonoBehaviour:
   windSelectButtun: {fileID: 402948820}
   molkkyRb: {fileID: 462945776}
   windForce: 10
-  windDurationTurns: 2
 --- !u!4 &891710066
 Transform:
   m_ObjectHideFlags: 0
@@ -6680,8 +6688,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   molkkyRb: {fileID: 462945776}
   powerSlider: {fileID: 76649338}
+  sliderFillImage: {fileID: 682969221}
   maxForce: 13
   chargeSpeed: 40
+  speedPerPoint: 0.5
   gameManager: {fileID: 174430317}
   rotateSpeed: 50
   customDefaultLocalPosition: {x: 0, y: 0, z: 0}
@@ -15120,6 +15130,10 @@ PrefabInstance:
     - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_Name
       value: Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8451974433629900503, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_LocalPosition.x

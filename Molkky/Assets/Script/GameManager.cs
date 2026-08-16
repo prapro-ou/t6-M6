@@ -28,6 +28,15 @@ public class GameManager : MonoBehaviour
     private int p2Score = 0;
     private int p2Misses = 0;
 
+    // ★ 現在のターン（Player 1 または Player 2）のスコアを自動で返すプロパティ
+    public int currentScore
+    {
+        get
+        {
+            return (currentPlayer == 1) ? p1Score : p2Score;
+        }
+    }
+
     // --- 【追加】各プレイヤーの次のターンのアイテム保持変数 ---
     private MolkkyType p1NextItem = MolkkyType.Normal;
     private MolkkyType p2NextItem = MolkkyType.Normal;
