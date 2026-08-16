@@ -1,25 +1,14 @@
-/[Ll]ibrary/
-/[ there ]/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
-/assets/AssetStoreTools*
+# Unityが生成する不要フォルダ
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Bb]uild/
+**/[Bb]uilds/
+**/[Ll]ogs/
+**/[Uu]serSettings/
 
-# 新しいUnityの自動生成ファイルも除外
+# Visual Studioなどの開発環境ファイル
+**/.vs/
+**/.vscode/
 *.csproj
 *.sln
-*.suo
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.opendb
-*.VC.db
-
-# OSが勝手に作る不要ファイル
-.DS_Store
-Thumbs.db
