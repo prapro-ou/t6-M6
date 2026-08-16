@@ -134,6 +134,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skittle
   skittleNumber: 0
   targetYRotation: 0
+  maxDistanceFromThrowPoint: 30
+  isMovingPin: 0
+  moveSpeed: 2
+  moveRange: 0.5
 --- !u!64 &4101417066941998716
 MeshCollider:
   m_ObjectHideFlags: 0

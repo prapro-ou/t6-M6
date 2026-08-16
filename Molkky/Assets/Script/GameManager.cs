@@ -59,6 +59,12 @@ public class GameManager : MonoBehaviour
             nextTurnButtonUI.SetActive(false);
         }
 
+        // 💡 スキットルの飛びすぎ判定の中心を、モルックを投げる場所（発射台）に設定
+        if (playerController != null)
+        {
+            Skittle.SetThrowPoint(playerController.transform);
+        }
+
         UpdateScoreUI();
     }
 
@@ -83,6 +89,12 @@ public class GameManager : MonoBehaviour
         {
             BombImpact bomb = molkkyItemHandler.bombModel.GetComponent<BombImpact>();
             if (bomb != null) bomb.Arm();
+        }
+
+        // 投げた瞬間、揺れている特殊ピンを全て静止させる
+        foreach (Skittle s in skittles)
+        {
+            if (s != null) s.StopSwaying();
         }
 
         StartCoroutine(EnableCheckDelay());

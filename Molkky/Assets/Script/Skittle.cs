@@ -12,11 +12,28 @@ public class Skittle : MonoBehaviour
     public float targetYRotation = 0f;
 
     [Header("飛びすぎ防止の設定")]
-    [Tooltip("初期位置からこの距離（メートル）以上離れていたら、再配置時に初期位置へ戻します")]
-    public float maxDistanceFromInitial = 3f;
+    [Tooltip("モルックを投げる場所からこの距離（メートル）以上離れていたら、再配置時に初期位置へ戻します")]
+    public float maxDistanceFromThrowPoint = 40f;
+
+    // 💡 モルックを投げる場所（発射台）の基準点。GameManagerから設定されます
+    private static Transform throwPoint;
+
+    public static void SetThrowPoint(Transform point)
+    {
+        throwPoint = point;
+    }
+
+    [Header("特殊ピン設定（左右に揺れる）")]
+    [Tooltip("ONにすると、立て直された後モルックが投げられるまで左右に揺れ続けます")]
+    public bool isMovingPin = false;
+    public float moveSpeed = 2f;
+    public float moveRange = 0.5f;
 
     private Rigidbody rb;
     private Vector3 initialPosition;
+    private Vector3 swayCenterPosition;
+    private bool isSwaying = false;
+    private Coroutine swayCoroutine;
 
     void Start()
     {
@@ -57,13 +74,14 @@ public class Skittle : MonoBehaviour
         // 3. 地面へのめり込みを防ぐため、先に少しだけ上に浮かせる
         Vector3 targetPosition = transform.position;
 
-        // 初期位置から離れすぎていたら、再配置の基準位置を初期位置に戻す
-        float distanceFromInitial = Vector3.Distance(
-            new Vector3(transform.position.x, initialPosition.y, transform.position.z),
-            initialPosition);
-        if (distanceFromInitial > maxDistanceFromInitial)
+        // モルックを投げる場所を中心とした円の外に出ていたら、再配置の基準位置を初期位置に戻す
+        Vector3 center = (throwPoint != null) ? throwPoint.position : initialPosition;
+        float distanceFromCenter = Vector3.Distance(
+            new Vector3(transform.position.x, center.y, transform.position.z),
+            center);
+        if (distanceFromCenter > maxDistanceFromThrowPoint)
         {
-            Debug.Log($"ピン {skittleNumber} 番は初期位置から{distanceFromInitial:F1}m離れているため、初期位置に戻します。");
+            Debug.Log($"ピン {skittleNumber} 番は投げる場所から{distanceFromCenter:F1}m離れているため、初期位置に戻します。");
             targetPosition = initialPosition;
         }
 
@@ -121,10 +139,56 @@ public class Skittle : MonoBehaviour
         // Unityが位置と角度の上書きを完全に完了するのを待つ
         yield return new WaitForFixedUpdate();
 
+        if (isMovingPin)
+        {
+            // 特殊ピンは物理を再開せず、投げられるまで左右に揺れ続ける
+            StartSwaying();
+            yield break;
+        }
+
         // 安全が確保されたあとに物理演算を再開！
         rb.isKinematic = false;
 
         // 念のため、再開時の速度も完全にゼロに固定
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
+    // 💡 左右に揺れる動きを開始する（StandUp完了後に呼ばれる）
+    private void StartSwaying()
+    {
+        if (swayCoroutine != null) StopCoroutine(swayCoroutine);
+
+        swayCenterPosition = transform.position;
+        isSwaying = true;
+        swayCoroutine = StartCoroutine(SwayRoutine());
+    }
+
+    IEnumerator SwayRoutine()
+    {
+        float t = 0f;
+        while (isSwaying)
+        {
+            t += Time.deltaTime;
+            Vector3 offset = transform.right * Mathf.Sin(t * moveSpeed) * moveRange;
+            rb.MovePosition(swayCenterPosition + offset);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    // 💡 モルックが投げられた瞬間にGameManagerから呼ばれ、揺れを止めて通常の物理判定に戻す
+    public void StopSwaying()
+    {
+        if (!isSwaying) return;
+
+        isSwaying = false;
+        if (swayCoroutine != null)
+        {
+            StopCoroutine(swayCoroutine);
+            swayCoroutine = null;
+        }
+
+        rb.isKinematic = false;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
