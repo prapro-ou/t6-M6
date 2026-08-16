@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement; // ★【追加】シーン遷移（リトライ・タイトル遷移）に使用
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,16 @@ public class GameManager : MonoBehaviour
     
     [Header("ターン交代UI")]
     public GameObject nextTurnButtonUI;
+
+    // =========================================================
+    // ★【追加】ゲーム終了時（リザルト画面）用UIの設定項目
+    // =========================================================
+    [Header("ゲーム終了UI")]
+    public GameObject nextButtonUI;       // 勝利時に出る「次へ」ボタン
+    public GameObject resultUI;           // 2つのボタン（再戦・タイトル）が入った親UIパネル
+    public TextMeshProUGUI winnerText;    // 画面中央に勝者名を表示するテキスト
+    [SerializeField] private string titleSceneName = "TitleScene"; // 遷移先のタイトルシーン名
+
 
     private int currentPlayer = 1;
     private int p1Score = 0;
@@ -69,6 +80,24 @@ public class GameManager : MonoBehaviour
         if (nextTurnButtonUI != null)
         {
             nextTurnButtonUI.SetActive(false);
+        }
+
+        // =========================================================
+        // ★【追加】ゲーム開始時はリザルト関係のUI要素を非表示にしておく
+        // =========================================================
+        if (nextButtonUI != null)
+        {
+            nextButtonUI.SetActive(false);
+        }
+
+        if (resultUI != null)
+        {
+            resultUI.SetActive(false);
+        }
+
+        if (winnerText != null)
+        {
+            winnerText.gameObject.SetActive(false); // 「New Text」などの初期表示隠し
         }
 
         UpdateScoreUI();
@@ -201,21 +230,65 @@ public class GameManager : MonoBehaviour
             if (p2Score > 50) p2Score = 25;
         }
 
-        if (p1Misses >= 3) { scoreText.text = " Player 2 WIN! \n"; isGameFinished = true; }
-        else if (p2Misses >= 3) { scoreText.text = " Player 1 WIN! \n"; isGameFinished = true; }
-        else if (p1Score == 50) { scoreText.text = " Player 1 WIN!! \n"; isGameFinished = true; }
-        else if (p2Score == 50) { scoreText.text = " Player 2 WIN!! \n"; isGameFinished = true; }
-
-        UpdateScoreUI();
-
-        if (!isGameFinished && nextTurnButtonUI != null)
+        // =========================================================
+        // ★【変更】勝敗判定のメッセージ生成と表示処理
+        // =========================================================
+        string winMessage = "";
+        if (p1Misses >= 3)
         {
-            nextTurnButtonUI.SetActive(true);
+            winMessage = "<color=red><size=100>プレイヤー 2 WIN!</size></color>";
+            isGameFinished = true;
+        }
+        else if (p2Misses >= 3)
+        {
+            winMessage = "<color=red><size=100>プレイヤー 1 WIN!</size></color>";
+            isGameFinished = true;
+        }
+        else if (p1Score == 50)
+        {
+            winMessage = "<color=red><size=100>プレイヤー 1 WIN!!</size></color>";
+            isGameFinished = true;
+        }
+        else if (p2Score == 50)
+        {
+            winMessage = "<color=red><size=100>プレイヤー 2 WIN!!</size></color>";
+            isGameFinished = true;
+        }
+
+        if (isGameFinished)
+        {
+            // ★【変更】左上のスコアテキストを隠し、中央の winnerText に勝利メッセージを表示
+            if (scoreText != null)
+            {
+                scoreText.gameObject.SetActive(false);
+            }
+
+            if (winnerText != null)
+            {
+                winnerText.gameObject.SetActive(true);
+                winnerText.text = winMessage;
+            }
+
+            // ★【追加】勝利時は専用の「Next（次へ）」ボタンを表示
+            if (nextButtonUI != null)
+            {
+                nextButtonUI.SetActive(true);
+            }
+        }
+        else
+        {
+            UpdateScoreUI();
+
+            // 通常ゲームプレイ時は元の「ターン交代」ボタンを表示
+            if (nextTurnButtonUI != null)
+            {
+                nextTurnButtonUI.SetActive(true);
+            }
         }
 
         isCheckingTurnEnd = false;
     }
-
+        
     public void OnNextTurnButtonPressed()
     {
         foreach (Skittle s in skittles)
@@ -262,15 +335,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // ★【追加】勝利画面用「Next（次へ）」ボタンを押した時の処理
+    // =========================================================
+    public void OnNextButtonPressed()
+    {
+        // 1. 勝利画面用の「次へ」ボタンを消す
+        if (nextButtonUI != null)
+        {
+            nextButtonUI.SetActive(false);
+        }
+
+        // 2. 「もう一度遊ぶ」「タイトルへ」の2つのボタン（resultUI）を表示する
+        if (resultUI != null)
+        {
+            resultUI.SetActive(true);
+        }
+    }
+
+    // =========================================================
+    // ★【変更】スコア表示テキスト（日本語化・リッチテキスト化）
+    // =========================================================
     void UpdateScoreUI()
     {
         if (scoreText != null)
         {
             if (isGameFinished) return;
 
-            scoreText.text = $"<color=yellow>Turn: Player {currentPlayer} </color>\n" +
-                             $"Player 1: {p1Score} / 50 (Miss: {p1Misses}/3)\n" +
-                             $"Player 2: {p2Score} / 50 (Miss: {p2Misses}/3)";
+            scoreText.text = $"<color=blue>ターン: プレイヤー {currentPlayer}</color>\n" +
+                             $"<color=white>プレイヤー 1: {p1Score} / 50</color>\n" +
+                             $"<color=white>(ミス: {p1Misses}/3)</color>\n" +
+                             $"<color=white>プレイヤー 2: {p2Score} / 50</color>\n" +
+                             $"<color=white>(ミス: {p2Misses}/3)</color>";
         }
     }
 
@@ -278,5 +374,26 @@ public class GameManager : MonoBehaviour
     {
         isGameStarted = true;
         if (startMenuUI != null) startMenuUI.SetActive(false);
+    }
+
+    // =========================================================
+    // ★【追加】「もう一度遊ぶ」「タイトルへ」ボタン用のイベント関数
+    // =========================================================
+
+    /// <summary>
+    /// 「もう一度遊ぶ（リトライ）」ボタンが押されたとき
+    /// </summary>
+    public void OnRematchButtonPressed()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+
+    /// <summary>
+    /// 「タイトルに戻る」ボタンが押されたとき
+    /// </summary>
+    public void OnTitleButtonPressed()
+    {
+        SceneManager.LoadScene(titleSceneName);
     }
 }
