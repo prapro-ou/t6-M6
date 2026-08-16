@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou" at "2026-08-16T06:43:24.9357253Z"
 Built from '6000.5/staging' branch; Version is '6000.5.0f1 (88b47c5e7076) revision 8959100'; Using compiler version '194234433'; Build Type 'Release'
 OS: 'Windows 11  (10.0.26200) Professional' Language: 'ja' Physical Memory: 16208 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-08-16T06:23:39Z
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-masa" at "2026-08-16T06:23:39.9065281Z"
+Date: 2026-08-16T06:43:24Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.5.0f1\Editor\Unity.exe
@@ -15,13 +15,13 @@ C:\Program Files\Unity\Hub\Editor\6000.5.0f1\Editor\Unity.exe
 -name
 AssetImportWorkerHW1
 -projectPath
-C:/Users/masa/Unity/t6-M6/Molkky
+C:/Users/ikesakutarou/t6-M6/Molkky
 -logFile
 Logs/AssetImportWorkerHW1.log
 -srvPort
-51411
+57074
 -parentPid
-7772
+21208
 -analyticsCloudUserId
 anonymous
 -analyticsCloudProjectId
@@ -29,7 +29,7 @@ ca0305d8-fd50-418a-928d-79e1b140c2d6
 -analyticsLocalProjectId
 3e589db341a320c4cadce79fc2ab57c8
 -licensingIpc
-LicenseClient-masa
+LicenseClient-ikesakutarou
 -noDiagnosticSwitchPersistentStore
 -job-worker-count
 5
@@ -40,8 +40,8 @@ LicenseClient-masa
 -force-d3d12
 -name
 AssetImport
-Successfully changed project path to: C:/Users/masa/Unity/t6-M6/Molkky
-C:/Users/masa/Unity/t6-M6/Molkky
+Successfully changed project path to: C:/Users/ikesakutarou/t6-M6/Molkky
+C:/Users/ikesakutarou/t6-M6/Molkky
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
@@ -78,14 +78,12 @@ C:/Users/masa/Unity/t6-M6/Molkky
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
-Player connection [5176]  Target information:
+Player connection [18152]  Target information:
 
-Player connection [5176]  * "[IP] 172.22.128.1 [Port] 0 [Flags] 2 [Guid] 1911479133 [EditorId] 1911479133 [Version] 1048832 [Id] WindowsEditor(7,TABLET-9LV0G929) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [18152]  * "[IP] 100.64.1.56 [Port] 0 [Flags] 2 [Guid] 2577911170 [EditorId] 2577911170 [Version] 1048832 [Id] WindowsEditor(7,池朔太郎) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [5176]  * "[IP] 100.64.1.72 [Port] 0 [Flags] 2 [Guid] 1911479133 [EditorId] 1911479133 [Version] 1048832 [Id] WindowsEditor(7,TABLET-9LV0G929) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
-
-Player connection [5176] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [5176] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [18152] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [18152] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 5
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -97,11 +95,11 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 26.16 ms, found 5 plugins.
-Preloading 1 native plugins for Editor in 5.57 ms.
+Refreshing native plugins compatible for Editor in 71.74 ms, found 5 plugins.
+Preloading 1 native plugins for Editor in 8.26 ms.
 Initialize engine version: 6000.5.0f1 (88b47c5e7076)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/masa/Unity/t6-M6/Molkky/Assets
+[Subsystems] Discovering subsystems at path C:/Users/ikesakutarou/t6-M6/Molkky/Assets
 Forcing GfxDevice: Direct3D 12
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 d3d12: failed to query info queue interface (0x80004002).
@@ -119,13 +117,13 @@ Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Managed
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
 Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56544
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56040
 CodeReloadManager initialized
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.013356 seconds.
+Registered in 0.014445 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -134,46 +132,51 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.967 seconds
-Domain Reload Profiling: 2584ms
-	BeginReloadAssembly (495ms)
-	RebuildCommonClasses (11ms)
-	RebuildNativeTypeToScriptingClass (40ms)
-	initialDomainReloadingComplete (326ms)
-	LoadAllAssembliesAndSetupDomain (737ms)
-		LoadAssemblies (490ms)
-		AnalyzeDomain (556ms)
-			TypeCache.Refresh (552ms)
-				TypeCache.ScanAssembly (517ms)
-	FinalizeReload (974ms)
+- Finished resetting the current domain, in  1.532 seconds
+Domain Reload Profiling: 4326ms
+	BeginReloadAssembly (1038ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (89ms)
+	initialDomainReloadingComplete (443ms)
+	LoadAllAssembliesAndSetupDomain (1195ms)
+		LoadAssemblies (1033ms)
+		AnalyzeDomain (891ms)
+			TypeCache.Refresh (887ms)
+				TypeCache.ScanAssembly (840ms)
+	FinalizeReload (1536ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			BeforeProcessingInitializeOnLoad (236ms)
-			ProcessInitializeOnLoadAttributes (243ms)
-			ProcessInitializeOnLoadMethodAttributes (272ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			BeforeProcessingInitializeOnLoad (351ms)
+			ProcessInitializeOnLoadAttributes (302ms)
+			ProcessInitializeOnLoadMethodAttributes (554ms)
 Initializing Unity extensions:
 [Licensing::Module] Licensing is not yet initialized.
 [Licensing::Client] Error: HandshakeResponse reported an error:
 	ResponseCode: 505
 	ResponseStatus: Unsupported protocol version '1.18.1'.
-[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-masa"
-[Licensing::IpcConnector] LicenseClient-masa channel disconnected successfully.
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-masa-6000.5.0" at "2026-08-16T06:23:45.0157899Z"
-[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 20820, path: "C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-ikesakutarou"
+[Licensing::IpcConnector] LicenseClient-ikesakutarou channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou-6000.5.0" at "2026-08-16T06:43:34.2486524Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 23520, path: "C:/Program Files/Unity/Hub/Editor/6000.5.0f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
 [Licensing::Module] LicensingClient has failed validation; ignoring
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.18.1+9fbee8e
-  Session Id:              b6633d67499f4b29b99bdc09861b5a38
-  Correlation Id:          8582ea886843dee57d003c1215918bce
-  External correlation Id: 4027198862125915813
-  Machine Id:              gbT04UQo8uaxY5mdXKKMFGwOajQ=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-masa-6000.5.0" (connect: 0.00s, validation: 0.01s, handshake: 0.02s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-masa-6000.5.0-notifications" at "2026-08-16T06:23:45.047698Z"
-[Licensing::Module] Licensing Background thread has ended after 5.14s
-[Licensing::Module] Licensing is initialized (took 0.14s).
+  Session Id:              bb372896b7d640dab0471318522cfeac
+  Correlation Id:          903eaeb68e4bbc9a9bffdfd7f2b4c2f5
+  External correlation Id: 6438822652324296379
+  Machine Id:              VZgJXSmVxX7U+tBjatLkCvjor/o=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ikesakutarou-6000.5.0" (connect: 0.00s, validation: 0.02s, handshake: 0.04s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ikesakutarou-6000.5.0-notifications" at "2026-08-16T06:43:34.3091261Z"
+[Licensing::Module] Licensing Background thread has ended after 9.38s
+[Licensing::Module] Licensing is initialized (took 0.50s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
-  Id: 15669721729732-UnityPersXXXX
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
@@ -184,13 +187,13 @@ Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory is not a mono symbol file
-Refreshing native plugins compatible for Editor in 14.10 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 52.26 ms, found 5 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-Refreshing native plugins compatible for Editor in 28.42 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 61.89 ms, found 5 plugins.
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
@@ -198,101 +201,990 @@ Refreshing native plugins compatible for Editor in 28.42 ms, found 5 plugins.
 [MODES] ModeService[none].LoadModes
 [MODES] Loading mode Default (0) for mode-current-id-Molkky
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  4.184 seconds
-Domain Reload Profiling: 7599ms
-	BeginReloadAssembly (470ms)
-		DisableScriptedObjects (9ms)
-		CreateAndSetChildDomain (63ms)
-	RebuildCommonClasses (21ms)
-	RebuildNativeTypeToScriptingClass (40ms)
-	initialDomainReloadingComplete (387ms)
-	LoadAllAssembliesAndSetupDomain (2495ms)
-		LoadAssemblies (1427ms)
-		AnalyzeDomain (1043ms)
-			TypeCache.Refresh (824ms)
-				TypeCache.ScanAssembly (770ms)
-			BuildScriptInfoCaches (198ms)
+- Finished resetting the current domain, in 10.542 seconds
+Domain Reload Profiling: 16974ms
+	BeginReloadAssembly (840ms)
+		DisableScriptedObjects (21ms)
+		CreateAndSetChildDomain (112ms)
+	RebuildCommonClasses (43ms)
+	RebuildNativeTypeToScriptingClass (64ms)
+	initialDomainReloadingComplete (833ms)
+	LoadAllAssembliesAndSetupDomain (4645ms)
+		LoadAssemblies (2664ms)
+		AnalyzeDomain (2143ms)
+			TypeCache.Refresh (1702ms)
+				TypeCache.ScanAssembly (1620ms)
+			BuildScriptInfoCaches (419ms)
 			ResolveRequiredComponents (15ms)
-	FinalizeReload (4186ms)
+	FinalizeReload (10549ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			BeforeProcessingInitializeOnLoad (324ms)
-			ProcessInitializeOnLoadAttributes (2435ms)
-			ProcessInitializeOnLoadMethodAttributes (811ms)
-			AfterProcessingInitializeOnLoad (10ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (410ms)
+			ProcessInitializeOnLoadAttributes (5564ms)
+			ProcessInitializeOnLoadMethodAttributes (3456ms)
+			AfterProcessingInitializeOnLoad (64ms)
+			EditorAssembliesLoaded (5ms)
+		AwakeInstancesAfterBackupRestoration (28ms)
 AcceleratorClientConnectionCallback - disconnected - :0
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 15.60 ms, found 5 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 51.29 ms, found 5 plugins.
 Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
 Curl error 3: URL rejected: Malformed input to a URL function
-Unloading 10416 unused Assets / (21.1 MB). Loaded Objects now: 11290.
-Memory consumption went from 467.2 MB to 446.1 MB.
-Total: 52.582300 ms (FindLiveObjects: 2.178100 ms CreateObjectMapping: 10.422400 ms MarkObjects: 27.639900 ms  DeleteObjects: 12.335600 ms)
+Unloading 10415 unused Assets / (22.2 MB). Loaded Objects now: 11312.
+Memory consumption went from 496.3 MB to 474.1 MB.
+Total: 166.377000 ms (FindLiveObjects: 6.621200 ms CreateObjectMapping: 34.340200 ms MarkObjects: 91.020000 ms  DeleteObjects: 34.380600 ms)
 
 ========================================================================
 Received Prepare
 AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory is not a mono symbol file
-Refreshing native plugins compatible for Editor in 18.99 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 19.92 ms, found 5 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-Refreshing native plugins compatible for Editor in 25.80 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 31.14 ms, found 5 plugins.
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  4.081 seconds
-Domain Reload Profiling: 6689ms
-	BeginReloadAssembly (696ms)
+- Finished resetting the current domain, in  4.512 seconds
+Domain Reload Profiling: 7501ms
+	BeginReloadAssembly (789ms)
 		DisableScriptedObjects (14ms)
-		CreateAndSetChildDomain (213ms)
+		CreateAndSetChildDomain (302ms)
 	RebuildCommonClasses (17ms)
-	RebuildNativeTypeToScriptingClass (33ms)
-	initialDomainReloadingComplete (414ms)
-	LoadAllAssembliesAndSetupDomain (1446ms)
-		LoadAssemblies (1375ms)
-		AnalyzeDomain (42ms)
-			TypeCache.Refresh (21ms)
-			ResolveRequiredComponents (13ms)
-	FinalizeReload (4084ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (484ms)
+	LoadAllAssembliesAndSetupDomain (1668ms)
+		LoadAssemblies (1530ms)
+		AnalyzeDomain (79ms)
+			TypeCache.Refresh (20ms)
+			ResolveRequiredComponents (18ms)
+	FinalizeReload (4514ms)
 		SetupLoadedEditorAssemblies (0ms)
 			InitializePlatformSupportModulesInManaged (6ms)
-			BeforeProcessingInitializeOnLoad (289ms)
-			ProcessInitializeOnLoadAttributes (1901ms)
-			ProcessInitializeOnLoadMethodAttributes (1036ms)
-			AfterProcessingInitializeOnLoad (12ms)
-		AwakeInstancesAfterBackupRestoration (50ms)
-Refreshing native plugins compatible for Editor in 21.21 ms, found 5 plugins.
+			BeforeProcessingInitializeOnLoad (307ms)
+			ProcessInitializeOnLoadAttributes (2059ms)
+			ProcessInitializeOnLoadMethodAttributes (1283ms)
+			AfterProcessingInitializeOnLoad (9ms)
+		AwakeInstancesAfterBackupRestoration (41ms)
+Refreshing native plugins compatible for Editor in 16.60 ms, found 5 plugins.
 Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 10412 unused Assets / (20.7 MB). Loaded Objects now: 11335.
-Memory consumption went from 448.2 MB to 427.5 MB.
-Total: 59.602200 ms (FindLiveObjects: 2.728600 ms CreateObjectMapping: 11.498600 ms MarkObjects: 31.014400 ms  DeleteObjects: 14.356900 ms)
+Unloading 10412 unused Assets / (23.3 MB). Loaded Objects now: 11357.
+Memory consumption went from 477.8 MB to 454.5 MB.
+Total: 75.264000 ms (FindLiveObjects: 2.640300 ms CreateObjectMapping: 12.744100 ms MarkObjects: 41.779000 ms  DeleteObjects: 18.096900 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 AcceleratorClientConnectionCallback - disconnected - :0
-Refreshing native plugins compatible for Editor in 23.89 ms, found 5 plugins.
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 21.56 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 48.55 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  6.897 seconds
+Domain Reload Profiling: 9154ms
+	BeginReloadAssembly (429ms)
+		DisableScriptedObjects (6ms)
+		CreateAndSetChildDomain (114ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (345ms)
+	LoadAllAssembliesAndSetupDomain (1427ms)
+		LoadAssemblies (1242ms)
+		AnalyzeDomain (47ms)
+			TypeCache.Refresh (20ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (6901ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (338ms)
+			ProcessInitializeOnLoadAttributes (3692ms)
+			ProcessInitializeOnLoadMethodAttributes (2131ms)
+			AfterProcessingInitializeOnLoad (15ms)
+		AwakeInstancesAfterBackupRestoration (103ms)
+Refreshing native plugins compatible for Editor in 22.31 ms, found 5 plugins.
 Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 66 unused Assets / (13.8 MB). Loaded Objects now: 11335.
-Memory consumption went from 445.4 MB to 431.6 MB.
-Total: 45.110600 ms (FindLiveObjects: 1.846300 ms CreateObjectMapping: 4.539500 ms MarkObjects: 35.256300 ms  DeleteObjects: 3.465400 ms)
+Unloading 10412 unused Assets / (22.3 MB). Loaded Objects now: 11360.
+Memory consumption went from 481.5 MB to 459.2 MB.
+Total: 80.216700 ms (FindLiveObjects: 3.850800 ms CreateObjectMapping: 15.601200 ms MarkObjects: 38.468400 ms  DeleteObjects: 22.292500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 14.36 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 34.23 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.377 seconds
+Domain Reload Profiling: 7769ms
+	BeginReloadAssembly (558ms)
+		DisableScriptedObjects (10ms)
+		CreateAndSetChildDomain (176ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (37ms)
+	initialDomainReloadingComplete (345ms)
+	LoadAllAssembliesAndSetupDomain (1426ms)
+		LoadAssemblies (1245ms)
+		AnalyzeDomain (50ms)
+			TypeCache.Refresh (23ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (5380ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			BeforeProcessingInitializeOnLoad (413ms)
+			ProcessInitializeOnLoadAttributes (2582ms)
+			ProcessInitializeOnLoadMethodAttributes (1663ms)
+			AfterProcessingInitializeOnLoad (16ms)
+		AwakeInstancesAfterBackupRestoration (98ms)
+Refreshing native plugins compatible for Editor in 26.53 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10412 unused Assets / (23.4 MB). Loaded Objects now: 11363.
+Memory consumption went from 485.4 MB to 461.9 MB.
+Total: 74.829300 ms (FindLiveObjects: 4.265300 ms CreateObjectMapping: 13.507100 ms MarkObjects: 36.817700 ms  DeleteObjects: 20.233700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 16.44 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 22.40 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.010 seconds
+Domain Reload Profiling: 7375ms
+	BeginReloadAssembly (580ms)
+		DisableScriptedObjects (13ms)
+		CreateAndSetChildDomain (170ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (27ms)
+	initialDomainReloadingComplete (352ms)
+	LoadAllAssembliesAndSetupDomain (1385ms)
+		LoadAssemblies (1209ms)
+		AnalyzeDomain (53ms)
+			TypeCache.Refresh (23ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (5013ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			BeforeProcessingInitializeOnLoad (318ms)
+			ProcessInitializeOnLoadAttributes (2248ms)
+			ProcessInitializeOnLoadMethodAttributes (1724ms)
+			AfterProcessingInitializeOnLoad (18ms)
+		AwakeInstancesAfterBackupRestoration (73ms)
+Refreshing native plugins compatible for Editor in 26.91 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10412 unused Assets / (21.7 MB). Loaded Objects now: 11366.
+Memory consumption went from 489.2 MB to 467.5 MB.
+Total: 71.662700 ms (FindLiveObjects: 3.542200 ms CreateObjectMapping: 12.600000 ms MarkObjects: 35.863700 ms  DeleteObjects: 19.653900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 17.66 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 23.47 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.961 seconds
+Domain Reload Profiling: 7451ms
+	BeginReloadAssembly (592ms)
+		DisableScriptedObjects (17ms)
+		CreateAndSetChildDomain (193ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (39ms)
+	initialDomainReloadingComplete (356ms)
+	LoadAllAssembliesAndSetupDomain (1476ms)
+		LoadAssemblies (1322ms)
+		AnalyzeDomain (54ms)
+			TypeCache.Refresh (21ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (4965ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			BeforeProcessingInitializeOnLoad (323ms)
+			ProcessInitializeOnLoadAttributes (2284ms)
+			ProcessInitializeOnLoadMethodAttributes (1643ms)
+			AfterProcessingInitializeOnLoad (29ms)
+		AwakeInstancesAfterBackupRestoration (114ms)
+Refreshing native plugins compatible for Editor in 25.75 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10412 unused Assets / (22.1 MB). Loaded Objects now: 11369.
+Memory consumption went from 493.1 MB to 471.0 MB.
+Total: 73.002200 ms (FindLiveObjects: 2.668000 ms CreateObjectMapping: 12.582600 ms MarkObjects: 38.622600 ms  DeleteObjects: 19.125300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 14.42 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 29.08 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.220 seconds
+Domain Reload Profiling: 7814ms
+	BeginReloadAssembly (583ms)
+		DisableScriptedObjects (12ms)
+		CreateAndSetChildDomain (186ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (382ms)
+	LoadAllAssembliesAndSetupDomain (1568ms)
+		LoadAssemblies (1400ms)
+		AnalyzeDomain (50ms)
+			TypeCache.Refresh (26ms)
+			ResolveRequiredComponents (15ms)
+	FinalizeReload (5224ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (331ms)
+			ProcessInitializeOnLoadAttributes (2489ms)
+			ProcessInitializeOnLoadMethodAttributes (1735ms)
+			AfterProcessingInitializeOnLoad (18ms)
+		AwakeInstancesAfterBackupRestoration (91ms)
+Refreshing native plugins compatible for Editor in 25.74 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10412 unused Assets / (22.2 MB). Loaded Objects now: 11372.
+Memory consumption went from 497.0 MB to 474.9 MB.
+Total: 72.746000 ms (FindLiveObjects: 2.619000 ms CreateObjectMapping: 14.416600 ms MarkObjects: 36.667300 ms  DeleteObjects: 19.035300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 15.13 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 27.05 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.961 seconds
+Domain Reload Profiling: 7468ms
+	BeginReloadAssembly (568ms)
+		DisableScriptedObjects (12ms)
+		CreateAndSetChildDomain (171ms)
+	RebuildCommonClasses (19ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (366ms)
+	LoadAllAssembliesAndSetupDomain (1517ms)
+		LoadAssemblies (1341ms)
+		AnalyzeDomain (51ms)
+			TypeCache.Refresh (23ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (4964ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			BeforeProcessingInitializeOnLoad (330ms)
+			ProcessInitializeOnLoadAttributes (2283ms)
+			ProcessInitializeOnLoadMethodAttributes (1652ms)
+			AfterProcessingInitializeOnLoad (10ms)
+		AwakeInstancesAfterBackupRestoration (110ms)
+Refreshing native plugins compatible for Editor in 15.21 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10412 unused Assets / (22.0 MB). Loaded Objects now: 11375.
+Memory consumption went from 501.6 MB to 479.6 MB.
+Total: 56.222800 ms (FindLiveObjects: 1.934500 ms CreateObjectMapping: 10.439500 ms MarkObjects: 28.847500 ms  DeleteObjects: 14.996100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 23.38 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 17.62 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.931 seconds
+Domain Reload Profiling: 7451ms
+	BeginReloadAssembly (637ms)
+		DisableScriptedObjects (13ms)
+		CreateAndSetChildDomain (193ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (34ms)
+	initialDomainReloadingComplete (411ms)
+	LoadAllAssembliesAndSetupDomain (2411ms)
+		LoadAssemblies (1385ms)
+		AnalyzeDomain (889ms)
+			TypeCache.Refresh (30ms)
+			BuildScriptInfoCaches (840ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (3934ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			BeforeProcessingInitializeOnLoad (295ms)
+			ProcessInitializeOnLoadAttributes (1818ms)
+			ProcessInitializeOnLoadMethodAttributes (1216ms)
+			AfterProcessingInitializeOnLoad (12ms)
+		AwakeInstancesAfterBackupRestoration (61ms)
+Refreshing native plugins compatible for Editor in 12.27 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10402 unused Assets / (23.1 MB). Loaded Objects now: 11368.
+Memory consumption went from 0.52 GB to 510.4 MB.
+Total: 64.331800 ms (FindLiveObjects: 2.007300 ms CreateObjectMapping: 12.632100 ms MarkObjects: 35.942400 ms  DeleteObjects: 13.746600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+Refreshing native plugins compatible for Editor in 17.05 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (13.8 MB). Loaded Objects now: 11368.
+Memory consumption went from 0.52 GB to 0.50 GB.
+Total: 43.349100 ms (FindLiveObjects: 0.950700 ms CreateObjectMapping: 4.204000 ms MarkObjects: 34.048000 ms  DeleteObjects: 4.143800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time of request: 2026-08-16T07:04:15.5611223Z
+  Time since last request: 10809.41526499999964 seconds.
+  importAddress: GUID: 19e30bffe40820b498b35ef70e293bbf - Path: Assets/prefab/ExplosionEffect.prefab - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B
+Importing 'GUID: 19e30bffe40820b498b35ef70e293bbf - Path: Assets/prefab/ExplosionEffect.prefab - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B' with importer (ScriptedImporter : UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B)
+Imported 'GUID: 19e30bffe40820b498b35ef70e293bbf' -> (Import Result ID: '15802d24ad2ce729a5aa3b03c788c83a') in 0.406 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0fd5e67104f36e9485d61ecc06ce841c DependenciesID=3fbff98b8a5b03096fdba600e448e411 StaticDependenciesID=2e1abf0d7e1c100b23a23aa1c9d2975c 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 29.07 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 22.07 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.645 seconds
+Domain Reload Profiling: 12152ms
+	BeginReloadAssembly (2116ms)
+		DisableScriptedObjects (38ms)
+		CreateAndSetChildDomain (615ms)
+	RebuildCommonClasses (78ms)
+	RebuildNativeTypeToScriptingClass (135ms)
+	initialDomainReloadingComplete (1151ms)
+	LoadAllAssembliesAndSetupDomain (4023ms)
+		LoadAssemblies (3258ms)
+		AnalyzeDomain (1180ms)
+			TypeCache.Refresh (53ms)
+				TypeCache.ScanAssembly (3ms)
+			BuildScriptInfoCaches (1089ms)
+			ResolveRequiredComponents (31ms)
+	FinalizeReload (4649ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			BeforeProcessingInitializeOnLoad (360ms)
+			ProcessInitializeOnLoadAttributes (2314ms)
+			ProcessInitializeOnLoadMethodAttributes (1277ms)
+			AfterProcessingInitializeOnLoad (8ms)
+		AwakeInstancesAfterBackupRestoration (61ms)
+Refreshing native plugins compatible for Editor in 30.03 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10412 unused Assets / (21.9 MB). Loaded Objects now: 11383.
+Memory consumption went from 0.53 GB to 0.51 GB.
+Total: 62.545600 ms (FindLiveObjects: 3.053100 ms CreateObjectMapping: 13.861700 ms MarkObjects: 29.885200 ms  DeleteObjects: 15.741200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time of request: 2026-08-16T08:26:51.5680613Z
+  Time since last request: 4955.54586449999988 seconds.
+  importAddress: GUID: 8b6b61f4ad47edd4b84f2dcc412403d7 - Path: Assets/Script/MolkkyThrower.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B
+Importing 'GUID: 8b6b61f4ad47edd4b84f2dcc412403d7 - Path: Assets/Script/MolkkyThrower.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B' with importer (ScriptedImporter : UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B)
+Imported 'GUID: 8b6b61f4ad47edd4b84f2dcc412403d7' -> (Import Result ID: 'e73b06690278e627ea3a0ea0456fadf6') in 0.727 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7fb091514ebb39d15177bebcf84f286b DependenciesID=e1678bf7fbee630e94b9d1b1485c647a StaticDependenciesID=2cbeecd5449ef75801473617c1d8dbcd 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+Refreshing native plugins compatible for Editor in 15.29 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10393 unused Assets / (21.6 MB). Loaded Objects now: 11384.
+Memory consumption went from 0.50 GB to 494.1 MB.
+Total: 137.781500 ms (FindLiveObjects: 8.377600 ms CreateObjectMapping: 11.708900 ms MarkObjects: 103.349500 ms  DeleteObjects: 14.340500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time of request: 2026-08-16T08:27:05.0239494Z
+  Time since last request: 12.4517785 seconds.
+  importAddress: GUID: 306daba4c2187b34987075b6f1ca9e7f - Path: Assets/Script/Rocket.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B
+Importing 'GUID: 306daba4c2187b34987075b6f1ca9e7f - Path: Assets/Script/Rocket.cs - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B' with importer (ScriptedImporter : UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B)
+Imported 'GUID: 306daba4c2187b34987075b6f1ca9e7f' -> (Import Result ID: '3a5d50886da7ca1f8356821a1c33899f') in 0.028 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=62d956dfa51fe182210e1573d61673d7 DependenciesID=3f4c6fdf388530ea6e65ddd4a052db71 StaticDependenciesID=2063b442803f6283399b0469877e7230 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 40.08 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 67.44 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 16.191 seconds
+Domain Reload Profiling: 30213ms
+	BeginReloadAssembly (3156ms)
+		DisableScriptedObjects (127ms)
+		ReleaseScriptingObjects (3ms)
+		CreateAndSetChildDomain (1280ms)
+	RebuildCommonClasses (68ms)
+	RebuildNativeTypeToScriptingClass (134ms)
+	initialDomainReloadingComplete (1415ms)
+	LoadAllAssembliesAndSetupDomain (9241ms)
+		LoadAssemblies (5864ms)
+		AnalyzeDomain (3096ms)
+			TypeCache.Refresh (146ms)
+				TypeCache.ScanAssembly (26ms)
+			BuildScriptInfoCaches (2834ms)
+			ResolveRequiredComponents (67ms)
+	FinalizeReload (16199ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (26ms)
+			BeforeProcessingInitializeOnLoad (1297ms)
+			ProcessInitializeOnLoadAttributes (7430ms)
+			ProcessInitializeOnLoadMethodAttributes (5181ms)
+			AfterProcessingInitializeOnLoad (63ms)
+			EditorAssembliesLoaded (3ms)
+		AwakeInstancesAfterBackupRestoration (165ms)
+Refreshing native plugins compatible for Editor in 60.77 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10413 unused Assets / (19.9 MB). Loaded Objects now: 11387.
+Memory consumption went from 0.50 GB to 497.0 MB.
+Total: 186.853100 ms (FindLiveObjects: 7.878000 ms CreateObjectMapping: 34.951300 ms MarkObjects: 112.263400 ms  DeleteObjects: 31.754000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time of request: 2026-08-16T08:28:54.0030047Z
+  Time since last request: 108.9180827 seconds.
+  importAddress: GUID: 306daba4c2187b34987075b6f1ca9e7f - Path: Assets/Script/Rocket.cs - Importer: PreviewImporter
+Importing 'GUID: 306daba4c2187b34987075b6f1ca9e7f - Path: Assets/Script/Rocket.cs - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 306daba4c2187b34987075b6f1ca9e7f' -> (Import Result ID: '7cb81593c2ac101856bdac9be3d05b77') in 0.057 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0f8a1e3ebecafed448873f7c6dc8ca43 DependenciesID=5deb7134ec4249454cd0891c170dddc2 StaticDependenciesID=f4ef8c7ac5b680570411cb349d72a98a 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 15.86 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 17.48 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.239 seconds
+Domain Reload Profiling: 7793ms
+	BeginReloadAssembly (683ms)
+		DisableScriptedObjects (16ms)
+		CreateAndSetChildDomain (247ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (40ms)
+	initialDomainReloadingComplete (396ms)
+	LoadAllAssembliesAndSetupDomain (2414ms)
+		LoadAssemblies (1386ms)
+		AnalyzeDomain (917ms)
+			TypeCache.Refresh (35ms)
+			BuildScriptInfoCaches (856ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (4243ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (344ms)
+			ProcessInitializeOnLoadAttributes (1999ms)
+			ProcessInitializeOnLoadMethodAttributes (1233ms)
+			AfterProcessingInitializeOnLoad (11ms)
+		AwakeInstancesAfterBackupRestoration (78ms)
+Refreshing native plugins compatible for Editor in 14.08 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10413 unused Assets / (20.9 MB). Loaded Objects now: 11390.
+Memory consumption went from 0.51 GB to 498.4 MB.
+Total: 62.072700 ms (FindLiveObjects: 2.609100 ms CreateObjectMapping: 11.143000 ms MarkObjects: 35.447000 ms  DeleteObjects: 12.869700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time of request: 2026-08-16T08:30:57.0801535Z
+  Time since last request: 122.922546 seconds.
+  importAddress: GUID: 306daba4c2187b34987075b6f1ca9e7f - Path: Assets/Script/Rocket.cs - Importer: PreviewImporter
+Importing 'GUID: 306daba4c2187b34987075b6f1ca9e7f - Path: Assets/Script/Rocket.cs - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 306daba4c2187b34987075b6f1ca9e7f' -> (Import Result ID: '5c40d89c15bd5f937b2eac7666809d13') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0f8a1e3ebecafed448873f7c6dc8ca43 DependenciesID=4d5468e51f7080fee80314820e8f6f0a StaticDependenciesID=a22f4a376837f1feb75e567c75e10317 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 13.46 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 30.61 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.133 seconds
+Domain Reload Profiling: 7577ms
+	BeginReloadAssembly (629ms)
+		DisableScriptedObjects (11ms)
+		CreateAndSetChildDomain (227ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (45ms)
+	initialDomainReloadingComplete (349ms)
+	LoadAllAssembliesAndSetupDomain (1401ms)
+		LoadAssemblies (1192ms)
+		AnalyzeDomain (63ms)
+			TypeCache.Refresh (26ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (5136ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			BeforeProcessingInitializeOnLoad (373ms)
+			ProcessInitializeOnLoadAttributes (2383ms)
+			ProcessInitializeOnLoadMethodAttributes (1690ms)
+			AfterProcessingInitializeOnLoad (14ms)
+		AwakeInstancesAfterBackupRestoration (78ms)
+Refreshing native plugins compatible for Editor in 26.48 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10413 unused Assets / (21.7 MB). Loaded Objects now: 11393.
+Memory consumption went from 0.51 GB to 498.2 MB.
+Total: 78.577000 ms (FindLiveObjects: 3.301900 ms CreateObjectMapping: 13.872900 ms MarkObjects: 39.940400 ms  DeleteObjects: 21.456300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 14.97 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 34.69 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.314 seconds
+Domain Reload Profiling: 7833ms
+	BeginReloadAssembly (632ms)
+		DisableScriptedObjects (17ms)
+		CreateAndSetChildDomain (206ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (35ms)
+	initialDomainReloadingComplete (363ms)
+	LoadAllAssembliesAndSetupDomain (1463ms)
+		LoadAssemblies (1288ms)
+		AnalyzeDomain (57ms)
+			TypeCache.Refresh (29ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (5317ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (337ms)
+			ProcessInitializeOnLoadAttributes (2448ms)
+			ProcessInitializeOnLoadMethodAttributes (1792ms)
+			AfterProcessingInitializeOnLoad (23ms)
+			EditorAssembliesLoaded (3ms)
+		AwakeInstancesAfterBackupRestoration (78ms)
+Refreshing native plugins compatible for Editor in 27.41 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10413 unused Assets / (22.3 MB). Loaded Objects now: 11396.
+Memory consumption went from 0.51 GB to 497.6 MB.
+Total: 75.163200 ms (FindLiveObjects: 2.420600 ms CreateObjectMapping: 15.128000 ms MarkObjects: 38.470800 ms  DeleteObjects: 19.140200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 15.99 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 29.23 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.407 seconds
+Domain Reload Profiling: 7822ms
+	BeginReloadAssembly (567ms)
+		DisableScriptedObjects (13ms)
+		CreateAndSetChildDomain (169ms)
+	RebuildCommonClasses (16ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (367ms)
+	LoadAllAssembliesAndSetupDomain (1428ms)
+		LoadAssemblies (1267ms)
+		AnalyzeDomain (56ms)
+			TypeCache.Refresh (22ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (5411ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (343ms)
+			ProcessInitializeOnLoadAttributes (2597ms)
+			ProcessInitializeOnLoadMethodAttributes (1759ms)
+			AfterProcessingInitializeOnLoad (23ms)
+		AwakeInstancesAfterBackupRestoration (80ms)
+Refreshing native plugins compatible for Editor in 26.70 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10413 unused Assets / (22.4 MB). Loaded Objects now: 11399.
+Memory consumption went from 0.51 GB to 501.4 MB.
+Total: 72.492300 ms (FindLiveObjects: 2.335700 ms CreateObjectMapping: 13.682100 ms MarkObjects: 36.515000 ms  DeleteObjects: 19.956300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-S82E-258Q-RRPW-KWCH-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 15669559352791-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Refreshing native plugins compatible for Editor in 16.12 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 30.22 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.019 seconds
+Domain Reload Profiling: 7314ms
+	BeginReloadAssembly (534ms)
+		DisableScriptedObjects (11ms)
+		CreateAndSetChildDomain (170ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (31ms)
+	initialDomainReloadingComplete (342ms)
+	LoadAllAssembliesAndSetupDomain (1361ms)
+		LoadAssemblies (1164ms)
+		AnalyzeDomain (48ms)
+			TypeCache.Refresh (23ms)
+			ResolveRequiredComponents (13ms)
+	FinalizeReload (5023ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			BeforeProcessingInitializeOnLoad (352ms)
+			ProcessInitializeOnLoadAttributes (2273ms)
+			ProcessInitializeOnLoadMethodAttributes (1725ms)
+			AfterProcessingInitializeOnLoad (17ms)
+		AwakeInstancesAfterBackupRestoration (80ms)
+Refreshing native plugins compatible for Editor in 25.93 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10413 unused Assets / (21.1 MB). Loaded Objects now: 11402.
+Memory consumption went from 0.51 GB to 506.4 MB.
+Total: 66.341800 ms (FindLiveObjects: 2.836200 ms CreateObjectMapping: 11.726800 ms MarkObjects: 35.436100 ms  DeleteObjects: 16.338400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+Refreshing native plugins compatible for Editor in 18.07 ms, found 5 plugins.
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (13.8 MB). Loaded Objects now: 11402.
+Memory consumption went from 0.51 GB to 510.0 MB.
+Total: 45.144000 ms (FindLiveObjects: 1.569200 ms CreateObjectMapping: 4.634400 ms MarkObjects: 35.461900 ms  DeleteObjects: 3.474400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 Editor requested this worker to shutdown with reason: Editor is closing down
