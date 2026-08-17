@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
             nextTurnButtonUI.SetActive(false);
         }
 
-<<<<<<< HEAD
         // =========================================================
         // ★【追加】ゲーム開始時はリザルト関係のUI要素を非表示にしておく
         // =========================================================
@@ -100,12 +99,12 @@ public class GameManager : MonoBehaviour
         if (winnerText != null)
         {
             winnerText.gameObject.SetActive(false); // 「New Text」などの初期表示隠し
-=======
+        }
+
         // 💡 スキットルの飛びすぎ判定の中心を、モルックを投げる場所（発射台）に設定
         if (playerController != null)
         {
             Skittle.SetThrowPoint(playerController.transform);
->>>>>>> 5906e64cfb2e822dcdf94666daae99fab9c3e4e4
         }
 
         UpdateScoreUI();
@@ -374,7 +373,6 @@ int lastDownedNumber = 0;
             }
         }
     }
-<<<<<<< HEAD
 
     // =========================================================
     // ★【追加】勝利画面用「Next（次へ）」ボタンを押した時の処理
@@ -397,8 +395,6 @@ int lastDownedNumber = 0;
     // =========================================================
     // ★【変更】スコア表示テキスト（日本語化・リッチテキスト化）
     // =========================================================
-=======
->>>>>>> 5906e64cfb2e822dcdf94666daae99fab9c3e4e4
     void UpdateScoreUI()
     {
         if (scoreText != null)

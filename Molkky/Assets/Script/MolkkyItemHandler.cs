@@ -32,7 +32,6 @@ public class MolkkyItemHandler : MonoBehaviour
     // このGameObject（Rigidbody本体）が何かに衝突した瞬間に呼ばれる
     private void OnCollisionEnter(Collision collision)
     {
-<<<<<<< HEAD
         if (currentType == MolkkyType.Bomb && bombModel != null)
         {
             BombImpact bomb = bombModel.GetComponent<BombImpact>();
@@ -43,11 +42,5 @@ public class MolkkyItemHandler : MonoBehaviour
             Rocket rocket = rocketModel.GetComponent<Rocket>();
             if (rocket != null) rocket.OnImpact();
         }
-=======
-        if (currentType != MolkkyType.Bomb || bombModel == null) return;
-
-        BombImpact bomb = bombModel.GetComponent<BombImpact>();
-        if (bomb != null) bomb.Explode();
->>>>>>> 5906e64cfb2e822dcdf94666daae99fab9c3e4e4
     }
 }
