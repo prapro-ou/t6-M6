@@ -101,12 +101,6 @@ public class GameManager : MonoBehaviour
             winnerText.gameObject.SetActive(false); // 「New Text」などの初期表示隠し
         }
 
-        // 💡 スキットルの飛びすぎ判定の中心を、モルックを投げる場所（発射台）に設定
-        if (playerController != null)
-        {
-            Skittle.SetThrowPoint(playerController.transform);
-        }
-
         UpdateScoreUI();
     }
 
@@ -326,6 +320,11 @@ int lastDownedNumber = 0;
 
         // ターン交代
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
+
+        if (ItemManager.Instance != null)
+        {
+            ItemManager.Instance.OnTurnStart(); // 予約されたアイテム効果の発動 ＋ 新しいアイテムのスポーン
+        }
 
         // 風処理 ターン交代に合わせて残りターン数を進める（ここで発動判定）
         if (WindManager.instance != null)

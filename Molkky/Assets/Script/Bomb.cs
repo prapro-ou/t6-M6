@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class BombImpact : MonoBehaviour
 {
-    [SerializeField] private float radius = 3f;
+    [SerializeField] private float radius = 6f;
     [SerializeField] private float force = 30f;
+    [Tooltip("大きくするほど爆心地のピンが真上寄りに吹き飛び、余波が周囲まで伝わりやすくなります")]
+    [SerializeField] private float upwardsModifier = 1.5f;
 
     [Header("爆発エフェクト")]
     [Tooltip("爆発時に再生するパーティクルのプレハブ（Particle Systemを含むオブジェクト）")]
@@ -41,10 +43,8 @@ public class BombImpact : MonoBehaviour
             if (rb == null)
                 continue;
 
-            Vector3 direction =
-                (rb.worldCenterOfMass - transform.position).normalized;
-
-            rb.AddForce(direction * force, ForceMode.Impulse);
+            // 💡 距離に応じて自然に減衰する余波（中心ほど強く、外側ほど弱い）＋ 上方向への吹き飛ばしでトルクを発生させ倒れやすくする
+            rb.AddExplosionForce(force, transform.position, radius, upwardsModifier, ForceMode.Impulse);
         }
     }
 }

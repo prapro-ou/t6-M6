@@ -11,18 +11,6 @@ public class Skittle : MonoBehaviour
     [Tooltip("立ち上がったときに数字が正面を向くよう、必要に応じて90, 180, 270などに変更してください")]
     public float targetYRotation = 0f;
 
-    [Header("飛びすぎ防止の設定")]
-    [Tooltip("モルックを投げる場所からこの距離（メートル）以上離れていたら、再配置時に初期位置へ戻します")]
-    public float maxDistanceFromThrowPoint = 40f;
-
-    // 💡 モルックを投げる場所（発射台）の基準点。GameManagerから設定されます
-    private static Transform throwPoint;
-
-    public static void SetThrowPoint(Transform point)
-    {
-        throwPoint = point;
-    }
-
     [Header("特殊ピン設定（左右に揺れる）")]
     [Tooltip("ONにすると、立て直された後モルックが投げられるまで左右に揺れ続けます")]
     public bool isMovingPin = false;
@@ -74,15 +62,19 @@ public class Skittle : MonoBehaviour
         // 3. 地面へのめり込みを防ぐため、先に少しだけ上に浮かせる
         Vector3 targetPosition = transform.position;
 
-        // モルックを投げる場所を中心とした円の外に出ていたら、再配置の基準位置を初期位置に戻す
-        Vector3 center = (throwPoint != null) ? throwPoint.position : initialPosition;
-        float distanceFromCenter = Vector3.Distance(
-            new Vector3(transform.position.x, center.y, transform.position.z),
-            center);
-        if (distanceFromCenter > maxDistanceFromThrowPoint)
+        // CircleDrawerが描いている境界円の外に出ていたら、再配置の基準位置を初期位置に戻す
+        CircleDrawer boundary = CircleDrawer.Boundary;
+        if (boundary != null)
         {
-            Debug.Log($"ピン {skittleNumber} 番は投げる場所から{distanceFromCenter:F1}m離れているため、初期位置に戻します。");
-            targetPosition = initialPosition;
+            Vector3 center = boundary.Center;
+            float distanceFromCenter = Vector3.Distance(
+                new Vector3(transform.position.x, center.y, transform.position.z),
+                center);
+            if (distanceFromCenter > boundary.Radius)
+            {
+                Debug.Log($"ピン {skittleNumber} 番は境界円から{distanceFromCenter:F1}m離れているため、初期位置に戻します。");
+                targetPosition = initialPosition;
+            }
         }
 
         targetPosition.y += 0.1f;
