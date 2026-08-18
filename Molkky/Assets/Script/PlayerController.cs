@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
     public Vector3 customDefaultLocalPosition = new Vector3(0f, 0f, 0f);
     public Vector3 customDefaultLocalRotation = new Vector3(0f, 0f, 0f);
 
+    [Header("★モルックの角度（縦横）設定")]
+    public Vector3 verticalRotation = new Vector3(0f, 0f, 0f);     // 縦向きの角度
+    public Vector3 horizontalRotation = new Vector3(0f, 0f, 90f);  // 横向きの角度（モデルに合わせて変更可）
+    private bool isHorizontal = false;
+
     private float currentPower = 0f;
     private bool isChargingUp = true;
 
@@ -87,10 +92,33 @@ public class PlayerController : MonoBehaviour
         // 1. 狙い（エイム）状態
         if (currentState == State.Aiming)
         {
-            currentRotationY += inputX * rotateSpeed * Time.deltaTime;
-            currentRotationX -= inputY * rotateSpeed * Time.deltaTime;
+            // 💡 特殊アイテム（ロケットや爆弾など）がついているか判定
+            bool isRocket = GetComponentInChildren<Rocket>() != null;
+            bool isBomb = GetComponentInChildren<BombImpact>() != null;
+            bool isNormalMolkky = !isRocket && !isBomb; // 通常モルックかどうか
 
-            currentRotationX = Mathf.Clamp(currentRotationX, -45f, 5f);
+            // 💡 追加：通常モルックの時だけ、エイム中にRキーで縦横切り替え
+            if (isNormalMolkky && Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                isHorizontal = !isHorizontal;
+                Vector3 targetRot = isHorizontal ? horizontalRotation : verticalRotation;
+                molkkyRb.transform.localRotation = Quaternion.Euler(targetRot);
+            }
+
+            // 左右（Y軸回転）は通常通り操作可能
+            currentRotationY += inputX * rotateSpeed * Time.deltaTime;
+            
+            // ★変更：ロケット時は上下角度を 0f（水平）に固定、通常時はW/Sキーで操作
+            if (isRocket)
+            {
+                currentRotationX = 0f;
+            }
+            else
+            {
+                currentRotationX -= inputY * rotateSpeed * Time.deltaTime;
+                currentRotationX = Mathf.Clamp(currentRotationX, -45f, 5f);
+            }
+
             currentRotationY = Mathf.Clamp(currentRotationY, -45f, 45f);
 
             transform.localRotation = Quaternion.Euler(currentRotationX, currentRotationY, 0f);
@@ -195,12 +223,15 @@ public class PlayerController : MonoBehaviour
     {
         molkkyRb.gameObject.SetActive(false);
 
+        // 💡 縦横フラグを初期化（縦に戻す）
+        isHorizontal = false;
+
         // 発射台の子に戻す
         molkkyRb.transform.SetParent(transform);
 
         // 位置・角度リセット
         molkkyRb.transform.localPosition = customDefaultLocalPosition;
-        molkkyRb.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        molkkyRb.transform.localRotation = Quaternion.Euler(verticalRotation);
 
         transform.localRotation = Quaternion.identity;
         currentRotationX = 0f;

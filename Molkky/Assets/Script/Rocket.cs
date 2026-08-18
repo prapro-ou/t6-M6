@@ -3,17 +3,15 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     [Header("直進飛行の設定")]
-    [Tooltip("投げた瞬間の速度に対する倍率（1で速度そのまま維持）")]
-    [SerializeField] private float speedMultiplier = 1f;
+    [Tooltip("パワーゲージに関わらず一定にする飛行速度")]
+    [SerializeField] private float fixedSpeed = 20f; 
 
     private Rigidbody rb;
     private bool isFlyingStraight = false;
     private Vector3 flightDirection;
-    private float flightSpeed;
 
     void Start()
     {
-        // Rocketモデルの親（本体）についているRigidbodyを取得
         rb = GetComponentInParent<Rigidbody>();
     }
 
@@ -24,7 +22,6 @@ public class Rocket : MonoBehaviour
 
     void OnDisable()
     {
-        // 他のタイプに切り替わったら重力設定を元に戻す
         if (rb != null) rb.useGravity = true;
         isFlyingStraight = false;
     }
@@ -35,23 +32,36 @@ public class Rocket : MonoBehaviour
 
         if (!isFlyingStraight)
         {
-            // 投げられて速度が発生した瞬間（＝発射の瞬間）を検知
             if (!rb.isKinematic && rb.linearVelocity.magnitude > 0.1f)
             {
-                flightDirection = rb.linearVelocity.normalized;
-                flightSpeed = rb.linearVelocity.magnitude * speedMultiplier;
+                // 💡 1. Y軸（上下）の速度を削り、地面と平行な（水平）ベクトルを作る
+                Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+                // 万が一、真上や真下に投げられた場合はプレイヤーの前方を水平方向とする
+                if (horizontalVelocity.sqrMagnitude < 0.01f)
+                {
+                    horizontalVelocity = new Vector3(transform.forward.x, 0f, transform.forward.z);
+                }
+
+                flightDirection = horizontalVelocity.normalized;
+
+                // 💡 2. ロケットの向き（グラフィック）も地面と平行な飛行方向に合わせる
+                if (flightDirection != Vector3.zero)
+                {
+                    rb.rotation = Quaternion.LookRotation(flightDirection);
+                }
+
                 rb.useGravity = false;
                 isFlyingStraight = true;
             }
             return;
         }
 
-        // 重力を無視し、発射方向へ等速でまっすぐ飛ばす
-        rb.linearVelocity = flightDirection * flightSpeed;
+        // 💡 3. パワーゲージの値（投擲速度）に影響されず、指定した fixedSpeed で直進させる
+        rb.linearVelocity = flightDirection * fixedSpeed;
         rb.angularVelocity = Vector3.zero;
     }
 
-    // 何かに衝突した瞬間にMolkkyItemHandlerから呼ばれる（直進飛行を終了し通常の物理挙動に戻す）
     public void OnImpact()
     {
         if (!isFlyingStraight) return;

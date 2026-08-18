@@ -90,7 +90,8 @@ public class Skittle : MonoBehaviour
         targetPosition.y = initialPosition.y;
 
         // CircleDrawerが描いている境界（扇形）の外に出ていたら、再配置の基準位置を初期位置に戻す
-        if (IsOutsideBoundary())
+        bool returningToInitialPosition = IsOutsideBoundary();
+        if (returningToInitialPosition)
         {
             Debug.Log($"ピン {skittleNumber} 番は境界の外に出ているため、初期位置に戻します。");
             targetPosition = initialPosition;
@@ -100,7 +101,14 @@ public class Skittle : MonoBehaviour
         targetPosition.y += 0.01f;
 
         // 4. 重なりを防止した安全な位置（X, Z）を計算する
-        targetPosition = GetOverlapResolvedPosition(targetPosition);
+        //    ただし初期位置に戻す場合は、そもそもデザイン段階で重ならないよう配置されているため
+        //    ここでの押し出しは不要。全ピンが同時に初期位置へ戻る場面（境界外への吹き飛ばし等）で、
+        //    お互いがまだ「初期位置に戻る途中」であることを知らずに押し出し合い、
+        //    正しいフォーメーションが崩れてしまうのを防ぐ。
+        if (!returningToInitialPosition)
+        {
+            targetPosition = GetOverlapResolvedPosition(targetPosition);
+        }
         transform.position = targetPosition;
 
         // 5. 物理エンジンに新しい位置・角度を即座に反映させる

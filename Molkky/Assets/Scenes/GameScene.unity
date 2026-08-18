@@ -1553,7 +1553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7909581535819568271, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_Mesh
@@ -1623,7 +1623,7 @@ MonoBehaviour:
   normalModel: {fileID: 1974900622}
   bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
-  currentType: 0
+  currentType: 1
 --- !u!54 &462945776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7490,6 +7490,8 @@ MonoBehaviour:
   rotateSpeed: 50
   customDefaultLocalPosition: {x: 0, y: 0, z: 0}
   customDefaultLocalRotation: {x: 0, y: 0, z: 90}
+  verticalRotation: {x: 0, y: 0, z: 0}
+  horizontalRotation: {x: 0, y: 0, z: 90}
   isCanControl: 1
 --- !u!4 &1276775292
 Transform:
@@ -9204,7 +9206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306daba4c2187b34987075b6f1ca9e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rocket
-  speedMultiplier: 1
+  fixedSpeed: 20
 --- !u!1001 &1369379786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16067,13 +16069,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 462945774}
     m_Modifications:
+    - target: {fileID: 1016747165689595403, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ff3d8b922d628e54388d34bb2f273d9e, type: 2}
     - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_Name
       value: Normal
       objectReference: {fileID: 0}
     - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_TagString
