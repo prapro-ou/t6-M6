@@ -60,6 +60,10 @@ public class GameManager : MonoBehaviour
     private bool isCheckingTurnEnd = false;
     private bool canCheckStop = false;
 
+    // 💡 「停止した」と判定するために低速状態を継続させる必要がある秒数
+    [SerializeField] private float lowSpeedRequiredDuration = 0.3f;
+    private float lowSpeedTimer = 0f;
+
     public GameObject startMenuUI;
     public static bool isGameStarted = false;
 
@@ -165,17 +169,40 @@ public class GameManager : MonoBehaviour
             if (molkkyRb.transform.position.y < -10f)
             {
                 StartCoroutine(TurnEndRoutine(0f));
+                return;
             }
-            else if (molkkyRb.linearVelocity.magnitude < 0.05f)
+
+            // 💡 放物線の頂点付近など、飛行中に一瞬だけ速度が閾値を下回ることがあるため、
+            //    低速状態が一定時間（lowSpeedRequiredDuration）続いた場合のみ「停止した」とみなす
+            if (molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
             {
-                StartCoroutine(TurnEndRoutine(4f));
+                lowSpeedTimer += Time.deltaTime;
+                if (lowSpeedTimer >= lowSpeedRequiredDuration)
+                {
+                    StartCoroutine(TurnEndRoutine(1.5f));
+                }
+            }
+            else
+            {
+                lowSpeedTimer = 0f;
             }
         }
+    }
+
+    // 💡 モルックが止まっていても、まだ倒れている途中のスキットルがあれば「停止した」とみなさない
+    private bool AreSkittlesMoving()
+    {
+        foreach (Skittle s in skittles)
+        {
+            if (s != null && s.IsMoving()) return true;
+        }
+        return false;
     }
 
     IEnumerator EnableCheckDelay()
     {
         canCheckStop = false;
+        lowSpeedTimer = 0f;
         yield return new WaitForSeconds(0.5f);
         canCheckStop = true;
         StartCoroutine(SafetyTimeoutRoutine());
@@ -209,10 +236,11 @@ int lastDownedNumber = 0;
         {
             if (s != null)
             {
-                bool isDown = s.IsDownForScore();
+                // 倒れているか、境界円の外に出ているかのどちらかで得点対象とする
+                bool isDown = s.IsDownForScore() || s.IsOutsideBoundary();
                 // 角度（Vector3.Angle）も一緒にログに出すと原因が一目瞭然になります
                 float angle = Vector3.Angle(s.transform.up, Vector3.up);
-                
+
                 Debug.Log($"【{s.gameObject.name}】 角度: {angle}度 -> 倒れ判定: {isDown}");
 
                 if (isDown)
