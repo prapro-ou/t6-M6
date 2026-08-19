@@ -41,15 +41,15 @@ public class BombImpact : MonoBehaviour
         if (exploded) return;
         exploded = true;
 
-        // 1秒後の爆発シーケンスを開始
+        // 0.8秒後の爆発シーケンスを開始
         StartCoroutine(ExplodeSequence());
     }
 
     private IEnumerator ExplodeSequence()
     {
-        Debug.Log("[Bomb] 着地！0.8秒後に爆発します...");
+        Debug.Log("[Bomb] 着地！爆発カウントダウン...");
 
-        // 1. 0.8秒間のカウントダウン中に赤色で高速点滅（光る演出）
+        // 0.8秒間のカウントダウン中に赤色で高速点滅（光る演出）
         float elapsedTime = 0f;
         float blinkInterval = 0.1f; // 点滅の間隔（秒）
         bool isRed = false;
@@ -58,7 +58,6 @@ public class BombImpact : MonoBehaviour
         {
             if (targetRenderer != null)
             {
-                // 赤と元の色を交互に切り替え
                 targetRenderer.material.color = isRed ? originalColor : Color.red;
                 isRed = !isRed;
             }
@@ -69,19 +68,24 @@ public class BombImpact : MonoBehaviour
 
         Debug.Log("[Bomb] 爆発！");
 
-        // 2. 爆発エフェクトの生成
+        // ★1. 爆発の瞬間にカメラシェイクを呼び出す
+        if (Camera.main != null)
+        {
+            StartCoroutine(ShakeCamera(0.3f, 0.4f)); // (揺らす時間秒, 揺れの強さ)
+        }
+
+        // ★2. 爆発エフェクトの生成
         if (explosionEffectPrefab != null)
         {
             GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-            Destroy(effect, 3f);
+            Destroy(effect, 2f);
         }
 
-        // 3. 周囲のピン（モルック以外）を吹き飛ばす
+        // ★3. 周囲のピン（モルック以外）を吹き飛ばす
         Collider[] targets = Physics.OverlapSphere(transform.position, radius);
 
         foreach (Collider target in targets)
         {
-            // 自分自身は吹き飛ばし対象から除外
             if (target.gameObject == gameObject)
                 continue;
 
@@ -92,7 +96,35 @@ public class BombImpact : MonoBehaviour
             rb.AddExplosionForce(force, transform.position, radius, upwardsModifier, ForceMode.Impulse);
         }
 
-        // 💡 4. 爆弾自身を消去
+        // 💡 4. 爆弾自体の見た目と当たり判定を非表示（即座に消えたように見せる）
+        if (targetRenderer != null) targetRenderer.enabled = false;
+        Collider myCollider = GetComponent<Collider>();
+        if (myCollider != null) myCollider.enabled = false;
+
+        // 💡 5. カメラシェイク（0.3秒）が終わるまで待つ！
+        yield return new WaitForSeconds(0.3f);
+
+        // 💡 6. 揺れが完了してから安全に自分自身を消去
         Destroy(gameObject);
+    }
+
+    // ★★★ エラーの原因になっていたカメラシェイク処理本体 ★★★
+    private IEnumerator ShakeCamera(float duration, float magnitude)
+    {
+        Vector3 originalPos = Camera.main.transform.localPosition;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            Camera.main.transform.localPosition = originalPos + new Vector3(x, y, 0f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        Camera.main.transform.localPosition = originalPos;
     }
 }

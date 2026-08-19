@@ -1486,7 +1486,7 @@ PrefabInstance:
     - target: {fileID: 2870378095995698933, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: explosionEffectPrefab
       value: 
-      objectReference: {fileID: 4337957490155995227, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
+      objectReference: {fileID: 4019138406418489463, guid: ecb5e71e3d3ed164386848775572931b, type: 3}
     - target: {fileID: 3444010381185356499, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -1553,7 +1553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7909581535819568271, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_Mesh
@@ -1623,7 +1623,7 @@ MonoBehaviour:
   normalModel: {fileID: 1974900622}
   bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
-  currentType: 0
+  currentType: 1
 --- !u!54 &462945776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16087,7 +16087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6524501582739203694, guid: 56241a59585eb2c44a07ec8f98b00517, type: 3}
       propertyPath: m_TagString
