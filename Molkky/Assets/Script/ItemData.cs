@@ -11,6 +11,7 @@ public enum ItemEffectType
     Bomb,         // 次に投げるモルックがボムになる
     Rocket,       // 次に投げるモルックがロケットになる
     Wind,         // 風が起こる
+    Darkness,     // 相手の次のターンが暗闇になる（既存の値を維持するため末尾に追加）
 }
 
 // Unityの右クリックメニューからこのデータを作成できるようにする属性
@@ -23,6 +24,9 @@ public class ItemData : ScriptableObject
     [TextArea] public string description; // 説明文
 
     public ItemEffectType effectType;     // ★ 追加: ItemManagerとの連携に必要な効果識別子
+
+    [Tooltip("出現しやすさの重み。数値が大きいほど抽選されやすくなる（全アイテム同じ値なら完全ランダムと同じ）")]
+    public float spawnWeight = 1f;
 
     [Header("見た目上書き（任意）")]
     [Tooltip("設定すると、色付きの球の代わりにこのモデルをフィールド上のアイテムとして表示する")]

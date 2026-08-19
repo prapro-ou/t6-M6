@@ -8,7 +8,8 @@ public class TitleManager : MonoBehaviour
     // 「ゲーム開始」ボタンを押したとき
     public void OnStartButton()
     {
-        SceneManager.LoadScene("GameScene"); // "GameScene" の部分はゲームシーンの名前に変更
+        // ★ステージ選択画面を経由するように変更（選択後はStageSelectManagerがGameSceneをロードする）
+        SceneManager.LoadScene("StageSelectScene");
     }
 
     // ★【追加】「ルール説明」ボタンを押したとき

@@ -46,6 +46,19 @@ public class SpawnedItem : MonoBehaviour
             {
                 Destroy(bomb);
             }
+
+            // ロケットの噴射エフェクトなど、モデルに付属するパーティクルはPlay On Awakeで
+            // 自動再生されてしまうため、フィールドに置いてあるだけの間は出ないよう止めておく
+            foreach (ParticleSystem ps in visual.GetComponentsInChildren<ParticleSystem>())
+            {
+                ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                ps.gameObject.SetActive(false);
+            }
+
+            // モデルごとに半径（大きさ）が異なり、中心をそのまま地面の高さに置くと
+            // 大きいモデルほど半分近く埋まってしまうため、見た目の底面がスポーン高さに
+            // 接するようY方向を補正する
+            AlignVisualBottomToSpawnHeight(visual);
         }
         else if (meshRenderer != null && data != null)
         {
@@ -56,6 +69,25 @@ public class SpawnedItem : MonoBehaviour
             {
                 mat.SetColor("_BaseColor", data.itemColor);
             }
+        }
+    }
+
+    // 💡 描画結果のバウンズ（見た目上の底面）を調べて、地面に埋まらないよう持ち上げる
+    private void AlignVisualBottomToSpawnHeight(GameObject visual)
+    {
+        Renderer[] renderers = visual.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0) return;
+
+        Bounds bounds = renderers[0].bounds;
+        for (int i = 1; i < renderers.Length; i++)
+        {
+            bounds.Encapsulate(renderers[i].bounds);
+        }
+
+        float liftAmount = transform.position.y - bounds.min.y;
+        if (liftAmount > 0f)
+        {
+            visual.transform.position += new Vector3(0f, liftAmount, 0f);
         }
     }
 

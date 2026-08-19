@@ -524,9 +524,14 @@ MonoBehaviour:
   itemPrefab: {fileID: 3984509552453394154, guid: 870831b77d33c884887e3e0b092c5551, type: 3}
   itemSpawnArea: {fileID: 2128656739}
   itemSpawnHeight: 0.1
+  itemSpawnMinRadius: 13
   spawnAreaCollider: {fileID: 392713911}
   availableItems:
   - {fileID: 11400000, guid: 6e7f216ebc2c6d04d91898cdd1f799e5, type: 2}
+  - {fileID: 11400000, guid: 8c5d0cfe5b83c7841897cdff3200b5f7, type: 2}
+  - {fileID: 11400000, guid: 31c80705d458046478b3d503543895a8, type: 2}
+  - {fileID: 11400000, guid: 44a5cab043f7d5c4b87d9718d2b8aa13, type: 2}
+  - {fileID: 11400000, guid: f7e67e11e2434fa438550d9a648ec523, type: 2}
   noticeText: {fileID: 0}
 --- !u!4 &125819143
 Transform:
@@ -595,6 +600,7 @@ MonoBehaviour:
   winnerText: {fileID: 1415630488}
   titleSceneName: TitleScene
   lowSpeedRequiredDuration: 0.3
+  minTimeAfterLanding: 0.3
   rocketReturnMinTime: 6
   rocketReturnMaxTime: 7
   bombReturnDelayAfterExplode: 2
@@ -1627,7 +1633,6 @@ MonoBehaviour:
   bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
   currentType: 2
-  hasLanded: 0
 --- !u!54 &462945776
 Rigidbody:
   m_ObjectHideFlags: 0

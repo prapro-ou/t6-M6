@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: 4c7c067c1630975429a8b9a4dbc9184b
   - enabled: 1
+    path: Assets/Scenes/RuleScene.unity
+    guid: e71173a8849e3f14a8cdf071edd3b94d
+  - enabled: 1
+    path: Assets/Scenes/StageSelectScene.unity
+    guid: 072a89cec3bcb14439d9ed03fc797c93
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/RuleScene.unity
-    guid: e71173a8849e3f14a8cdf071edd3b94d
+    path: Assets/Scenes/ScoreAttackScene.unity
+    guid: b121cb536596e2b4783b2a1f10738557
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

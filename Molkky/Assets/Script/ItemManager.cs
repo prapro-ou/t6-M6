@@ -10,6 +10,8 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private GameObject itemPrefab; // 生成するPrefab (SpawnedItemが付いたもの)
     [SerializeField] private CircleDrawer itemSpawnArea; // ★追加: 扇形のスポーンエリア（設定されていればこちらを優先）
     [SerializeField] private float itemSpawnHeight = 0.1f; // ★追加: 扇形エリア使用時のスポーン高さ
+    [Tooltip("モルックの近くにはスポーンさせないための内側の半径（スキットルの並びより少し手前が目安）")]
+    [SerializeField] private float itemSpawnMinRadius = 3f; // ★追加: スポーン範囲の内側の境界（CircleDrawer自体のinnerRadiusより手前を除外する用）
     [SerializeField] private BoxCollider spawnAreaCollider; // 長方形のスポーンエリア（itemSpawnArea未設定時のフォールバック）
     [SerializeField] private ItemData[] availableItems; // 5つのItemData
 
@@ -67,7 +69,7 @@ public class ItemManager : MonoBehaviour
         Vector3 spawnPosition;
         if (itemSpawnArea != null)
         {
-            spawnPosition = itemSpawnArea.GetRandomPointInside();
+            spawnPosition = itemSpawnArea.GetRandomPointInside(itemSpawnMinRadius);
             spawnPosition.y = itemSpawnHeight;
         }
         else if (spawnAreaCollider != null)
@@ -87,7 +89,7 @@ public class ItemManager : MonoBehaviour
 
         // 3. 生成とデータのセット
         GameObject spawnedObj = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
-        ItemData selectedData = availableItems[Random.Range(0, availableItems.Length)];
+        ItemData selectedData = ChooseWeightedRandomItem();
 
         SpawnedItem spawnedItemScript = spawnedObj.GetComponent<SpawnedItem>();
         if (spawnedItemScript != null)
@@ -100,6 +102,34 @@ public class ItemManager : MonoBehaviour
         }
 
         Debug.Log($"[ItemManager] アイテム ({selectedData.itemName}) をスポーンしました: {spawnPosition}");
+    }
+
+    // ★各ItemDataのspawnWeightに応じた重み付き抽選（重みが同じなら完全ランダムと同じ結果になる）
+    private ItemData ChooseWeightedRandomItem()
+    {
+        float totalWeight = 0f;
+        foreach (ItemData item in availableItems)
+        {
+            totalWeight += Mathf.Max(0f, item.spawnWeight);
+        }
+
+        if (totalWeight <= 0f)
+        {
+            return availableItems[Random.Range(0, availableItems.Length)];
+        }
+
+        float pick = Random.Range(0f, totalWeight);
+        float cumulative = 0f;
+        foreach (ItemData item in availableItems)
+        {
+            cumulative += Mathf.Max(0f, item.spawnWeight);
+            if (pick <= cumulative)
+            {
+                return item;
+            }
+        }
+
+        return availableItems[availableItems.Length - 1];
     }
 
     // ★ bool を返し、すでに取得済みなら false を返す
@@ -122,7 +152,8 @@ public class ItemManager : MonoBehaviour
         //========================================
         if (item.effectType == ItemEffectType.Bomb ||
         item.effectType == ItemEffectType.Rocket ||
-        item.effectType == ItemEffectType.Wind)
+        item.effectType == ItemEffectType.Wind ||
+        item.effectType == ItemEffectType.Darkness)
         {
             MolkkyType molkkyType = MolkkyType.Normal;
 
@@ -137,6 +168,10 @@ public class ItemManager : MonoBehaviour
             else if (item.effectType == ItemEffectType.Wind)
             {
                 molkkyType = MolkkyType.Wind; // ★Windを設定
+            }
+            else if (item.effectType == ItemEffectType.Darkness)
+            {
+                molkkyType = MolkkyType.Darkness;
             }
             if (GameManager.instance != null)
             {
@@ -232,12 +267,31 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    // ★Sceneビューで長方形スポーンエリアを緑色の枠で可視化
+    // ★Sceneビューでスポーンエリアを可視化（扇形エリア優先、なければ従来の長方形）
     private void OnDrawGizmosSelected()
     {
+        if (itemSpawnArea != null)
+        {
+            DrawSpawnFanGizmo();
+            return;
+        }
+
         if (spawnAreaCollider == null) return;
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(spawnAreaCollider.bounds.center, spawnAreaCollider.bounds.size);
+    }
+
+    // 💡 itemSpawnMinRadiusの内側除外ラインだけを描画する
+    //    外周の弧・左右の直線はCircleDrawer本体の境界線と完全に同じ座標のため、
+    //    重ねて描画すると重複してちらつく（Z-fighting）ので描かない
+    private void DrawSpawnFanGizmo()
+    {
+        float outerRadius = itemSpawnArea.Radius;
+        float innerRadius = Mathf.Clamp(itemSpawnMinRadius, 0f, outerRadius);
+        float halfAngleRad = itemSpawnArea.FanAngle * 0.5f * Mathf.Deg2Rad;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(itemSpawnArea.GetPointAtWorld(innerRadius, -halfAngleRad), itemSpawnArea.GetPointAtWorld(innerRadius, halfAngleRad));
     }
 }

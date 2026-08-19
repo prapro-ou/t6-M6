@@ -19,6 +19,14 @@ public class CircleDrawer : MonoBehaviour
 
     public Vector3 Center => transform.position;
     public float Radius => radius;
+    public float FanAngle => fanAngle;
+    public float InnerRadius => innerRadius;
+
+    // 💡 中心からの角度・距離で扇形上の1点を求める（ワールド座標）。ギズモ描画など他スクリプトからも利用する
+    public Vector3 GetPointAtWorld(float r, float angleRad)
+    {
+        return transform.TransformPoint(PointAt(r, angleRad));
+    }
 
     void Awake()
     {
@@ -90,10 +98,17 @@ public class CircleDrawer : MonoBehaviour
     //    面積が均一になるよう、半径は二乗の範囲からサンプリングする
     public Vector3 GetRandomPointInside()
     {
+        return GetRandomPointInside(innerRadius);
+    }
+
+    // 💡 内側の半径を呼び出し側から指定できる版（モルックの近くを避けてスポーンさせたい場合などに使用）
+    public Vector3 GetRandomPointInside(float minRadius)
+    {
         float halfAngleRad = fanAngle * 0.5f * Mathf.Deg2Rad;
         float angle = Random.Range(-halfAngleRad, halfAngleRad);
 
-        float minR2 = innerRadius * innerRadius;
+        float clampedMinRadius = Mathf.Clamp(minRadius, 0f, radius);
+        float minR2 = clampedMinRadius * clampedMinRadius;
         float maxR2 = radius * radius;
         float r = Mathf.Sqrt(Random.Range(minR2, maxR2));
 

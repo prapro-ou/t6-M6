@@ -69,6 +69,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float lowSpeedRequiredDuration = 0.3f;
     private float lowSpeedTimer = 0f;
 
+    // 💡 弱い投球で着地した瞬間すでに低速な場合でも、着地直後すぐに「停止」と判定しないための猶予秒数
+    //   （継続接地時間の判定自体はMolkkyItemHandler.ContinuousGroundedDurationに一元化している）
+    [SerializeField] private float minTimeAfterLanding = 0.3f;
+
     [Header("特殊モルック 戻りタイマー設定")]
     // ロケット・ボムは速度判定を使わず、専用タイマーで手元に戻す
     [SerializeField] private float rocketReturnMinTime = 6f;   // 投げてから戻るまでの最短秒数
@@ -178,10 +182,10 @@ public class GameManager : MonoBehaviour
             if (s != null) s.StopSwaying();
         }
 
-        // ★飛行中に何にも当たっていないうちは「停止した」と判定させないためのフラグをリセット
+        // ★飛行中に何にも当たっていないうちは「停止した」と判定させないため、接地状態をリセット
         if (molkkyItemHandler != null)
         {
-            molkkyItemHandler.hasLanded = false;
+            molkkyItemHandler.ResetGroundState();
         }
 
         MolkkyType launchedType = (molkkyItemHandler != null) ? molkkyItemHandler.currentType : MolkkyType.Normal;
@@ -211,6 +215,11 @@ public class GameManager : MonoBehaviour
     {
         float waitTime = Random.Range(rocketReturnMinTime, rocketReturnMaxTime);
         yield return new WaitForSeconds(waitTime);
+
+        // ★ロケットは直進中に重力を切っている（Rocket.cs）ため、何かに当たるまで着地しない。
+        //   タイマーが来てもまだ飛行中なら、着地（＝何かに接触）するまで少し待ってから戻す
+        yield return WaitUntilGroundedOrTimeout(5f);
+
         TriggerSpecialReturn();
     }
 
@@ -227,6 +236,7 @@ public class GameManager : MonoBehaviour
     IEnumerator BombReturnRoutine()
     {
         yield return new WaitForSeconds(bombReturnDelayAfterExplode);
+        yield return WaitUntilGroundedOrTimeout(3f);
         TriggerSpecialReturn();
     }
 
@@ -235,6 +245,29 @@ public class GameManager : MonoBehaviour
         if (!isCheckingTurnEnd)
         {
             StartCoroutine(TurnEndRoutine(0f));
+        }
+    }
+
+    // ★タイマーが来た時点でまだ空中にいる場合、着地するまで少し待ってから戻す。
+    //   ただし何らかの理由で着地を検知できない場合に無限に待ち続けないよう、上限秒数で必ず打ち切る。
+    //
+    //   「一瞬だけ接触した」を着地と誤判定しないよう、minTimeAfterLanding秒以上
+    //   連続で接地し続けているかどうかは MolkkyItemHandler.ContinuousGroundedDuration で判定する
+    //   （Update()側の停止判定と同じ基準を共有し、二重実装を避けている）
+    private IEnumerator WaitUntilGroundedOrTimeout(float maxWaitSeconds)
+    {
+        if (molkkyItemHandler == null) yield break;
+
+        float elapsed = 0f;
+        while (elapsed < maxWaitSeconds)
+        {
+            if (molkkyItemHandler.ContinuousGroundedDuration >= minTimeAfterLanding)
+            {
+                yield break;
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
     }
 
@@ -255,11 +288,12 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(BoundaryReturnRoutine());
             }
 
-            // ★何かに一度も着地/衝突していない（＝まだ飛行中の可能性がある）うちは、
-            //   一瞬の速度低下（放物線の頂点付近など）で誤って「停止した」と判定しない
-            bool hasLanded = molkkyItemHandler == null || molkkyItemHandler.hasLanded;
+            // ★地面やスキットルに接触していない（＝空中に浮いている）うちや、着地した直後（弱い投球で
+            //   着地時点ですでに低速な場合を含む）は、まだ「停止した」と判定しない
+            bool pastLandingGracePeriod = molkkyItemHandler == null ||
+                molkkyItemHandler.ContinuousGroundedDuration >= minTimeAfterLanding;
 
-            if (hasLanded && molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
+            if (pastLandingGracePeriod && molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
             {
                 lowSpeedTimer += Time.deltaTime;
                 if (lowSpeedTimer >= lowSpeedRequiredDuration)
@@ -296,6 +330,11 @@ public class GameManager : MonoBehaviour
     IEnumerator BoundaryReturnRoutine()
     {
         yield return new WaitForSeconds(boundaryReturnDelay);
+
+        // ★境界判定は高さを見ていないため、放物線の途中で範囲外に出ただけの
+        //   「まだ空中にいる」状態で戻さないよう、着地するまで待つ
+        yield return WaitUntilGroundedOrTimeout(8f);
+
         TriggerSpecialReturn();
     }
 
@@ -304,7 +343,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10.0f);
         if (canCheckStop && !isCheckingTurnEnd)
         {
-            StartCoroutine(TurnEndRoutine(0f));
+            // ★10秒経ってもまだ空中にいる場合、接地判定に関係なく強制的に戻していたため、
+            //   着地するまで少し待ってから戻すようにする
+            yield return WaitUntilGroundedOrTimeout(5f);
+
+            if (canCheckStop && !isCheckingTurnEnd)
+            {
+                StartCoroutine(TurnEndRoutine(0f));
+            }
         }
     }
 

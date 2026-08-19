@@ -64,12 +64,28 @@ public class Skittle : MonoBehaviour
     // 💡 ピンをその場で（または元の位置に）立て直す関数
     public void StandUp()
     {
-        // 💡 既に立っていて範囲内にあるピンは何もしない。
+        bool needsFullReset = IsDownForReset() || IsOutsideBoundary();
+
+        // 💡 既に立っていて範囲内にあるピンは、基本的には何もしない。
         //    ここで無条件に全ピン再配置していると、元々問題なく立っているピン同士まで
         //    GetOverlapResolvedPositionで押し出し合い、密集地帯では逆に隣のピンにぶつけて
         //    倒してしまうことがあるため、本当に動かす必要があるピンだけに限定する。
-        if (!IsDownForReset() && !IsOutsideBoundary())
+        if (!needsFullReset)
         {
+            // ただし、倒れてはいないがY軸回転だけずれている（数字が正面を向いていない）ピンは、
+            // 位置はそのままに向きだけを直す。位置移動や重なり解消は行わないため、
+            // 他のピンの再配置には影響しない。
+            float yawDiff = Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetYRotation));
+            if (yawDiff > 0.5f)
+            {
+                Debug.Log($"ピン {skittleNumber} 番の向きだけを補正します。");
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
+                transform.rotation = Quaternion.Euler(0f, targetYRotation, 0f);
+                Physics.SyncTransforms();
+                StartCoroutine(SafeActivatePhysics());
+            }
             return;
         }
 
