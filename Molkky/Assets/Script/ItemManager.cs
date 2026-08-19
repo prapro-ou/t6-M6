@@ -107,9 +107,27 @@ public class ItemManager : MonoBehaviour
 
         // ★Bomb/Rocketは既存のMolkkyType機構（ItemBoxと同じ仕組み）に乗せて、
         //   自分の次の投球で見た目・能力が変わるよう即座に反映する（ターン開始時の予約効果とは別扱い）
-        if (item.effectType == ItemEffectType.Bomb || item.effectType == ItemEffectType.Rocket)
+        //========================================
+        // ここから変更した！！菊地
+        //========================================
+        if (item.effectType == ItemEffectType.Bomb ||
+        item.effectType == ItemEffectType.Rocket ||
+        item.effectType == ItemEffectType.Wind)
         {
-            MolkkyType molkkyType = (item.effectType == ItemEffectType.Bomb) ? MolkkyType.Bomb : MolkkyType.Rocket;
+            MolkkyType molkkyType = MolkkyType.Normal;
+
+            if (item.effectType == ItemEffectType.Bomb)
+            {
+                molkkyType = MolkkyType.Bomb;
+            }
+            else if (item.effectType == ItemEffectType.Rocket)
+            {
+                molkkyType = MolkkyType.Rocket;
+            }
+            else if (item.effectType == ItemEffectType.Wind)
+            {
+                molkkyType = MolkkyType.Wind; // ★Windを設定
+            }
             if (GameManager.instance != null)
             {
                 GameManager.instance.GetItem(molkkyType);
@@ -123,6 +141,10 @@ public class ItemManager : MonoBehaviour
 
         return true; // 登録成功 (true)
     }
+
+    //========================================
+    // ここまで変更した！！菊地
+    //========================================
 
     public void ShowNotice(string message)
     {

@@ -9,4 +9,9 @@ public class TitleManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene"); // "GameScene" の部分はシーンの名前に変更
     }
+
+    public void OnScoreAttackButton()
+    {
+        SceneManager.LoadScene("ScoreAttackScene");
+    }
 }

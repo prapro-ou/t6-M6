@@ -9,7 +9,8 @@ public enum ItemEffectType
     SkittleGroup, // スキットル密集
     SkittleSpread,// スキットル分散
     Bomb,         // 次に投げるモルックがボムになる
-    Rocket        // 次に投げるモルックがロケットになる
+    Rocket,       // 次に投げるモルックがロケットになる
+    Wind,         // 風が起こる
 }
 
 // Unityの右クリックメニューからこのデータを作成できるようにする属性
