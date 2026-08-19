@@ -20,6 +20,9 @@ public class ItemManager : MonoBehaviour
     // ★追加: 1ターンに1つのみ取得を制限するフラグ
     private bool isItemAcquiredThisTurn = false;
 
+    // ★追加: OnTurnStart()の呼び出し回数（1巡目はスポーンさせず、2巡目以降からスポーンさせるため）
+    private int turnStartCount = 0;
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,7 +42,7 @@ public class ItemManager : MonoBehaviour
             noticeText.text = "";
         }
 
-        SpawnItem();
+        // ★変更: 1巡目はアイテムなしにするため、開始時点のスポーンは行わない
     }
 
     // ★ItemSpawnerから移植・改良した長方形用スポーン処理
@@ -183,8 +186,12 @@ public class ItemManager : MonoBehaviour
             reservedItem = null;
         }
 
-        // 3. 毎ターン新しいアイテムを1つスポーン
-        SpawnItem();
+        // 3. 2巡目以降のみ、毎ターン新しいアイテムを1つスポーン
+        turnStartCount++;
+        if (turnStartCount >= 2)
+        {
+            SpawnItem();
+        }
     }
 
     private void UpdateFieldItems()

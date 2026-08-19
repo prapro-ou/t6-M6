@@ -597,6 +597,10 @@ MonoBehaviour:
   winnerText: {fileID: 1415630488}
   titleSceneName: TitleScene
   lowSpeedRequiredDuration: 0.3
+  rocketReturnMinTime: 6
+  rocketReturnMaxTime: 7
+  bombReturnDelayAfterExplode: 2
+  boundaryReturnDelay: 4
   startMenuUI: {fileID: 0}
 --- !u!4 &174430318
 Transform:
@@ -1553,7 +1557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7909581535819568271, guid: 79627a143b51108419518c181351f891, type: 3}
       propertyPath: m_Mesh
@@ -1623,7 +1627,7 @@ MonoBehaviour:
   normalModel: {fileID: 1974900622}
   bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
-  currentType: 1
+  currentType: 2
 --- !u!54 &462945776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16208,7 +16212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3545200349384868138, guid: 37057503884141f4ebf6086f27f0ea0b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3614593326597633905, guid: 37057503884141f4ebf6086f27f0ea0b, type: 3}
       propertyPath: m_Mesh
@@ -16774,7 +16778,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5DE6\u3078"
+  m_text: "\u5DE6\u3078\u98A8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
   m_sharedMaterial: {fileID: -6600390312171025313, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
@@ -23252,7 +23256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u53F3\u3078"
+  m_text: "\u53F3\u3078\u98A8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
   m_sharedMaterial: {fileID: -6600390312171025313, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}

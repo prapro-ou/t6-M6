@@ -15,6 +15,9 @@ public class BombImpact : MonoBehaviour
     private Renderer targetRenderer;
     private Color originalColor;
 
+    // 爆発した瞬間に通知するイベント（GameManagerが戻りタイマーの起点として使う）
+    public event System.Action OnExploded;
+
     private void Awake()
     {
         targetRenderer = GetComponent<Renderer>();
@@ -67,6 +70,7 @@ public class BombImpact : MonoBehaviour
         }
 
         Debug.Log("[Bomb] 爆発！");
+        OnExploded?.Invoke();
 
         // ★1. 爆発の瞬間にカメラシェイクを呼び出す
         if (Camera.main != null)

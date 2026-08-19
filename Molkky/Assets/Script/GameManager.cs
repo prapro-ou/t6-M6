@@ -56,9 +56,10 @@ public class GameManager : MonoBehaviour
     private bool p1IsBlinded = false;
     private bool p2IsBlinded = false;
 
-    // ★【1. 追加】各プレイヤーが次のターン風を起こす権利を持っているかのフラグ
-    private bool p1HasWindItem = false;
-    private bool p2HasWindItem = false;
+    // ★風アイテム：獲得済みで、モルックが手元に戻ったら選択画面を開く必要があるかどうか
+    private bool hasPendingWindSelection = false;
+    // ★風向き選択待ちのため、選択完了後に交代ボタンを表示する必要があるかどうか
+    private bool pendingNextTurnButtonAfterWind = false;
 
     public static bool isGameFinished = false;
     private bool isCheckingTurnEnd = false;
@@ -67,6 +68,16 @@ public class GameManager : MonoBehaviour
     // 💡 「停止した」と判定するために低速状態を継続させる必要がある秒数
     [SerializeField] private float lowSpeedRequiredDuration = 0.3f;
     private float lowSpeedTimer = 0f;
+
+    [Header("特殊モルック 戻りタイマー設定")]
+    // ロケット・ボムは速度判定を使わず、専用タイマーで手元に戻す
+    [SerializeField] private float rocketReturnMinTime = 6f;   // 投げてから戻るまでの最短秒数
+    [SerializeField] private float rocketReturnMaxTime = 7f;   // 投げてから戻るまでの最長秒数
+    [SerializeField] private float bombReturnDelayAfterExplode = 2f; // 爆発してから戻るまでの秒数
+
+    // 通常モルックが再配置の線（CircleDrawerの扇形）を越えてから戻るまでの秒数
+    [SerializeField] private float boundaryReturnDelay = 4f;
+    private bool isBoundaryReturnScheduled = false;
 
     public GameObject startMenuUI;
     public static bool isGameStarted = false;
@@ -84,9 +95,6 @@ public class GameManager : MonoBehaviour
         currentPlayer = 1;
         p1Score = 0; p1Misses = 0;
         p2Score = 0; p2Misses = 0;
-
-        p1HasWindItem = false;
-        p2HasWindItem = false;
 
         if (nextTurnButtonUI != null)
         {
@@ -117,14 +125,11 @@ public class GameManager : MonoBehaviour
         //========================================
         // ここから変更した！！菊地
         //========================================
-        // ★風アイテム処理：獲得した瞬間に風向き選択画面を開く
+        // ★風アイテム処理：選択画面はモルックが手元に戻ったタイミングで開く（TurnEndRoutine側）
         if (item == MolkkyType.Wind)
         {
-            if (WindManager.instance != null)
-            {
-                WindManager.instance.OpenWindSelector();
-            }
-            Debug.Log($"Player {currentPlayer} が風アイテム(Yellow)を獲得！ 風向きを選択してください。");
+            hasPendingWindSelection = true;
+            Debug.Log($"Player {currentPlayer} が風アイテム(Yellow)を獲得！ モルックが手元に戻ったら風向きを選択してください。");
             return;
         }
 
@@ -154,20 +159,77 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Player {currentPlayer} が {item} を獲得！ 次のターンで発動します。");
     }
 
+    // ★風向きの選択が完了した時にWindManagerから呼ばれる
+    public void OnWindDirectionSelected()
+    {
+        if (!pendingNextTurnButtonAfterWind) return;
+
+        pendingNextTurnButtonAfterWind = false;
+        if (nextTurnButtonUI != null)
+        {
+            nextTurnButtonUI.SetActive(true);
+        }
+    }
+
     public void OnMolkkyLaunched()
     {
-        if (molkkyItemHandler != null && molkkyItemHandler.currentType == MolkkyType.Bomb && molkkyItemHandler.bombModel != null)
-        {
-            BombImpact bomb = molkkyItemHandler.bombModel.GetComponent<BombImpact>();
-            if (bomb != null) bomb.Arm();
-        }
-
         foreach (Skittle s in skittles)
         {
             if (s != null) s.StopSwaying();
         }
 
-        StartCoroutine(EnableCheckDelay());
+        MolkkyType launchedType = (molkkyItemHandler != null) ? molkkyItemHandler.currentType : MolkkyType.Normal;
+
+        // ★ロケット・ボムは投げている最中に速度判定で誤って戻らないよう、
+        //   通常の速度判定（EnableCheckDelay）を使わず専用タイマーで戻す
+        if (launchedType == MolkkyType.Bomb && molkkyItemHandler.bombModel != null)
+        {
+            BombImpact bomb = molkkyItemHandler.bombModel.GetComponent<BombImpact>();
+            if (bomb != null)
+            {
+                bomb.Arm();
+                bomb.OnExploded += HandleBombExploded;
+            }
+        }
+        else if (launchedType == MolkkyType.Rocket)
+        {
+            StartCoroutine(RocketReturnRoutine());
+        }
+        else
+        {
+            StartCoroutine(EnableCheckDelay());
+        }
+    }
+
+    IEnumerator RocketReturnRoutine()
+    {
+        float waitTime = Random.Range(rocketReturnMinTime, rocketReturnMaxTime);
+        yield return new WaitForSeconds(waitTime);
+        TriggerSpecialReturn();
+    }
+
+    private void HandleBombExploded()
+    {
+        if (molkkyItemHandler != null && molkkyItemHandler.bombModel != null)
+        {
+            BombImpact bomb = molkkyItemHandler.bombModel.GetComponent<BombImpact>();
+            if (bomb != null) bomb.OnExploded -= HandleBombExploded;
+        }
+        StartCoroutine(BombReturnRoutine());
+    }
+
+    IEnumerator BombReturnRoutine()
+    {
+        yield return new WaitForSeconds(bombReturnDelayAfterExplode);
+        TriggerSpecialReturn();
+    }
+
+    private void TriggerSpecialReturn()
+    {
+        if (!isCheckingTurnEnd)
+        {
+            StartCoroutine(TurnEndRoutine(0f));
+        }
     }
 
     void Update()
@@ -178,6 +240,13 @@ public class GameManager : MonoBehaviour
             {
                 StartCoroutine(TurnEndRoutine(0f));
                 return;
+            }
+
+            if (!isBoundaryReturnScheduled && CircleDrawer.Boundary != null &&
+                !CircleDrawer.Boundary.IsInside(molkkyRb.transform.position))
+            {
+                isBoundaryReturnScheduled = true;
+                StartCoroutine(BoundaryReturnRoutine());
             }
 
             if (molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
@@ -208,9 +277,16 @@ public class GameManager : MonoBehaviour
     {
         canCheckStop = false;
         lowSpeedTimer = 0f;
+        isBoundaryReturnScheduled = false;
         yield return new WaitForSeconds(0.5f);
         canCheckStop = true;
         StartCoroutine(SafetyTimeoutRoutine());
+    }
+
+    IEnumerator BoundaryReturnRoutine()
+    {
+        yield return new WaitForSeconds(boundaryReturnDelay);
+        TriggerSpecialReturn();
     }
 
     IEnumerator SafetyTimeoutRoutine()
@@ -233,6 +309,19 @@ public class GameManager : MonoBehaviour
         }
 
         playerController.ResetMolkky();
+
+        // ★モルックが手元に戻ったので、保留していた風向き選択画面を開く
+        //   風を選択した場合は、選択が終わるまで交代ボタンの表示を保留する
+        bool openedWindSelector = false;
+        if (hasPendingWindSelection)
+        {
+            hasPendingWindSelection = false;
+            openedWindSelector = true;
+            if (WindManager.instance != null)
+            {
+                WindManager.instance.OpenWindSelector();
+            }
+        }
 
         int downedCount = 0;
         int lastDownedNumber = 0;
@@ -327,7 +416,12 @@ public class GameManager : MonoBehaviour
         {
             UpdateScoreUI();
 
-            if (nextTurnButtonUI != null)
+            if (openedWindSelector)
+            {
+                // 風向き選択が終わるまで交代ボタンは表示しない（OnWindDirectionSelectedで表示する）
+                pendingNextTurnButtonAfterWind = true;
+            }
+            else if (nextTurnButtonUI != null)
             {
                 nextTurnButtonUI.SetActive(true);
             }

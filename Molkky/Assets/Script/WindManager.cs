@@ -73,6 +73,11 @@ public class WindManager : MonoBehaviour
         }
 
         Debug.Log($"[風予約完了] 向き: {currentDirection} | 次の相手のターンに風が吹きます");
+
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.OnWindDirectionSelected();
+        }
     }
 
     // ターン進捗時に他スクリプトから呼び出される関数
