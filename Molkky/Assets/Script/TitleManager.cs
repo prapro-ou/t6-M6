@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // 追加
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+    // 「ゲーム開始」ボタンを押したとき
     public void OnStartButton()
     {
-        SceneManager.LoadScene("GameScene"); // "GameScene" の部分はシーンの名前に変更
+        SceneManager.LoadScene("GameScene"); // "GameScene" の部分はゲームシーンの名前に変更
     }
 
-    public void OnScoreAttackButton()
+    // ★【追加】「ルール説明」ボタンを押したとき
+    public void OnRuleButton()
     {
-        SceneManager.LoadScene("ScoreAttackScene");
+        SceneManager.LoadScene("RuleScene"); // "RuleScene" の部分はルール説明シーンの名前に変更
     }
 }

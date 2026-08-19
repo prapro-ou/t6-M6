@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed9cb9a4377f21643806d477917aba71, type: 3}
+  m_Script: {fileID: 11500000, guid: d4d7a6289e009964fa002e55cc3649e1, type: 3}
   m_Name: ItemData_Red
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: 
   itemName: "\u30ED\u30B1\u30C3\u30C8"
-  itemColor: {r: 0.9198113, g: 0.14208993, b: 0.12582327, a: 1}
-  description:
+  itemColor: {r: 0.995283, g: 0.03755782, b: 0.03755782, a: 1}
+  description: 
   effectType: 6
