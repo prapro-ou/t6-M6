@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
-using UnityEngine.SceneManagement; // ★【追加】シーン遷移（リトライ・タイトル遷移）に使用
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,18 +13,18 @@ public class GameManager : MonoBehaviour
     public List<Skittle> skittles = new List<Skittle>();
     public PlayerController playerController;
     public Rigidbody molkkyRb;
-    
-    // --- 【追加】モルックの見た目切り替えハンドラー ---
+
+    // --- モルックの見た目切り替えハンドラー ---
     public MolkkyItemHandler molkkyItemHandler;
 
     [Header("UI設定")]
     public TextMeshProUGUI scoreText;
-    
+
     [Header("ターン交代UI")]
     public GameObject nextTurnButtonUI;
 
     // =========================================================
-    // ★【追加】ゲーム終了時（リザルト画面）用UIの設定項目
+    // ゲーム終了時（リザルト画面）用UIの設定項目
     // =========================================================
     [Header("ゲーム終了UI")]
     public GameObject nextButtonUI;       // 勝利時に出る「次へ」ボタン
@@ -48,13 +48,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // --- 【追加】各プレイヤーの次のターンのアイテム保持変数 ---
+    // --- 各プレイヤーの次のターンのアイテム保持変数 ---
     private MolkkyType p1NextItem = MolkkyType.Normal;
     private MolkkyType p2NextItem = MolkkyType.Normal;
 
     // ★【暗闇処理】各プレイヤーが次のターン暗闇になるかどうかのフラグ
     private bool p1IsBlinded = false;
     private bool p2IsBlinded = false;
+
+    // ★【1. 追加】各プレイヤーが次のターン風を起こす権利を持っているかのフラグ
+    private bool p1HasWindItem = false;
+    private bool p2HasWindItem = false;
 
     public static bool isGameFinished = false;
     private bool isCheckingTurnEnd = false;
@@ -70,7 +74,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // 他のスクリプトから GameManager.instance で呼べるように保存
         instance = this;
     }
 
@@ -82,14 +85,14 @@ public class GameManager : MonoBehaviour
         p1Score = 0; p1Misses = 0;
         p2Score = 0; p2Misses = 0;
 
+        p1HasWindItem = false;
+        p2HasWindItem = false;
+
         if (nextTurnButtonUI != null)
         {
             nextTurnButtonUI.SetActive(false);
         }
 
-        // =========================================================
-        // ★【追加】ゲーム開始時はリザルト関係のUI要素を非表示にしておく
-        // =========================================================
         if (nextButtonUI != null)
         {
             nextButtonUI.SetActive(false);
@@ -102,25 +105,32 @@ public class GameManager : MonoBehaviour
 
         if (winnerText != null)
         {
-            winnerText.gameObject.SetActive(false); // 「New Text」などの初期表示隠し
+            winnerText.gameObject.SetActive(false);
         }
 
         UpdateScoreUI();
     }
 
-    // --- 【追加】アイテムを獲得した時に呼ばれる関数 ---
+    // --- 【2. 変更】アイテムを獲得した時に呼ばれる関数 ---
     public void GetItem(MolkkyType item)
     {
-        // 風アイテム処理 獲得直後に風向き選択画面を開く
+        //========================================
+        // ここから変更した！！菊地
+        //========================================
+        // ★風アイテム処理：獲得した瞬間に風向き選択画面を開く
         if (item == MolkkyType.Wind)
         {
             if (WindManager.instance != null)
             {
                 WindManager.instance.OpenWindSelector();
             }
-            Debug.Log($"Player {currentPlayer} が風アイテムを獲得！ 風向きを選択してください。");
+            Debug.Log($"Player {currentPlayer} が風アイテム(Yellow)を獲得！ 風向きを選択してください。");
             return;
         }
+
+        //========================================
+        // ここから変更した！！菊地
+        //========================================
 
         // 暗闇アイテムの場合は相手にデバフを付与
         if (item == MolkkyType.Darkness)
@@ -146,14 +156,12 @@ public class GameManager : MonoBehaviour
 
     public void OnMolkkyLaunched()
     {
-        // 今回のモルックがBombタイプなら、投げた瞬間に爆発できる状態にする
         if (molkkyItemHandler != null && molkkyItemHandler.currentType == MolkkyType.Bomb && molkkyItemHandler.bombModel != null)
         {
             BombImpact bomb = molkkyItemHandler.bombModel.GetComponent<BombImpact>();
             if (bomb != null) bomb.Arm();
         }
 
-        // 投げた瞬間、揺れている特殊ピンを全て静止させる
         foreach (Skittle s in skittles)
         {
             if (s != null) s.StopSwaying();
@@ -172,8 +180,6 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-            // 💡 放物線の頂点付近など、飛行中に一瞬だけ速度が閾値を下回ることがあるため、
-            //    低速状態が一定時間（lowSpeedRequiredDuration）続いた場合のみ「停止した」とみなす
             if (molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
             {
                 lowSpeedTimer += Time.deltaTime;
@@ -189,7 +195,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 💡 モルックが止まっていても、まだ倒れている途中のスキットルがあれば「停止した」とみなさない
     private bool AreSkittlesMoving()
     {
         foreach (Skittle s in skittles)
@@ -229,16 +234,14 @@ public class GameManager : MonoBehaviour
 
         playerController.ResetMolkky();
 
-       int downedCount = 0;
-int lastDownedNumber = 0;
+        int downedCount = 0;
+        int lastDownedNumber = 0;
 
         foreach (Skittle s in skittles)
         {
             if (s != null)
             {
-                // 倒れているか、境界円の外に出ているかのどちらかで得点対象とする
                 bool isDown = s.IsDownForScore() || s.IsOutsideBoundary();
-                // 角度（Vector3.Angle）も一緒にログに出すと原因が一目瞭然になります
                 float angle = Vector3.Angle(s.transform.up, Vector3.up);
 
                 Debug.Log($"【{s.gameObject.name}】 角度: {angle}度 -> 倒れ判定: {isDown}");
@@ -280,9 +283,6 @@ int lastDownedNumber = 0;
             if (p2Score > 50) p2Score = 25;
         }
 
-        // =========================================================
-        // ★【変更】勝敗判定のメッセージ生成と表示処理
-        // =========================================================
         string winMessage = "";
         if (p1Misses >= 3)
         {
@@ -307,7 +307,6 @@ int lastDownedNumber = 0;
 
         if (isGameFinished)
         {
-            // ★【変更】左上のスコアテキストを隠し、中央の winnerText に勝利メッセージを表示
             if (scoreText != null)
             {
                 scoreText.gameObject.SetActive(false);
@@ -319,7 +318,6 @@ int lastDownedNumber = 0;
                 winnerText.text = winMessage;
             }
 
-            // ★【追加】勝利時は専用の「Next（次へ）」ボタンを表示
             if (nextButtonUI != null)
             {
                 nextButtonUI.SetActive(true);
@@ -329,7 +327,6 @@ int lastDownedNumber = 0;
         {
             UpdateScoreUI();
 
-            // 通常ゲームプレイ時は元の「ターン交代」ボタンを表示
             if (nextTurnButtonUI != null)
             {
                 nextTurnButtonUI.SetActive(true);
@@ -338,7 +335,8 @@ int lastDownedNumber = 0;
 
         isCheckingTurnEnd = false;
     }
-        
+
+    // --- 【3. 変更】ターン交代時の処理 ---
     public void OnNextTurnButtonPressed()
     {
         foreach (Skittle s in skittles)
@@ -346,21 +344,22 @@ int lastDownedNumber = 0;
             if (s != null) s.StandUp();
         }
 
-        // ターン交代
+        // 1. ターン交代（P1 ⇆ P2）
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
 
+        // 2. 予約アイテムの発動＋新アイテムのスポーン
         if (ItemManager.Instance != null)
         {
-            ItemManager.Instance.OnTurnStart(); // 予約されたアイテム効果の発動 ＋ 新しいアイテムのスポーン
+            ItemManager.Instance.OnTurnStart();
         }
 
-        // 風処理 ターン交代に合わせて残りターン数を進める（ここで発動判定）
+        // 3. 風処理（残りターンのカウントダウン等）
         if (WindManager.instance != null)
         {
             WindManager.instance.OnTurnAdvance();
         }
 
-        // 暗闇演出の適用チェック
+        // 4. 暗闇演出の適用チェック（暗闇は相手へのデバフなので交代後プレイヤーに適用）
         bool isCurrentPlayerBlinded = (currentPlayer == 1) ? p1IsBlinded : p2IsBlinded;
         if (DarknessEffect.instance != null)
         {
@@ -371,18 +370,26 @@ int lastDownedNumber = 0;
         if (currentPlayer == 1) p1IsBlinded = false;
         else p2IsBlinded = false;
 
-        // 次のプレイヤーが保持しているアイテムをモルックに適用 
+        // ★ 5. 【修正箇所】交代後のプレイヤー（currentPlayer）が保持しているアイテムを適用
         MolkkyType currentPlayersItem = (currentPlayer == 1) ? p1NextItem : p2NextItem;
+
         if (molkkyItemHandler != null)
         {
             molkkyItemHandler.SetMolkkyType(currentPlayersItem);
         }
 
-        // 使用したアイテムストックをNormalリセット（1回使い切りにする場合）
-        if (currentPlayer == 1) p1NextItem = MolkkyType.Normal;
-        else p2NextItem = MolkkyType.Normal;
+        // ★ 6. 【修正箇所】適用した「自分のストック」のみをリセットする
+        if (currentPlayer == 1)
+        {
+            p1NextItem = MolkkyType.Normal;
+        }
+        else
+        {
+            p2NextItem = MolkkyType.Normal;
+        }
 
-     if (!isGameFinished)
+        // 7. UI表示の更新
+        if (!isGameFinished)
         {
             UpdateScoreUI();
 
@@ -393,7 +400,6 @@ int lastDownedNumber = 0;
         }
         else
         {
-            // 勝利時は「NEXT TURN」ボタンを出さないように隠す
             if (nextTurnButtonUI != null)
             {
                 nextTurnButtonUI.SetActive(false);
@@ -401,27 +407,19 @@ int lastDownedNumber = 0;
         }
     }
 
-    // =========================================================
-    // ★【追加】勝利画面用「Next（次へ）」ボタンを押した時の処理
-    // =========================================================
     public void OnNextButtonPressed()
     {
-        // 1. 勝利画面用の「次へ」ボタンを消す
         if (nextButtonUI != null)
         {
             nextButtonUI.SetActive(false);
         }
 
-        // 2. 「もう一度遊ぶ」「タイトルへ」の2つのボタン（resultUI）を表示する
         if (resultUI != null)
         {
             resultUI.SetActive(true);
         }
     }
 
-    // =========================================================
-    // ★【変更】スコア表示テキスト（日本語化・リッチテキスト化）
-    // =========================================================
     void UpdateScoreUI()
     {
         if (scoreText != null)
@@ -442,22 +440,12 @@ int lastDownedNumber = 0;
         if (startMenuUI != null) startMenuUI.SetActive(false);
     }
 
-    // =========================================================
-    // ★【追加】「もう一度遊ぶ」「タイトルへ」ボタン用のイベント関数
-    // =========================================================
-
-    /// <summary>
-    /// 「もう一度遊ぶ（リトライ）」ボタンが押されたとき
-    /// </summary>
     public void OnRematchButtonPressed()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
 
-    /// <summary>
-    /// 「タイトルに戻る」ボタンが押されたとき
-    /// </summary>
     public void OnTitleButtonPressed()
     {
         SceneManager.LoadScene(titleSceneName);

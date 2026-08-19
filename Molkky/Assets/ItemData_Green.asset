@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ItemData_Green
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: 
-  itemName: "\u98A8\u8D77\u3053\u3057"
+  itemName: "\u58C1"
   itemColor: {r: 0.2577222, g: 0.9009434, b: 0.19548771, a: 1}
   description: 
   effectType: 0

@@ -16,4 +16,4 @@ MonoBehaviour:
   itemName: "\u30ED\u30B1\u30C3\u30C8"
   itemColor: {r: 0.9198113, g: 0.14208993, b: 0.12582327, a: 1}
   description: 
-  effectType: 0
+  effectType: 6
