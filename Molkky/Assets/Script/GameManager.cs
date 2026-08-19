@@ -178,6 +178,12 @@ public class GameManager : MonoBehaviour
             if (s != null) s.StopSwaying();
         }
 
+        // ★飛行中に何にも当たっていないうちは「停止した」と判定させないためのフラグをリセット
+        if (molkkyItemHandler != null)
+        {
+            molkkyItemHandler.hasLanded = false;
+        }
+
         MolkkyType launchedType = (molkkyItemHandler != null) ? molkkyItemHandler.currentType : MolkkyType.Normal;
 
         // ★ロケット・ボムは投げている最中に速度判定で誤って戻らないよう、
@@ -249,7 +255,11 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(BoundaryReturnRoutine());
             }
 
-            if (molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
+            // ★何かに一度も着地/衝突していない（＝まだ飛行中の可能性がある）うちは、
+            //   一瞬の速度低下（放物線の頂点付近など）で誤って「停止した」と判定しない
+            bool hasLanded = molkkyItemHandler == null || molkkyItemHandler.hasLanded;
+
+            if (hasLanded && molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
             {
                 lowSpeedTimer += Time.deltaTime;
                 if (lowSpeedTimer >= lowSpeedRequiredDuration)

@@ -5,6 +5,9 @@ public class SpawnedItem : MonoBehaviour
     [SerializeField] private int remainingTurns = 2;
     [SerializeField] private MeshRenderer meshRenderer;
 
+    [Header("回転演出")]
+    [SerializeField] private float spinSpeed = 90f; // その場で回転する速さ（度/秒、Y軸）
+
     public ItemData CurrentItemData { get; private set; }
     private bool isCollected = false;
 
@@ -17,7 +20,34 @@ public class SpawnedItem : MonoBehaviour
             meshRenderer = GetComponentInChildren<MeshRenderer>();
         }
 
-        if (meshRenderer != null && data != null)
+        if (data != null && data.visualModelPrefab != null)
+        {
+            // ★専用モデルが指定されている場合：デフォルトの色付き球は隠し、代わりにモデルを表示する
+            if (meshRenderer != null)
+            {
+                meshRenderer.enabled = false;
+            }
+
+            // 元の土台はコイン状に潰すため(1, 0.05, 1)のスケールになっており、
+            // そのままモデルを子にすると平べったく潰れてしまうため均一スケールに戻す
+            transform.localScale = Vector3.one;
+
+            GameObject visual = Instantiate(data.visualModelPrefab, transform);
+            visual.transform.localPosition = Vector3.zero;
+            visual.transform.localRotation = Quaternion.Euler(data.visualModelRotationOffset);
+            visual.transform.localScale *= data.visualModelScale;
+
+            // フィールド上の表示物には不要な、当たり判定や専用の挙動スクリプトは取り除く
+            foreach (Collider col in visual.GetComponentsInChildren<Collider>())
+            {
+                Destroy(col);
+            }
+            foreach (BombImpact bomb in visual.GetComponentsInChildren<BombImpact>())
+            {
+                Destroy(bomb);
+            }
+        }
+        else if (meshRenderer != null && data != null)
         {
             Material mat = meshRenderer.material;
             mat.color = data.itemColor;
@@ -31,12 +61,9 @@ public class SpawnedItem : MonoBehaviour
 
     private void Update()
     {
-        if (Camera.main != null)
-        {
-            transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward,
-                             Camera.main.transform.rotation * Vector3.up);
-            transform.Rotate(90f, 0f, 0f, Space.Self);
-        }
+        // ★カメラ方向への追従（ビルボード）はやめて、その場でY軸回転させる
+        //   3Dモデル使用時にビルボードだと横から見た薄い面しか映らないため
+        transform.Rotate(0f, spinSpeed * Time.deltaTime, 0f, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)

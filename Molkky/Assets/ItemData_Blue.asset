@@ -15,5 +15,7 @@ MonoBehaviour:
   itemId: 
   itemName: "\u7206\u767A"
   itemColor: {r: 0, g: 0.28506327, b: 1, a: 1}
-  description: 
+  description:
   effectType: 5
+  visualModelPrefab: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
+  visualModelScale: 0.5

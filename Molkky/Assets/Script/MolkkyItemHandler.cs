@@ -18,6 +18,9 @@ public class MolkkyItemHandler : MonoBehaviour
 
     public MolkkyType currentType = MolkkyType.Normal;
 
+    // 投げてから一度でも何かに衝突したか（飛行中の誤停止判定を防ぐために使用）
+    public bool hasLanded = false;
+
     // モルックのタイプを変更する関数
     public void SetMolkkyType(MolkkyType type)
     {
@@ -32,6 +35,8 @@ public class MolkkyItemHandler : MonoBehaviour
     // このGameObject（Rigidbody本体）が何かに衝突した瞬間に呼ばれる
     private void OnCollisionEnter(Collision collision)
     {
+        hasLanded = true;
+
         if (currentType == MolkkyType.Bomb && bombModel != null)
         {
             BombImpact bomb = bombModel.GetComponent<BombImpact>();

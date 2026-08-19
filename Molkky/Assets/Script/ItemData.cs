@@ -23,4 +23,12 @@ public class ItemData : ScriptableObject
     [TextArea] public string description; // 説明文
 
     public ItemEffectType effectType;     // ★ 追加: ItemManagerとの連携に必要な効果識別子
+
+    [Header("見た目上書き（任意）")]
+    [Tooltip("設定すると、色付きの球の代わりにこのモデルをフィールド上のアイテムとして表示する")]
+    public GameObject visualModelPrefab;
+    [Tooltip("上記モデルの元のサイズに掛ける倍率（フィールド上の表示サイズ調整用）")]
+    public float visualModelScale = 1f;
+    [Tooltip("上記モデルの傾き（オイラー角）。Y軸回転はその場回転の演出と別に、この角度を保ったまま回る")]
+    public Vector3 visualModelRotationOffset = Vector3.zero;
 }

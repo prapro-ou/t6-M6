@@ -8,7 +8,9 @@ public class ItemManager : MonoBehaviour
 
     [Header("アイテムスポーン設定")]
     [SerializeField] private GameObject itemPrefab; // 生成するPrefab (SpawnedItemが付いたもの)
-    [SerializeField] private BoxCollider spawnAreaCollider; // 長方形のスポーンエリア
+    [SerializeField] private CircleDrawer itemSpawnArea; // ★追加: 扇形のスポーンエリア（設定されていればこちらを優先）
+    [SerializeField] private float itemSpawnHeight = 0.1f; // ★追加: 扇形エリア使用時のスポーン高さ
+    [SerializeField] private BoxCollider spawnAreaCollider; // 長方形のスポーンエリア（itemSpawnArea未設定時のフォールバック）
     [SerializeField] private ItemData[] availableItems; // 5つのItemData
 
     [Header("UI参照")]
@@ -61,9 +63,14 @@ public class ItemManager : MonoBehaviour
             return;
         }
 
-        // 2. スポーン位置の計算（BoxColliderの長方形エリア内）
+        // 2. スポーン位置の計算（扇形エリア優先、なければ従来の長方形エリア）
         Vector3 spawnPosition;
-        if (spawnAreaCollider != null)
+        if (itemSpawnArea != null)
+        {
+            spawnPosition = itemSpawnArea.GetRandomPointInside();
+            spawnPosition.y = itemSpawnHeight;
+        }
+        else if (spawnAreaCollider != null)
         {
             Bounds bounds = spawnAreaCollider.bounds;
             float randomX = Random.Range(bounds.min.x, bounds.max.x);
@@ -74,7 +81,7 @@ public class ItemManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[ItemManager] SpawnAreaColliderが設定されていないため、デフォルト位置にスポーンします。");
+            Debug.LogWarning("[ItemManager] ItemSpawnArea / SpawnAreaColliderのどちらも設定されていないため、デフォルト位置にスポーンします。");
             spawnPosition = new Vector3(0, 0.1f, 2f);
         }
 

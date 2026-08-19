@@ -86,6 +86,20 @@ public class CircleDrawer : MonoBehaviour
         return Mathf.Abs(angle) <= fanAngle * 0.5f;
     }
 
+    // 💡 この扇形の範囲内にあるランダムなワールド座標を1点返す（アイテムのスポーン等で使用）
+    //    面積が均一になるよう、半径は二乗の範囲からサンプリングする
+    public Vector3 GetRandomPointInside()
+    {
+        float halfAngleRad = fanAngle * 0.5f * Mathf.Deg2Rad;
+        float angle = Random.Range(-halfAngleRad, halfAngleRad);
+
+        float minR2 = innerRadius * innerRadius;
+        float maxR2 = radius * radius;
+        float r = Mathf.Sqrt(Random.Range(minR2, maxR2));
+
+        return transform.TransformPoint(PointAt(r, angle));
+    }
+
     // インスペクター上で数値を変更したときにリアルタイム更新
     void OnValidate()
     {
