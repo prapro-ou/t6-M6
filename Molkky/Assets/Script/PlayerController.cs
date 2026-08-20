@@ -18,6 +18,13 @@ public class PlayerController : MonoBehaviour
     [Header("回転スピードの設定")]
     public float rotateSpeed = 50f;
 
+    [Header("★縦回転（ピッチ）調整設定")]
+    public Slider spinPowerSlider;       // ★回転用スライダーUI
+    public Image spinFillImage;          // ★回転ゲージのFill画像（任意）
+    public float minSpinTorque = 10f;    // ★最小回転力
+    public float maxSpinTorque = 100f;   // ★最大回転力
+    public float spinChargeSpeed = 45f;  // ★回転ゲージのチャージスピード
+
     [Header("効果音")]
     public AudioSource audioSource;
     public AudioClip throwSound;        // 通常モルック
@@ -28,16 +35,19 @@ public class PlayerController : MonoBehaviour
     public Vector3 customDefaultLocalRotation = new Vector3(0f, 0f, 0f);
 
     [Header("★モルックの角度（縦横）設定")]
-    public Vector3 verticalRotation = new Vector3(0f, 0f, 0f);     // 縦向きの角度
-    public Vector3 horizontalRotation = new Vector3(0f, 0f, 90f);  // 横向きの角度（モデルに合わせて変更可）
-    private bool isHorizontal = false;
+    public Vector3 verticalRotation = new Vector3(0f, 0f, 0f);     // 縦向き時の角度
+    public Vector3 horizontalRotation = new Vector3(0f, 0f, 90f);  // 横向き時の角度
+    private bool isHorizontal = true; // ★ 初期値：横向き(true)
 
     private float currentPower = 0f;
     private bool isChargingUp = true;
 
+    private float currentSpinPower = 0f;       // 現在の回転パワー
+    private bool isSpinChargingUp = true;      // 回転チャージの方向
+
     // 💡 状態管理フラグ
-    public bool isCanControl = true; // 操作可能かどうか（投げた瞬間に false にする）
-    private enum State { Aiming, SettingPower, Launched }
+    public bool isCanControl = true;
+    private enum State { Aiming, SettingPower, SettingSpin, Launched }
     private State currentState = State.Aiming;
 
     private float inputX = 0f;
@@ -52,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 一時的に追加
+        // デバッグキー
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             GameManager.instance.GetItem(MolkkyType.Wind);
@@ -62,9 +72,8 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.GetItem(MolkkyType.Darkness);
         }
-        // ここまで
 
-        // 💡 ★最優先ガード1：投げた後（isCanControl == false）は Update 内の処理を完全遮断！
+        // ガード1：投げた後は処理停止
         if (!isCanControl || currentState == State.Launched)
         {
             return;
@@ -97,23 +106,26 @@ public class PlayerController : MonoBehaviour
         // 1. 狙い（エイム）状態
         if (currentState == State.Aiming)
         {
-            // 💡 特殊アイテム（ロケットや爆弾など）がついているか判定
-            bool isRocket = GetComponentInChildren<Rocket>() != null;
-            bool isBomb = GetComponentInChildren<BombImpact>() != null;
-            bool isNormalMolkky = !isRocket && !isBomb; // 通常モルックかどうか
+            bool isRocket = molkkyRb.GetComponentInChildren<Rocket>() != null;
+            bool isBomb = molkkyRb.GetComponentInChildren<BombImpact>() != null;
+            bool isNormalMolkky = !isRocket && !isBomb;
 
-            // 💡 追加：通常モルックの時だけ、エイム中にRキーで縦横切り替え
+            // 💡 Rキーで縦横切り替え
             if (isNormalMolkky && Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
             {
                 isHorizontal = !isHorizontal;
                 Vector3 targetRot = isHorizontal ? horizontalRotation : verticalRotation;
                 molkkyRb.transform.localRotation = Quaternion.Euler(targetRot);
+
+                // 横向き(isHorizontal == true)なら隠す / 縦向き(false)なら表示する
+                if (spinPowerSlider != null)
+                {
+                    spinPowerSlider.gameObject.SetActive(!isHorizontal);
+                }
             }
 
-            // 左右（Y軸回転）は通常通り操作可能
             currentRotationY += inputX * rotateSpeed * Time.deltaTime;
             
-            // ★変更：ロケット時は上下角度を 0f（水平）に固定、通常時はW/Sキーで操作
             if (isRocket)
             {
                 currentRotationX = 0f;
@@ -128,14 +140,13 @@ public class PlayerController : MonoBehaviour
 
             transform.localRotation = Quaternion.Euler(currentRotationX, currentRotationY, 0f);
 
-            // スペースキーが押されたら「パワー調整」へ移行
+            // スペースキーでパワー調整へ
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 currentState = State.SettingPower;
                 currentPower = 0f;
                 isChargingUp = true;
 
-                // UIのフォーカスを外す（スペースキーがUIに連動するのを防止）
                 if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
             }
         }
@@ -175,7 +186,63 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // スペースキーが押されたら「発射」
+            // スペースキー押下時
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                bool isRocket = molkkyRb.GetComponentInChildren<Rocket>() != null;
+                bool isBomb = molkkyRb.GetComponentInChildren<BombImpact>() != null;
+                bool isNormalMolkky = !isRocket && !isBomb;
+
+                // 縦向き(!isHorizontal)のときのみ回転設定へ移行
+                if (isNormalMolkky && !isHorizontal && spinPowerSlider != null)
+                {
+                    currentState = State.SettingSpin;
+                    currentSpinPower = 0f;
+                    isSpinChargingUp = true;
+                    spinPowerSlider.gameObject.SetActive(true);
+                }
+                else
+                {
+                    // 横向き・特殊アイテム時は回転ゲージを消して直接発射
+                    if (spinPowerSlider != null) spinPowerSlider.gameObject.SetActive(false);
+                    LaunchMolkky();
+                }
+            }
+        }
+        // 3. 縦回転パワー調整状態
+        else if (currentState == State.SettingSpin)
+        {
+            if (isSpinChargingUp)
+            {
+                currentSpinPower += spinChargeSpeed * Time.deltaTime;
+                if (currentSpinPower >= maxSpinTorque)
+                {
+                    currentSpinPower = maxSpinTorque;
+                    isSpinChargingUp = false;
+                }
+            }
+            else
+            {
+                currentSpinPower -= spinChargeSpeed * Time.deltaTime;
+                if (currentSpinPower <= 0f)
+                {
+                    currentSpinPower = 0f;
+                    isSpinChargingUp = true;
+                }
+            }
+
+            if (spinPowerSlider != null)
+            {
+                float fillRatio = currentSpinPower / maxSpinTorque;
+                spinPowerSlider.value = fillRatio;
+
+                if (spinFillImage != null)
+                {
+                    spinFillImage.fillAmount = fillRatio;
+                }
+            }
+
+            // スペースキーで発射
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 LaunchMolkky();
@@ -194,41 +261,52 @@ public class PlayerController : MonoBehaviour
 
     void LaunchMolkky()
     {
-
         bool isRocket = molkkyRb.GetComponentInChildren<Rocket>() != null;
+        bool isBomb = molkkyRb.GetComponentInChildren<BombImpact>() != null;
+        bool isNormalMolkky = !isRocket && !isBomb;
+
         isCanControl = false;
         currentState = State.Launched;
+
+        if (spinPowerSlider != null)
+        {
+            spinPowerSlider.gameObject.SetActive(false);
+        }
 
         if (EventSystem.current != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
         }
 
-        // 親子関係を解除
         molkkyRb.transform.SetParent(null);
         molkkyRb.isKinematic = false;
 
-        // 💡 1. 打ち出し角度を調整 (Y方向を 0.3f から 0.45f〜0.5f に増やして綺麗な放物線にする)
         Vector3 throwDirection = (transform.forward + Vector3.up * 0.15f).normalized;
-
-        // 💡 2. 発射の力をさらに底上げ（currentPower に 1.5倍〜2倍などの倍率をかけることも可能です）
-        float finalPower = currentPower * 1.5f; // 必要に応じて倍率（1.5fなど）を調整
+        float finalPower = currentPower * 1.5f;
 
         molkkyRb.AddForce(throwDirection * finalPower, ForceMode.Impulse);
+
+        // 縦向き(!isHorizontal)の時だけ縦回転を加える
+        if (isNormalMolkky && !isHorizontal)
+        {
+            float spinRatio = (maxSpinTorque > 0f) ? currentSpinPower / maxSpinTorque : 0f;
+            float finalSpinTorque = Mathf.Lerp(minSpinTorque, maxSpinTorque, spinRatio);
+
+            molkkyRb.AddTorque(transform.right * finalSpinTorque, ForceMode.Impulse);
+        }
 
         if (audioSource != null)
         {
             if (isRocket && rocketThrowSound != null)
             {
-                // ミサイルの音
                 audioSource.PlayOneShot(rocketThrowSound);
             }
             else if (!isRocket && throwSound != null)
             {
-                // 通常モルックの音
                 audioSource.PlayOneShot(throwSound);
             }
         }
+
         float powerRatio = (maxForce > 0f) ? currentPower / maxForce : 0f;
 
         if (gameManager != null)
@@ -245,15 +323,13 @@ public class PlayerController : MonoBehaviour
     {
         molkkyRb.gameObject.SetActive(false);
 
-        // 💡 縦横フラグを初期化（縦に戻す）
-        isHorizontal = false;
+        // ★ 初期状態：横向き(isHorizontal = true)
+        isHorizontal = true;
 
-        // 発射台の子に戻す
         molkkyRb.transform.SetParent(transform);
 
-        // 位置・角度リセット
         molkkyRb.transform.localPosition = customDefaultLocalPosition;
-        molkkyRb.transform.localRotation = Quaternion.Euler(verticalRotation);
+        molkkyRb.transform.localRotation = Quaternion.Euler(horizontalRotation); // 横向き角度を適用
 
         transform.localRotation = Quaternion.identity;
         currentRotationX = 0f;
@@ -262,13 +338,19 @@ public class PlayerController : MonoBehaviour
         molkkyRb.isKinematic = true;
         molkkyRb.gameObject.SetActive(true);
 
-        // 💡 状態をリセットして操作可能（true）に戻す
         isCanControl = true;
         currentState = State.Aiming;
 
         if (powerSlider != null)
         {
             powerSlider.value = 0f;
+        }
+
+        // ★ 横向きスタートなので回転ゲージは非表示
+        if (spinPowerSlider != null)
+        {
+            spinPowerSlider.value = 0f;
+            spinPowerSlider.gameObject.SetActive(false);
         }
     }
 }

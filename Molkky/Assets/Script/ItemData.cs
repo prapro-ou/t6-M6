@@ -36,4 +36,8 @@ public class ItemData : ScriptableObject
     public float visualModelScale = 1f;
     [Tooltip("上記モデルの傾き（オイラー角）。Y軸回転はその場回転の演出と別に、この角度を保ったまま回る")]
     public Vector3 visualModelRotationOffset = Vector3.zero;
+
+    [Header("出現エフェクト（任意）")]
+    [Tooltip("設定すると、アイテムがフィールドに出現した瞬間にこのパーティクルエフェクトを再生する。パーティクル側のStop ActionをDestroyにしておくと再生後に自動で消える")]
+    public GameObject spawnEffectPrefab;
 }

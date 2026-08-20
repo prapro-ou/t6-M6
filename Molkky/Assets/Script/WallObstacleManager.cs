@@ -45,9 +45,32 @@ public class WallObstacleManager : MonoBehaviour
         int count = 4;
         activeWalls = new GameObject[count];
 
+        // ★BoxCollider前提だと、Bushのように別の形状のColliderを使う壁プレハブでは
+        //   スケール(=見た目のサイズ)を無視した既定値(1,1,1)にフォールバックしてしまうため、
+        //   BoxColliderが無ければRendererのバウンズから見た目のサイズを求める。
+        //   インポートしたモデルなどメッシュが子オブジェクトにある構成にも対応できるよう、
+        //   子を含めた全Rendererのバウンズを合算する
         Vector3 checkSize = Vector3.one;
-        if (movingWallPrefab != null && movingWallPrefab.TryGetComponent<BoxCollider>(out var box))
-            checkSize = Vector3.Scale(box.size, movingWallPrefab.transform.localScale) * 0.6f;
+        if (movingWallPrefab != null)
+        {
+            if (movingWallPrefab.TryGetComponent<BoxCollider>(out var box))
+            {
+                checkSize = Vector3.Scale(box.size, movingWallPrefab.transform.localScale) * 0.6f;
+            }
+            else
+            {
+                Renderer[] renderers = movingWallPrefab.GetComponentsInChildren<Renderer>();
+                if (renderers.Length > 0)
+                {
+                    Bounds bounds = renderers[0].bounds;
+                    for (int i = 1; i < renderers.Length; i++)
+                    {
+                        bounds.Encapsulate(renderers[i].bounds);
+                    }
+                    checkSize = bounds.size * 0.6f;
+                }
+            }
+        }
 
         for (int i = 0; i < count; i++)
         {

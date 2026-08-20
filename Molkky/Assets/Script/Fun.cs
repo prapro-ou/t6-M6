@@ -10,6 +10,9 @@ public class FanWind : MonoBehaviour
     public float windRange = 20f;
     public float windAngle = 30f;
 
+    [Tooltip("演出専用に配置する場合など、風の力を実際には加えたくない時はfalseにする")]
+    public bool applyWindForce = true;
+
     private void Update()
     {
         // 羽を回転
@@ -23,6 +26,8 @@ public class FanWind : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!applyWindForce) return;
+
         Collider[] hits = Physics.OverlapSphere(
             transform.position,
             windRange

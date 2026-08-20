@@ -76,6 +76,12 @@ public class SpawnedItem : MonoBehaviour
                 mat.SetColor("_BaseColor", data.itemColor);
             }
         }
+
+        // ★出現エフェクト：アイテム本体には追従させず、その場で再生させたいので子にはしない
+        if (data != null && data.spawnEffectPrefab != null)
+        {
+            Instantiate(data.spawnEffectPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     // 💡 描画結果のバウンズ（見た目上の底面）を調べて、地面に埋まらないよう持ち上げる

@@ -111,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2458855617244471258, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2458855617244471258, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -165,9 +165,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4541465936364565824, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8862745
+      objectReference: {fileID: 0}
     - target: {fileID: 4685441694535198932, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
       propertyPath: m_Name
       value: RematchButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910875550232934075, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.5239409
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910875550232934075, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.8179957
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910875550232934075, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.9575472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910875550232934075, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.6516999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910875550232934075, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.8549628
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910875550232934075, guid: e8f276e2c20cd3743a021d4986c93c1a, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.9528302
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -213,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1159113223513861705, guid: c602726a1873b0b48920072e5e66ae85, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1159113223513861705, guid: c602726a1873b0b48920072e5e66ae85, type: 3}
       propertyPath: m_SizeDelta.y
