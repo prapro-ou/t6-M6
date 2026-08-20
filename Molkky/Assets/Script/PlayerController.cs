@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     [Header("回転スピードの設定")]
     public float rotateSpeed = 50f;
 
+    [Header("効果音")]
+    public AudioSource audioSource;
+    public AudioClip throwSound;        // 通常モルック
+    public AudioClip rocketThrowSound;  // ミサイル
+
     [Header("★モルックの手元の位置（手動設定用）")]
     public Vector3 customDefaultLocalPosition = new Vector3(0f, 0f, 0f);
     public Vector3 customDefaultLocalRotation = new Vector3(0f, 0f, 0f);
@@ -189,6 +194,8 @@ public class PlayerController : MonoBehaviour
 
     void LaunchMolkky()
     {
+
+        bool isRocket = molkkyRb.GetComponentInChildren<Rocket>() != null;
         isCanControl = false;
         currentState = State.Launched;
 
@@ -209,13 +216,28 @@ public class PlayerController : MonoBehaviour
 
         molkkyRb.AddForce(throwDirection * finalPower, ForceMode.Impulse);
 
+        if (audioSource != null)
+        {
+            if (isRocket && rocketThrowSound != null)
+            {
+                // ミサイルの音
+                audioSource.PlayOneShot(rocketThrowSound);
+            }
+            else if (!isRocket && throwSound != null)
+            {
+                // 通常モルックの音
+                audioSource.PlayOneShot(throwSound);
+            }
+        }
+        float powerRatio = (maxForce > 0f) ? currentPower / maxForce : 0f;
+
         if (gameManager != null)
         {
-            gameManager.OnMolkkyLaunched();
+            gameManager.OnMolkkyLaunched(powerRatio);
         }
         else
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().OnMolkkyLaunched();
+            GameObject.Find("GameManager").GetComponent<GameManager>().OnMolkkyLaunched(powerRatio);
         }
     }
 

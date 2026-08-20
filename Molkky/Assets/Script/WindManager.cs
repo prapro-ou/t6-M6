@@ -20,6 +20,10 @@ public class WindManager : MonoBehaviour
     [Header("パラメータ")]
     public float windForce = 50f;       // 風の強さ
 
+    [Header("風の効果音")]
+    [SerializeField] private AudioClip windSound;
+    [SerializeField] private AudioSource windAudioSource;
+
     private WindDirection currentDirection = WindDirection.None;
     // 2: 予約中(自分の番), 1: 風発動中(相手の番), 0: なし
     private int remainingTurns = 0;     
@@ -90,11 +94,22 @@ public class WindManager : MonoBehaviour
             if (remainingTurns == 1)
             {
                 Debug.Log($"[風発動！] 相手のターン中、{currentDirection} の風が吹いています");
+                if (windAudioSource != null && windSound != null)
+                {
+                    windAudioSource.clip = windSound;
+                    windAudioSource.loop = true;
+                    windAudioSource.Play();
+                }
             }
             else if (remainingTurns <= 0)
             {
                 currentDirection = WindDirection.None;
                 Debug.Log("[風停止] 風が止みました");
+
+                if (windAudioSource != null)
+                {
+                    windAudioSource.Stop();
+                }
             }
         }
     }

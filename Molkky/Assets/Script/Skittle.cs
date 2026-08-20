@@ -11,6 +11,10 @@ public class Skittle : MonoBehaviour
     [Tooltip("立ち上がったときに数字が正面を向くよう、必要に応じて90, 180, 270などに変更してください")]
     public float targetYRotation = 0f;
 
+    [Header("効果音")]
+    public AudioClip hitSound;
+
+
     [Header("特殊ピン設定（左右に揺れる）")]
     [Tooltip("ONにすると、立て直された後モルックが投げられるまで左右に揺れ続けます")]
     public bool isMovingPin = false;
@@ -256,5 +260,12 @@ public class Skittle : MonoBehaviour
         rb.isKinematic = false;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+    }
+        void OnCollisionEnter(Collision collision)
+    {
+        if (hitSound != null)
+        {
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        }
     }
 }

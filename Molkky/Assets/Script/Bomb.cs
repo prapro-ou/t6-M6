@@ -11,6 +11,12 @@ public class BombImpact : MonoBehaviour
     [Header("爆発エフェクト")]
     [SerializeField] private GameObject explosionEffectPrefab;
 
+
+    [Header("爆発音")]
+    [SerializeField] private AudioSource explosionAudioSource;
+    [SerializeField] private AudioClip explosionSound;
+
+
     private bool exploded = false;
     private Renderer targetRenderer;
     private Color originalColor;
@@ -70,6 +76,16 @@ public class BombImpact : MonoBehaviour
         }
 
         Debug.Log("[Bomb] 爆発！");
+        if (explosionSound != null)
+        {
+            Debug.Log("[Bomb] 爆発音を再生します！");
+            AudioSource.PlayClipAtPoint(
+                explosionSound,
+                transform.position,
+                5f
+            );
+        }
+        
         OnExploded?.Invoke();
 
         // ★1. 爆発の瞬間にカメラシェイクを呼び出す

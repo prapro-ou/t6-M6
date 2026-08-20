@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skittle
   skittleNumber: 0
   targetYRotation: 0
-  maxDistanceFromThrowPoint: 30
+  hitSound: {fileID: 8300000, guid: 4c31af266272aed4f87732f0141695aa, type: 3}
   isMovingPin: 0
   moveSpeed: 2
   moveRange: 0.5

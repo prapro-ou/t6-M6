@@ -46,6 +46,12 @@ public class SpawnedItem : MonoBehaviour
             {
                 Destroy(bomb);
             }
+            // FanWindはColliderを介さずOverlapSphereで周囲のRigidbodyに直接風力を加えるため、
+            // Colliderを消しただけでは効果が残ってしまう
+            foreach (FanWind fan in visual.GetComponentsInChildren<FanWind>())
+            {
+                Destroy(fan);
+            }
 
             // ロケットの噴射エフェクトなど、モデルに付属するパーティクルはPlay On Awakeで
             // 自動再生されてしまうため、フィールドに置いてあるだけの間は出ないよう止めておく

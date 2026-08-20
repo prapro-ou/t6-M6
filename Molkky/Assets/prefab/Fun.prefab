@@ -3857,3 +3857,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   rotateSpeed: 150
+  windForce: 10
+  windRange: 20
+  windAngle: 30

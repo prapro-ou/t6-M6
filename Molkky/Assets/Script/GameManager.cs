@@ -20,6 +20,17 @@ public class GameManager : MonoBehaviour
     [Header("UI設定")]
     public TextMeshProUGUI scoreText;
 
+    /// <summary>
+    /// 効果音
+    /// </summary>
+    [Header("効果音")]
+    public AudioSource audioSource;
+    public AudioClip startSound;        // 開始
+    public AudioClip turnEndSound;      // ターン終了
+    public AudioClip itemSound;         // アイテム取得
+    public AudioClip winSound;          // 勝利
+    public AudioClip buttonSound;       // ボタン
+
     [Header("ターン交代UI")]
     public GameObject nextTurnButtonUI;
 
@@ -65,6 +76,12 @@ public class GameManager : MonoBehaviour
     private bool isCheckingTurnEnd = false;
     private bool canCheckStop = false;
 
+    // ★前の投球分の戻りタイマー系コルーチンが止められないまま残り、次のプレイヤーの番に
+    //   なってから遅れて発火してターンを勝手に進めてしまう不具合の対策として参照を保持する
+    private Coroutine safetyTimeoutCoroutine;
+    private Coroutine boundaryReturnCoroutine;
+    private Coroutine specialReturnCoroutine; // ロケット・ボムの戻りルーチン
+
     // 💡 「停止した」と判定するために低速状態を継続させる必要がある秒数
     [SerializeField] private float lowSpeedRequiredDuration = 0.3f;
     private float lowSpeedTimer = 0f;
@@ -83,6 +100,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float boundaryReturnDelay = 4f;
     private bool isBoundaryReturnScheduled = false;
 
+    [Header("パワーゲージに応じた最低待機時間")]
+    // 弱い投球だとすぐ低速判定になり早く戻りすぎるため、パワーゲージの強さに応じて
+    // 「最低でもこの秒数が経つまでは手元に戻らない」下限を設ける
+    [SerializeField] private float minReturnTimeAtMinPower = 3f; // パワー0（最弱）の時の最低待機秒数
+    [SerializeField] private float minReturnTimeAtMaxPower = 6f;   // パワー最大の時の最低待機秒数
+    private float currentMinReturnTime = 0f;
+    private float launchElapsedTime = 0f;
+
     public GameObject startMenuUI;
     public static bool isGameStarted = false;
 
@@ -96,6 +121,7 @@ public class GameManager : MonoBehaviour
     {
         isGameFinished = false;
         isGameStarted = true;
+        audioSource.PlayOneShot(startSound);
         currentPlayer = 1;
         p1Score = 0; p1Misses = 0;
         p2Score = 0; p2Misses = 0;
@@ -126,8 +152,10 @@ public class GameManager : MonoBehaviour
     // --- 【2. 変更】アイテムを獲得した時に呼ばれる関数 ---
     public void GetItem(MolkkyType item)
     {
+
+        PlaySound(itemSound);
         //========================================
-        // ここから変更した！！菊地
+        // ここから変更した！！
         //========================================
         // ★風アイテム処理：選択画面はモルックが手元に戻ったタイミングで開く（TurnEndRoutine側）
         if (item == MolkkyType.Wind)
@@ -138,7 +166,7 @@ public class GameManager : MonoBehaviour
         }
 
         //========================================
-        // ここから変更した！！菊地
+        // ここから変更した！！
         //========================================
 
         // 暗闇アイテムの場合は相手にデバフを付与
@@ -182,8 +210,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnMolkkyLaunched()
+    public void OnMolkkyLaunched(float powerRatio = 1f)
     {
+        // ★前の投球の戻りタイマー系コルーチンが万一まだ残っていたら、ここで確実に止めておく。
+        //   放置すると次のプレイヤーが投げている最中や投げる前に遅れて発火し、
+        //   勝手にターンが進んでしまう不具合の原因になる
+        CancelPendingReturnCoroutines();
+
+        currentMinReturnTime = Mathf.Lerp(minReturnTimeAtMinPower, minReturnTimeAtMaxPower, Mathf.Clamp01(powerRatio));
+        launchElapsedTime = 0f;
+
         foreach (Skittle s in skittles)
         {
             if (s != null) s.StopSwaying();
@@ -210,7 +246,7 @@ public class GameManager : MonoBehaviour
         }
         else if (launchedType == MolkkyType.Rocket)
         {
-            StartCoroutine(RocketReturnRoutine());
+            specialReturnCoroutine = StartCoroutine(RocketReturnRoutine());
         }
         else
         {
@@ -237,7 +273,7 @@ public class GameManager : MonoBehaviour
             BombImpact bomb = molkkyItemHandler.bombModel.GetComponent<BombImpact>();
             if (bomb != null) bomb.OnExploded -= HandleBombExploded;
         }
-        StartCoroutine(BombReturnRoutine());
+        specialReturnCoroutine = StartCoroutine(BombReturnRoutine());
     }
 
     IEnumerator BombReturnRoutine()
@@ -280,6 +316,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (canCheckStop || isCheckingTurnEnd) // ★戻り待ち中も含め、投げてからの経過時間として数える
+        {
+            launchElapsedTime += Time.deltaTime;
+        }
+
         if (canCheckStop && !isCheckingTurnEnd)
         {
             if (molkkyRb.transform.position.y < -10f)
@@ -292,7 +333,7 @@ public class GameManager : MonoBehaviour
                 !CircleDrawer.Boundary.IsInside(molkkyRb.transform.position))
             {
                 isBoundaryReturnScheduled = true;
-                StartCoroutine(BoundaryReturnRoutine());
+                boundaryReturnCoroutine = StartCoroutine(BoundaryReturnRoutine());
             }
 
             // ★地面やスキットルに接触していない（＝空中に浮いている）うちや、着地した直後（弱い投球で
@@ -300,7 +341,10 @@ public class GameManager : MonoBehaviour
             bool pastLandingGracePeriod = molkkyItemHandler == null ||
                 molkkyItemHandler.ContinuousGroundedDuration >= minTimeAfterLanding;
 
-            if (pastLandingGracePeriod && molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
+            // ★パワーゲージに応じた最低待機時間が経過するまでは、低速判定による「停止した」扱いにしない
+            bool pastMinReturnTime = launchElapsedTime >= currentMinReturnTime;
+
+            if (pastLandingGracePeriod && pastMinReturnTime && molkkyRb.linearVelocity.magnitude < 0.1f && !AreSkittlesMoving())
             {
                 lowSpeedTimer += Time.deltaTime;
                 if (lowSpeedTimer >= lowSpeedRequiredDuration)
@@ -331,7 +375,7 @@ public class GameManager : MonoBehaviour
         isBoundaryReturnScheduled = false;
         yield return new WaitForSeconds(0.5f);
         canCheckStop = true;
-        StartCoroutine(SafetyTimeoutRoutine());
+        safetyTimeoutCoroutine = StartCoroutine(SafetyTimeoutRoutine());
     }
 
     IEnumerator BoundaryReturnRoutine()
@@ -361,10 +405,46 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ★前の投球分の「戻りタイマー」系コルーチンを止める。
+    //   止めずに放置すると、ターンが正常に終わった後もバックグラウンドで生き続け、
+    //   次のプレイヤーが投げる前（またはまだ投げている最中）に遅れて発火し、
+    //   勝手にターンを進めてしまう不具合の原因になっていた。
+    private void CancelPendingReturnCoroutines()
+    {
+        CancelSafetyAndBoundaryCoroutines();
+
+        if (specialReturnCoroutine != null)
+        {
+            StopCoroutine(specialReturnCoroutine);
+            specialReturnCoroutine = null;
+        }
+    }
+
+    private void CancelSafetyAndBoundaryCoroutines()
+    {
+        if (safetyTimeoutCoroutine != null)
+        {
+            StopCoroutine(safetyTimeoutCoroutine);
+            safetyTimeoutCoroutine = null;
+        }
+
+        if (boundaryReturnCoroutine != null)
+        {
+            StopCoroutine(boundaryReturnCoroutine);
+            boundaryReturnCoroutine = null;
+        }
+    }
+
     IEnumerator TurnEndRoutine(float delayTime)
     {
         isCheckingTurnEnd = true;
         canCheckStop = false;
+
+        // ★このターンはもう終わるので、同じ投球に紐づく残りの戻りタイマーは不要。
+        //   ここで止めておかないと、後から二重にTurnEndRoutineが呼ばれて
+        //   次のプレイヤーのターンを勝手に進めてしまうことがある
+        //   （specialReturnCoroutine自身から呼ばれているケースもあるため、ここでは触らない）
+        CancelSafetyAndBoundaryCoroutines();
 
         if (delayTime > 0f)
         {
@@ -372,7 +452,7 @@ public class GameManager : MonoBehaviour
         }
 
         playerController.ResetMolkky();
-
+        PlaySound(turnEndSound);
         // ★モルックが手元に戻ったので、保留していた風向き選択画面を開く
         //   風を選択した場合は、選択が終わるまで交代ボタンの表示を保留する
         bool openedWindSelector = false;
@@ -459,6 +539,7 @@ public class GameManager : MonoBehaviour
 
         if (isGameFinished)
         {
+            PlaySound(winSound);
             if (scoreText != null)
             {
                 scoreText.gameObject.SetActive(false);
@@ -491,6 +572,7 @@ public class GameManager : MonoBehaviour
         }
 
         isCheckingTurnEnd = false;
+        specialReturnCoroutine = null;
     }
 
     // --- 【3. 変更】ターン交代時の処理 ---
@@ -509,6 +591,7 @@ public class GameManager : MonoBehaviour
         // 1. ターン交代（P1 ⇆ P2）
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
 
+        PlaySound(buttonSound);
         // 2. 予約アイテムの発動＋新アイテムのスポーン
         if (ItemManager.Instance != null)
         {
@@ -571,6 +654,7 @@ public class GameManager : MonoBehaviour
 
     public void OnNextButtonPressed()
     {
+        PlaySound(buttonSound);
         if (nextButtonUI != null)
         {
             nextButtonUI.SetActive(false);
@@ -602,14 +686,28 @@ public class GameManager : MonoBehaviour
         if (startMenuUI != null) startMenuUI.SetActive(false);
     }
 
+    void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
     public void OnRematchButtonPressed()
     {
+        PlaySound(buttonSound);
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
 
     public void OnTitleButtonPressed()
     {
+        PlaySound(buttonSound);
+        SceneManager.LoadScene(titleSceneName);
+    }
+    IEnumerator LoadTitleScene()
+    {
+        yield return new WaitForSeconds(buttonSound.length);
         SceneManager.LoadScene(titleSceneName);
     }
 }

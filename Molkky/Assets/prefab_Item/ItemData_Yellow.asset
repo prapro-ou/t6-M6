@@ -17,7 +17,7 @@ MonoBehaviour:
   itemColor: {r: 1, g: 0.96979684, b: 0, a: 1}
   description: 
   effectType: 9
-  spawnWeight: 1
-  visualModelPrefab: {fileID: 3716633717768742599, guid: 4873f598d04a1b644aa42a61741cfada, type: 3}
-  visualModelScale: 1
+  spawnWeight: 100
+  visualModelPrefab: {fileID: 2730700867057172501, guid: 8b1460b1a7b963547bf95626c73ab004, type: 3}
+  visualModelScale: 0.04
   visualModelRotationOffset: {x: 0, y: 0, z: 0}
