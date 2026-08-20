@@ -151,6 +151,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (item == MolkkyType.MovingWall) // ★追加
+        {
+            if (WallObstacleManager.Instance != null) WallObstacleManager.Instance.RegisterObstacle();
+            Debug.Log($"Player {currentPlayer} が壁アイテムを獲得！ 相手の次のターンに壁が出現します。");
+            return;
+        }
+
         // 通常アイテム（Bomb/Rocket）は自分のストックへ
         if (currentPlayer == 1)
         {
@@ -492,6 +499,11 @@ public class GameManager : MonoBehaviour
         foreach (Skittle s in skittles)
         {
             if (s != null) s.StandUp();
+        }
+
+        if (WallObstacleManager.Instance != null) // ★追加
+        {
+            WallObstacleManager.Instance.OnSkittlesResetComplete();
         }
 
         // 1. ターン交代（P1 ⇆ P2）

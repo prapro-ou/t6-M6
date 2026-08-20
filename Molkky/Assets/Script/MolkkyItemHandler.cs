@@ -6,7 +6,8 @@ public enum MolkkyType
     Bomb,
     Rocket,
     Darkness,
-    Wind
+    Wind,
+    MovingWall
 }
 
 public class MolkkyItemHandler : MonoBehaviour
@@ -56,9 +57,9 @@ public class MolkkyItemHandler : MonoBehaviour
     public void SetMolkkyType(MolkkyType type)
     {
         currentType = type;
+        bool isNormal = (type == MolkkyType.Normal || type == MolkkyType.MovingWall || type == MolkkyType.Darkness || type == MolkkyType.Wind);
 
-        // すべて非表示にしてから該当するものだけ表示
-        if (normalModel != null) normalModel.SetActive(type == MolkkyType.Normal);
+        if (normalModel != null) normalModel.SetActive(isNormal);
         if (bombModel != null) bombModel.SetActive(type == MolkkyType.Bomb);
         if (rocketModel != null) rocketModel.SetActive(type == MolkkyType.Rocket);
     }

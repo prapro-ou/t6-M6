@@ -147,36 +147,23 @@ public class ItemManager : MonoBehaviour
 
         // ★Bomb/Rocketは既存のMolkkyType機構（ItemBoxと同じ仕組み）に乗せて、
         //   自分の次の投球で見た目・能力が変わるよう即座に反映する（ターン開始時の予約効果とは別扱い）
-        //========================================
-        // ここから変更した！！菊地
-        //========================================
         if (item.effectType == ItemEffectType.Bomb ||
         item.effectType == ItemEffectType.Rocket ||
         item.effectType == ItemEffectType.Wind ||
-        item.effectType == ItemEffectType.Darkness)
+        item.effectType == ItemEffectType.Darkness ||
+        item.effectType == ItemEffectType.MovingWall) // ★ 追加
         {
-            MolkkyType molkkyType = MolkkyType.Normal;
+            MolkkyType molkkyType = item.effectType switch
+            {
+                ItemEffectType.Bomb => MolkkyType.Bomb,
+                ItemEffectType.Rocket => MolkkyType.Rocket,
+                ItemEffectType.Wind => MolkkyType.Wind,
+                ItemEffectType.Darkness => MolkkyType.Darkness,
+                ItemEffectType.MovingWall => MolkkyType.MovingWall, // ★ 追加
+                _ => MolkkyType.Normal
+            };
 
-            if (item.effectType == ItemEffectType.Bomb)
-            {
-                molkkyType = MolkkyType.Bomb;
-            }
-            else if (item.effectType == ItemEffectType.Rocket)
-            {
-                molkkyType = MolkkyType.Rocket;
-            }
-            else if (item.effectType == ItemEffectType.Wind)
-            {
-                molkkyType = MolkkyType.Wind; // ★Windを設定
-            }
-            else if (item.effectType == ItemEffectType.Darkness)
-            {
-                molkkyType = MolkkyType.Darkness;
-            }
-            if (GameManager.instance != null)
-            {
-                GameManager.instance.GetItem(molkkyType);
-            }
+            if (GameManager.instance != null) GameManager.instance.GetItem(molkkyType);
         }
         else
         {
@@ -187,9 +174,7 @@ public class ItemManager : MonoBehaviour
         return true; // 登録成功 (true)
     }
 
-    //========================================
-    // ここまで変更した！！菊地
-    //========================================
+  
 
     public void ShowNotice(string message)
     {

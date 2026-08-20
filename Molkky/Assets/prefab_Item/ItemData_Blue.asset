@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4d7a6289e009964fa002e55cc3649e1, type: 3}
-  m_Name: ItemData_Yellow
+  m_Name: ItemData_Blue
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: 
-  itemName: "\u58C1"
-  itemColor: {r: 1, g: 0.96979684, b: 0, a: 1}
+  itemName: "\u7206\u767A"
+  itemColor: {r: 0, g: 0.28506327, b: 1, a: 1}
   description: 
-  effectType: 0
+  effectType: 5
+  spawnWeight: 1
+  visualModelPrefab: {fileID: 5944288205204426218, guid: 79627a143b51108419518c181351f891, type: 3}
+  visualModelScale: 0.5
+  visualModelRotationOffset: {x: 0, y: 0, z: 0}

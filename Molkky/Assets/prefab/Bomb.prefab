@@ -5390,4 +5390,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BombImpact
   radius: 3
   force: 30
-  resetDistance: 1
+  upwardsModifier: 0.5
+  fuseTime: 1
+  explosionEffectPrefab: {fileID: 0}
