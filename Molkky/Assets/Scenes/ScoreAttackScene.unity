@@ -1621,6 +1621,7 @@ MonoBehaviour:
   bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
   currentType: 0
+  groundedDebounce: 0.1
 --- !u!54 &462945776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2778,6 +2779,8 @@ MonoBehaviour:
   windSelectButtun: {fileID: 402948820}
   molkkyRb: {fileID: 462945776}
   windForce: 10
+  windSound: {fileID: 0}
+  windAudioSource: {fileID: 0}
 --- !u!4 &891710066
 Transform:
   m_ObjectHideFlags: 0
@@ -25566,67 +25569,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1001 &2198684882909472368
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.57763
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.77805
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1701233901667397405, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337957490155995227, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_Name
-      value: ExplosionEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337957490155995227, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a51486226ae7b044fbb73c5e8fc993c8, type: 3}
 --- !u!1001 &2727742981670972412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25767,7 +25709,6 @@ SceneRoots:
   - {fileID: 1276775292}
   - {fileID: 174430318}
   - {fileID: 2849286421305616736}
-  - {fileID: 2198684882909472368}
   - {fileID: 1913679495}
   - {fileID: 1733541002}
   - {fileID: 891710066}
