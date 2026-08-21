@@ -537,6 +537,9 @@ public class GameManager : MonoBehaviour
             isGameFinished = true;
         }
 
+        // ★【追加】ゲーム終了かどうかにかかわらず、加算後の最新スコアをまずUIに反映する
+        UpdateScoreUI();
+
         if (isGameFinished)
         {
             PlaySound(winSound);
@@ -555,7 +558,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            UpdateScoreUI();
+            // ここにあった UpdateScoreUI(); は上記に移動したため削除
 
             if (openedWindSelector)
             {
@@ -672,7 +675,7 @@ public class GameManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            if (isGameFinished) return;
+            // ★【削除】if (isGameFinished) return; の行を削除（勝利時も最新スコアを描画できるようにするため）
 
             scoreText.text = $"<color=blue>ターン: プレイヤー {currentPlayer}</color>\n" +
                              $"<color=white>プレイヤー 1: {p1Score} / 50</color>\n" +
