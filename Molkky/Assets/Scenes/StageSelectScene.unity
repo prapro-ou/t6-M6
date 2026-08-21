@@ -458,7 +458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 181c0039ba0de064a87348ab7033ae42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b002f98164681d8498888b9e67c1180a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -489,9 +489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StagePreview
   previewImage: {fileID: 275201155}
-  stage1Image: {fileID: 21300000, guid: 181c0039ba0de064a87348ab7033ae42, type: 3}
-  stage2Image: {fileID: 21300000, guid: a04868f1163a1e64a8e9ef1099ff13b1, type: 3}
-  stage3Image: {fileID: 21300000, guid: 37ca7568a98e0ae418f249d8e7fea4ec, type: 3}
+  stage1Image: {fileID: 21300000, guid: b002f98164681d8498888b9e67c1180a, type: 3}
+  stage2Image: {fileID: 21300000, guid: 32ea4a586e7d15d40bc45f217c528b86, type: 3}
+  stage3Image: {fileID: 21300000, guid: 6dfc1b2b6613bab4ea6d84f2af223c85, type: 3}
 --- !u!1 &748305902
 GameObject:
   m_ObjectHideFlags: 0
