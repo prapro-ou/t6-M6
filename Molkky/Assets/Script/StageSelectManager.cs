@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +12,7 @@ public class StageSelectManager : MonoBehaviour
     public void SelectStage(string stageSceneName)
     {
         GameSettings.SelectedStageSceneName = stageSceneName;
-        StartCoroutine(PlaySoundThenLoadScene(stageSceneName));
+        SceneTransitionAudio.PlayThenLoad(buttonSound, () => SceneManager.LoadScene(stageSceneName));
     }
 
     // ★人数選択（今は「2人対戦」か「ひとりでスコアアタック」の2モードしかないため、
@@ -31,19 +30,6 @@ public class StageSelectManager : MonoBehaviour
     // タイトルに戻るボタン用
     public void OnBackButton()
     {
-        StartCoroutine(PlaySoundThenLoadScene("TitleScene"));
-    }
-
-    // 効果音を鳴らし、遷移先シーンが軽くても音が鳴り切ってからシーン遷移する
-    // （即座にLoadSceneすると、AudioSourceごと破棄されて音が聞こえないことがあるため）
-    private IEnumerator PlaySoundThenLoadScene(string sceneName)
-    {
-        if (audioSource != null && buttonSound != null)
-        {
-            audioSource.PlayOneShot(buttonSound);
-            yield return new WaitForSeconds(buttonSound.length);
-        }
-
-        SceneManager.LoadScene(sceneName);
+        SceneTransitionAudio.PlayThenLoad(buttonSound, () => SceneManager.LoadScene("TitleScene"));
     }
 }

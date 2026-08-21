@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +16,7 @@ public class RuleManager : MonoBehaviour
     /// </summary>
     public void OnTitleButtonPressed()
     {
-        StartCoroutine(PlaySoundThenLoadScene(titleSceneName));
+        SceneTransitionAudio.PlayThenLoad(buttonSound, () => SceneManager.LoadScene(titleSceneName));
     }
 
     /// <summary>
@@ -25,19 +24,6 @@ public class RuleManager : MonoBehaviour
     /// </summary>
     public void OnGameButtonPressed()
     {
-        StartCoroutine(PlaySoundThenLoadScene(gameSceneName));
-    }
-
-    // 効果音を鳴らし、鳴り切ってからシーン遷移する
-    // （即座にLoadSceneすると、AudioSourceごと破棄されて音が聞こえないことがあるため）
-    private IEnumerator PlaySoundThenLoadScene(string sceneName)
-    {
-        if (audioSource != null && buttonSound != null)
-        {
-            audioSource.PlayOneShot(buttonSound);
-            yield return new WaitForSeconds(buttonSound.length);
-        }
-
-        SceneManager.LoadScene(sceneName);
+        SceneTransitionAudio.PlayThenLoad(buttonSound, () => SceneManager.LoadScene(gameSceneName));
     }
 }

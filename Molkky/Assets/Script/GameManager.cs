@@ -540,10 +540,7 @@ public class GameManager : MonoBehaviour
         if (isGameFinished)
         {
             PlaySound(winSound);
-            if (scoreText != null)
-            {
-                scoreText.gameObject.SetActive(false);
-            }
+            // ★スコア表示は「次へ」→結果画面まで残す。消すのは再戦/タイトルへ遷移する時（OnRematchButtonPressed/OnTitleButtonPressed）。
 
             if (winnerText != null)
             {
@@ -660,6 +657,11 @@ public class GameManager : MonoBehaviour
             nextButtonUI.SetActive(false);
         }
 
+        if (scoreText != null)
+        {
+            scoreText.gameObject.SetActive(false);
+        }
+
         if (resultUI != null)
         {
             resultUI.SetActive(true);
@@ -695,19 +697,12 @@ public class GameManager : MonoBehaviour
     }
     public void OnRematchButtonPressed()
     {
-        PlaySound(buttonSound);
         string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        SceneTransitionAudio.PlayThenLoad(buttonSound, () => SceneManager.LoadScene(currentSceneName));
     }
 
     public void OnTitleButtonPressed()
     {
-        PlaySound(buttonSound);
-        SceneManager.LoadScene(titleSceneName);
-    }
-    IEnumerator LoadTitleScene()
-    {
-        yield return new WaitForSeconds(buttonSound.length);
-        SceneManager.LoadScene(titleSceneName);
+        SceneTransitionAudio.PlayThenLoad(buttonSound, () => SceneManager.LoadScene(titleSceneName));
     }
 }

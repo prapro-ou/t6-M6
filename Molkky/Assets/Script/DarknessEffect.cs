@@ -14,6 +14,10 @@ public class DarknessEffect : MonoBehaviour
 
     [SerializeField] private float fadeSpeed = 3f;
 
+    [Header("暗闇発動時の効果音")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip darknessSound;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -25,6 +29,11 @@ public class DarknessEffect : MonoBehaviour
     public void SetDarkness(bool enable)
     {
         if (darkOverlayGroup == null) return;
+
+        if (enable && audioSource != null && darknessSound != null)
+        {
+            audioSource.PlayOneShot(darknessSound);
+        }
 
         StopAllCoroutines();
         float targetAlpha = enable ? darkAlpha : 0f;

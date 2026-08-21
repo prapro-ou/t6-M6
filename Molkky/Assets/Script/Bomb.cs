@@ -19,6 +19,7 @@ public class BombImpact : MonoBehaviour
 
     private bool exploded = false;
     private Renderer targetRenderer;
+    private Collider targetCollider;
     private Color originalColor;
 
     // 爆発した瞬間に通知するイベント（GameManagerが戻りタイマーの起点として使う）
@@ -27,6 +28,7 @@ public class BombImpact : MonoBehaviour
     private void Awake()
     {
         targetRenderer = GetComponent<Renderer>();
+        targetCollider = GetComponent<Collider>();
         if (targetRenderer != null)
         {
             // 元のマテリアルの色を記録しておく
@@ -41,6 +43,11 @@ public class BombImpact : MonoBehaviour
         if (targetRenderer != null)
         {
             targetRenderer.material.color = originalColor;
+            targetRenderer.enabled = true;
+        }
+        if (targetCollider != null)
+        {
+            targetCollider.enabled = true;
         }
     }
 
@@ -118,14 +125,14 @@ public class BombImpact : MonoBehaviour
 
         // 💡 4. 爆弾自体の見た目と当たり判定を非表示（即座に消えたように見せる）
         if (targetRenderer != null) targetRenderer.enabled = false;
-        Collider myCollider = GetComponent<Collider>();
-        if (myCollider != null) myCollider.enabled = false;
+        if (targetCollider != null) targetCollider.enabled = false;
 
         // 💡 5. カメラシェイク（0.3秒）が終わるまで待つ！
         yield return new WaitForSeconds(0.3f);
 
-        // 💡 6. 揺れが完了してから安全に自分自身を消去
-        Destroy(gameObject);
+        // 💡 6. bombModelはMolkkyItemHandlerが使い回す前提のため、Destroyせず非表示にするだけにする
+        //    （Destroyすると次にボムアイテムを取得した際にbombModel.SetActive(true)が失敗し、二度と表示されなくなる）
+        gameObject.SetActive(false);
     }
 
     // ★★★ エラーの原因になっていたカメラシェイク処理本体 ★★★

@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30FB\u7372\u5F97\u3059\u308B\u3053\u3068\u3067\u4F55\u3089\u304B\u306E\u52B9\u679C\u3092\u767A\u63EE\u3057\u307E\u3059\r\n\u30FB1\u30BF\u30FC\u30F3\u3054\u3068\u306B\u30D5\u30A3\u30FC\u30EB\u30C9\u4E0A\u306B\u30E9\u30F3\u30C0\u30E0\u3067\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u3059\n\u30FB\u6700\u521D\u306E1\u5DE1\u306F\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u305B\u3093\r\n\u30FB\u30E2\u30EB\u30C3\u30AF\u3092\u6295\u3052\u3066\u5F53\u3066\u308B\u3053\u3068\u3067\u7372\u5F97\u3067\u304D\u307E\u3059\r\n\u30FB\u30D5\u30A3\u30FC\u30EB\u30C9\u4E0A\u306B\u6700\u5927\u30672\u3064\u307E\u3067\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u3059\r\n\u30FB\u30D5\u30A3\u30FC\u30EB\u30C9\u4E0A\u306B2\u3064\u30A2\u30A4\u30C6\u30E0\u304C\u3042\u308B\u72B6\u614B\u3067\u30BF\u30FC\u30F3\u304C\u5207\u308A\u66FF\u308F\u308B\u3068\u3001\u53E4\u3044\u30A2\u30A4\u30C6\u30E0\u304C\u6D88\u3048\u65B0\u305F\u306B\u30A2\u30A4\u30C6\u30E0\u304C\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u3059\r\n\u203B\u5B9F\u969B\u306E\u30E2\u30EB\u30C3\u30AF\u306B\u30A2\u30A4\u30C6\u30E0\u306F\u767B\u5834\u3057\u307E\u305B\u3093"
+  m_text: "\u30FB\u7372\u5F97\u3059\u308B\u3053\u3068\u3067\u4F55\u3089\u304B\u306E\u52B9\u679C\u3092\u767A\u63EE\u3057\u307E\u3059\r\n\u30FB1\u30BF\u30FC\u30F3\u3054\u3068\u306B\u30D5\u30A3\u30FC\u30EB\u30C9\u4E0A\u306B\u30E9\u30F3\u30C0\u30E0\u3067\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u3059\n\u30FB\u6700\u521D\u306E1\u5DE1\u306F\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u305B\u3093\r\n\u30FB\u30E2\u30EB\u30C3\u30AF\u3092\u6295\u3052\u3066\u5F53\u3066\u308B\u3053\u3068\u3067\u7372\u5F97\u3067\u304D\u307E\u3059\r\n\u30FB\u30D5\u30A3\u30FC\u30EB\u30C9\u4E0A\u306B\u6700\u5927\u30672\u3064\u307E\u3067\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u3059\r\n\u30FB\u30D5\u30A3\u30FC\u30EB\u30C9\u4E0A\u306B2\u3064\u30A2\u30A4\u30C6\u30E0\u304C\u3042\u308B\u72B6\u614B\u3067\u30BF\u30FC\u30F3\u304C\u5207\u308A\u66FF\u308F\u308B\u3068\u3001\u53E4\u3044\u30A2\u30A4\u30C6\u30E0\u304C\u6D88\u3048\u65B0\u305F\u306B\u30A2\u30A4\u30C6\u30E0\u304C\u30B9\u30DD\u30FC\u30F3\u3055\u308C\u307E\u3059\n\u30FB\u30A2\u30A4\u30C6\u30E0\u306F1\u30BF\u30FC\u30F3\u306B1\u3064\u307E\u3067\u3057\u304B\u7372\u5F97\u3067\u304D\u307E\u305B\u3093\r\n\u203B\u5B9F\u969B\u306E\u30E2\u30EB\u30C3\u30AF\u306B\u30A2\u30A4\u30C6\u30E0\u306F\u767B\u5834\u3057\u307E\u305B\u3093"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
   m_sharedMaterial: {fileID: -6600390312171025313, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
@@ -1846,7 +1846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 791.5, y: -168.47}
+  m_AnchoredPosition: {x: 791.5, y: -217.7}
   m_SizeDelta: {x: 1523, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &272085240
@@ -2838,7 +2838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 791.5, y: -887.73}
+  m_AnchoredPosition: {x: 791.5, y: -936.96}
   m_SizeDelta: {x: 1583, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &388568224
@@ -3232,7 +3232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 761.5, y: -119.235}
+  m_AnchoredPosition: {x: 761.5, y: -143.85}
   m_SizeDelta: {x: 1523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452502561
@@ -4014,7 +4014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 776.5, y: -266.93}
+  m_AnchoredPosition: {x: 776.5, y: -291.54498}
   m_SizeDelta: {x: 1553, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &555910289
@@ -4132,7 +4132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 806.5, y: -940.81}
+  m_AnchoredPosition: {x: 806.5, y: -1039.27}
   m_SizeDelta: {x: 1553, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &570892867
@@ -9067,7 +9067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 791.5, y: -287.71002}
+  m_AnchoredPosition: {x: 791.5, y: -336.94}
   m_SizeDelta: {x: 1523, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1082822471
@@ -9720,7 +9720,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 296800537}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.17020111
+  m_Size: 0.16612509
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11435,7 +11435,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 806.5, y: -463.86}
+  m_AnchoredPosition: {x: 806.5, y: -513.08997}
   m_SizeDelta: {x: 1553, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1333103029
@@ -11534,7 +11534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 776.5, y: -273.475}
+  m_AnchoredPosition: {x: 776.5, y: -298.09}
   m_SizeDelta: {x: 1553, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336045904
@@ -13455,7 +13455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30FB\u81EA\u8EAB\u306B\u826F\u3044\u52B9\u679C\u3092\u4E0E\u3048\u308B\u30A2\u30A4\u30C6\u30E0\u3067\u3059\n\u30FB\u6B21\u306E\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u3067\u9069\u7528\u3055\u308C\u307E\u3059"
+  m_text: "\u30FB\u81EA\u8EAB\u306B\u826F\u3044\u52B9\u679C\u3092\u4E0E\u3048\u308B\u30A2\u30A4\u30C6\u30E0\u3067\u3059\n\u30FB\u30E2\u30EB\u30C3\u30AF\u306E\u4EE3\u308F\u308A\u306B\u6295\u3052\u307E\u3059\n\u30FB\u6B21\u306E\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u3067\u9069\u7528\u3055\u308C\u307E\u3059"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
   m_sharedMaterial: {fileID: -6600390312171025313, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
@@ -17590,7 +17590,7 @@ MonoBehaviour:
   headerText: {fileID: 58672069}
   contentPanel: {fileID: 1998111669}
   titleText: "\u30E2\u30EB\u30C3\u30AF\u3068\u306F"
-  closedIcon: "\u25B6  "
+  closedIcon: "\u25B6 "
   openedIcon: "\u25BC "
 --- !u!114 &2079292349
 MonoBehaviour:
