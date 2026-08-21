@@ -16644,7 +16644,7 @@ MonoBehaviour:
   normalModel: {fileID: 166121662}
   bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
-  currentType: 2
+  currentType: 0
   groundedDebounce: 0.1
 --- !u!54 &462945776
 Rigidbody:
@@ -17578,7 +17578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3240342680210571313, guid: a910f1167c739db4bb6cbee1030d1d21, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3240342680210571313, guid: a910f1167c739db4bb6cbee1030d1d21, type: 3}
       propertyPath: m_TagString
@@ -38548,7 +38548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3545200349384868138, guid: 37057503884141f4ebf6086f27f0ea0b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3614593326597633905, guid: 37057503884141f4ebf6086f27f0ea0b, type: 3}
       propertyPath: m_Mesh

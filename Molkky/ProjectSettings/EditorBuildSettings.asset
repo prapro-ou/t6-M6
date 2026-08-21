@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene_Moon.unity
     guid: 86d2da3595ca42f46a8d3096d0ecfc3a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScoreAttackScene.unity
     guid: b121cb536596e2b4783b2a1f10738557
   m_configObjects:
