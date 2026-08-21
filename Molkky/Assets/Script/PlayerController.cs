@@ -62,17 +62,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // デバッグキー
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            GameManager.instance.GetItem(MolkkyType.Wind);
-        }
-        
-        if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            GameManager.instance.GetItem(MolkkyType.Darkness);
-        }
-
+  
         // ガード1：投げた後は処理停止
         if (!isCanControl || currentState == State.Launched)
         {
