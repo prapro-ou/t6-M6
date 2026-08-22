@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.8301887, g: 0.97167563, b: 1, a: 1}
+  m_FogColor: {r: 0.78431374, g: 0.84313726, b: 0.88235295, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 213958d7e47a8d745b533d18d1a23e83, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2062,7 +2062,7 @@ Light:
   serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -17095,8 +17095,10 @@ MonoBehaviour:
   normalModel: {fileID: 166121662}
   bombModel: {fileID: 2740092}
   rocketModel: {fileID: 1356359302}
-  currentType: 2
+  currentType: 0
   groundedDebounce: 0.1
+  allSkittlesForce: 6
+  allSkittlesUpwardsModifier: 0.4
 --- !u!54 &462945776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17106,8 +17108,8 @@ Rigidbody:
   m_GameObject: {fileID: 462945773}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0.4
-  m_AngularDamping: 3
+  m_LinearDamping: 0.25
+  m_AngularDamping: 2.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -17486,7 +17488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4899547681534196350, guid: 991c970ac0e0bd34ca8d12c817119314, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4899547681534196350, guid: 991c970ac0e0bd34ca8d12c817119314, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17519,6 +17521,14 @@ PrefabInstance:
     - target: {fileID: 4899547681534196350, guid: 991c970ac0e0bd34ca8d12c817119314, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552627459878033404, guid: 991c970ac0e0bd34ca8d12c817119314, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552627459878033404, guid: 991c970ac0e0bd34ca8d12c817119314, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
