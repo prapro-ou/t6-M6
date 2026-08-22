@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraOrbit
   target: {fileID: 1613232394}
-  radius: 5.5
+  radius: 3.5
   heightMin: -0.9
   heightMax: 2.3
   lookHeightOffset: 0.7
