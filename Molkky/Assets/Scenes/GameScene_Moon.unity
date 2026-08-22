@@ -631,12 +631,17 @@ MonoBehaviour:
   molkkyRb: {fileID: 462945776}
   molkkyItemHandler: {fileID: 462945775}
   scoreText: {fileID: 1748101540}
+  bonusTurnText: {fileID: 0}
+  bonusTurnTextDuration: 2.5
   audioSource: {fileID: 174430319}
   startSound: {fileID: 8300000, guid: 0330363a8afb0e94e866550c6858626b, type: 3}
   turnEndSound: {fileID: 8300000, guid: c4c39e2fbd132424e8a1b6d0cc4e2667, type: 3}
   itemSound: {fileID: 8300000, guid: c5ed358aa441dc242bbc62cce9d82177, type: 3}
   winSound: {fileID: 8300000, guid: 3cb67e7459be1ee499624f25e33e2d45, type: 3}
   buttonSound: {fileID: 8300000, guid: 1e83a8fa8903ef74d864df0a3e1709d9, type: 3}
+  startSoundVolume: 1
+  turnEndSoundVolume: 1
+  winSoundVolume: 1
   nextTurnButtonUI: {fileID: 174167672064916640}
   nextButtonUI: {fileID: 252424932}
   resultUI: {fileID: 765951749}
@@ -17028,6 +17033,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 305955355}
+    - target: {fileID: 9079015638969025257, guid: 609ebb071e916594ca5c775c9a157cd1, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079015638969025257, guid: 609ebb071e916594ca5c775c9a157cd1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
