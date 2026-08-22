@@ -12,7 +12,8 @@ public enum ItemEffectType
     Rocket,       // 次に投げるモルックがロケットになる
     Wind,         // 風が起こる
     Darkness,     // 相手の次のターンが暗闇になる（既存の値を維持するため末尾に追加）
-    MovingWall    // 壁を発生
+    MovingWall,   // 壁を発生
+    AllSkittles   // ★レアアイテム: 次に投げたモルックが着地した瞬間、場の全スキットルを倒す（末尾に追加）
 }
 
 // Unityの右クリックメニューからこのデータを作成できるようにする属性

@@ -151,7 +151,8 @@ public class ItemManager : MonoBehaviour
         item.effectType == ItemEffectType.Rocket ||
         item.effectType == ItemEffectType.Wind ||
         item.effectType == ItemEffectType.Darkness ||
-        item.effectType == ItemEffectType.MovingWall) // ★ 追加
+        item.effectType == ItemEffectType.MovingWall || // ★ 追加
+        item.effectType == ItemEffectType.AllSkittles) // ★レアアイテム追加
         {
             MolkkyType molkkyType = item.effectType switch
             {
@@ -160,6 +161,7 @@ public class ItemManager : MonoBehaviour
                 ItemEffectType.Wind => MolkkyType.Wind,
                 ItemEffectType.Darkness => MolkkyType.Darkness,
                 ItemEffectType.MovingWall => MolkkyType.MovingWall, // ★ 追加
+                ItemEffectType.AllSkittles => MolkkyType.AllSkittles, // ★レアアイテム追加
                 _ => MolkkyType.Normal
             };
 

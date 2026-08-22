@@ -7,7 +7,8 @@ public enum MolkkyType
     Rocket,
     Darkness,
     Wind,
-    MovingWall
+    MovingWall,
+    AllSkittles // ★レアアイテム: 着地した瞬間、場の全スキットルを倒す
 }
 
 public class MolkkyItemHandler : MonoBehaviour
@@ -25,6 +26,10 @@ public class MolkkyItemHandler : MonoBehaviour
     //   さらに、物理エンジンの都合で接触が1フレームだけ途切れることがあるため、
     //   groundedDebounce秒以内の再接触は「接地し続けていた」ものとして扱う
     [SerializeField] private float groundedDebounce = 0.1f;
+
+    [Header("★レアアイテム: 全スキットル一撃の力")]
+    [SerializeField] private float allSkittlesForce = 6f;
+    [SerializeField] private float allSkittlesUpwardsModifier = 0.4f;
     private int contactCount = 0;
     private float lastContactTime = -1f;
     public bool IsGrounded => contactCount > 0 || (Time.time - lastContactTime) <= groundedDebounce;
@@ -41,6 +46,7 @@ public class MolkkyItemHandler : MonoBehaviour
         lastContactTime = -1f;
         continuousGroundedStartTime = -1f;
         wasGroundedLastCheck = false;
+        allSkittlesTriggered = false;
     }
 
     private void Update()
@@ -53,11 +59,14 @@ public class MolkkyItemHandler : MonoBehaviour
         wasGroundedLastCheck = grounded;
     }
 
+    // ★レアアイテム: 1回の投球につき1度だけ発動させるためのフラグ（着地時に何度もOnCollisionEnterが呼ばれるため）
+    private bool allSkittlesTriggered = false;
+
     // モルックのタイプを変更する関数
     public void SetMolkkyType(MolkkyType type)
     {
         currentType = type;
-        bool isNormal = (type == MolkkyType.Normal || type == MolkkyType.MovingWall || type == MolkkyType.Darkness || type == MolkkyType.Wind);
+        bool isNormal = (type == MolkkyType.Normal || type == MolkkyType.MovingWall || type == MolkkyType.Darkness || type == MolkkyType.Wind || type == MolkkyType.AllSkittles);
 
         if (normalModel != null) normalModel.SetActive(isNormal);
         if (bombModel != null) bombModel.SetActive(type == MolkkyType.Bomb);
@@ -79,6 +88,11 @@ public class MolkkyItemHandler : MonoBehaviour
         {
             Rocket rocket = rocketModel.GetComponent<Rocket>();
             if (rocket != null) rocket.OnImpact();
+        }
+        else if (currentType == MolkkyType.AllSkittles && !allSkittlesTriggered)
+        {
+            allSkittlesTriggered = true;
+            AllSkittlesEffect.KnockDownAll(allSkittlesForce, allSkittlesUpwardsModifier);
         }
     }
 

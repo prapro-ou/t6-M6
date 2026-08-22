@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.6509804, g: 0.6666667, b: 0.69411767, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -532,6 +532,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31c80705d458046478b3d503543895a8, type: 2}
   - {fileID: 11400000, guid: 44a5cab043f7d5c4b87d9718d2b8aa13, type: 2}
   - {fileID: 11400000, guid: f7e67e11e2434fa438550d9a648ec523, type: 2}
+  - {fileID: 11400000, guid: 74438b2d5bda6351b9859cd58ceb806f, type: 2}
   noticeText: {fileID: 0}
 --- !u!4 &125819143
 Transform:
@@ -16814,7 +16815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a656271816336854a8cd5cc408ec0761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallObstacleManager
-  movingWallPrefab: {fileID: 3716633717768742599, guid: 4873f598d04a1b644aa42a61741cfada, type: 3}
+  movingWallPrefab: {fileID: 6585446105459857663, guid: fb8b36dd37e31d14bbfaa79b6d78c46b, type: 3}
   wallLayerName: Wall
   skittleLayerName: Skittle
   skittleLayerMask:
@@ -25459,9 +25460,17 @@ PrefabInstance:
       value: OnNextButtonPressed
       objectReference: {fileID: 0}
     - target: {fileID: 1536778948771054540, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536778948771054540, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
+    - target: {fileID: 1536778948771054540, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1536778948771054540, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -25473,6 +25482,10 @@ PrefabInstance:
     - target: {fileID: 2050462379237187909, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
       propertyPath: m_Name
       value: Next
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050462379237187909, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8938453834501951527, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
       propertyPath: m_Pivot.x
@@ -25500,7 +25513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8938453834501951527, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 8938453834501951527, guid: d7bfa257f19cda74c966cd837ff11b07, type: 3}
       propertyPath: m_SizeDelta.y
@@ -32016,7 +32029,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83602bab881d43b4dbe8595255ab7922, type: 2}
+  - {fileID: 2100000, guid: 1b28b04597e6dac4eb407f344da6551e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -61778,9 +61791,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 495063723}
     m_Modifications:
+    - target: {fileID: 2703406799519355523, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 280
+      objectReference: {fileID: 0}
     - target: {fileID: 3061084707269348584, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
       propertyPath: m_Name
       value: ResultUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061084707269348584, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3071638903894798269, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
       propertyPath: m_Pivot.x
@@ -61871,9 +61892,17 @@ PrefabInstance:
       value: OnTitleButtonPressed
       objectReference: {fileID: 0}
     - target: {fileID: 7096230811740277874, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
+      propertyPath: m_fontSize
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096230811740277874, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 41a14dee3aeabc149b1dc775047bb61a, type: 2}
+    - target: {fileID: 7096230811740277874, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 7096230811740277874, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -61889,6 +61918,10 @@ PrefabInstance:
     - target: {fileID: 7661433748786412514, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRematchButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065716388890369353, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 8342400869753266745, guid: 0cc42ecbc8124e04fb57edfa0568c1ac, type: 3}
       propertyPath: m_fontAsset
@@ -63961,6 +63994,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 495063723}
     m_Modifications:
+    - target: {fileID: 1125354994663256999, guid: c1a9355e2e3c06547a4a685598f0f07e, type: 3}
+      propertyPath: m_fontSize
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125354994663256999, guid: c1a9355e2e3c06547a4a685598f0f07e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 5525976245342410536, guid: c1a9355e2e3c06547a4a685598f0f07e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -63987,7 +64028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5525976245342410536, guid: c1a9355e2e3c06547a4a685598f0f07e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 5525976245342410536, guid: c1a9355e2e3c06547a4a685598f0f07e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -64049,6 +64090,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 174430317}
+    - target: {fileID: 9047831320785483804, guid: c1a9355e2e3c06547a4a685598f0f07e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -64072,9 +64117,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 495063723}
     m_Modifications:
+    - target: {fileID: 1485550693654509367, guid: 46303d8c630cfce4bac2d0e10ece30a8, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485550693654509367, guid: 46303d8c630cfce4bac2d0e10ece30a8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884181601291184832, guid: 46303d8c630cfce4bac2d0e10ece30a8, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884181601291184832, guid: 46303d8c630cfce4bac2d0e10ece30a8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3502856773513771453, guid: 46303d8c630cfce4bac2d0e10ece30a8, type: 3}
       propertyPath: m_Name
       value: WindSelectButtun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502856773513771453, guid: 46303d8c630cfce4bac2d0e10ece30a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4720550762595035593, guid: 46303d8c630cfce4bac2d0e10ece30a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

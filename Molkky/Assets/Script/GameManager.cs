@@ -537,6 +537,8 @@ public class GameManager : MonoBehaviour
             isGameFinished = true;
         }
 
+        UpdateScoreUI();
+        
         if (isGameFinished)
         {
             PlaySound(winSound);
@@ -555,8 +557,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            UpdateScoreUI();
-
             if (openedWindSelector)
             {
                 // 風向き選択が終わるまで交代ボタンは表示しない（OnWindDirectionSelectedで表示する）
@@ -672,7 +672,6 @@ public class GameManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            if (isGameFinished) return;
 
             scoreText.text = $"<color=blue>ターン: プレイヤー {currentPlayer}</color>\n" +
                              $"<color=white>プレイヤー 1: {p1Score} / 50</color>\n" +
