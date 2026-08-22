@@ -21,5 +21,5 @@ MonoBehaviour:
   isRare: 1
   visualModelPrefab: {fileID: 3670816112905797356, guid: ededab1abb490bf498294ef4dfcd4eac, type: 3}
   visualModelScale: 0.4
-  visualModelRotationOffset: {x: -90, y: 0, z: 0}
+  visualModelRotationOffset: {x: -270, y: 0, z: 0}
   spawnEffectPrefab: {fileID: 0}
