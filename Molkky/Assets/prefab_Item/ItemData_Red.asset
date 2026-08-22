@@ -18,6 +18,7 @@ MonoBehaviour:
   description: 
   effectType: 6
   spawnWeight: 1
+  isRare: 0
   visualModelPrefab: {fileID: 3545200349384868138, guid: 37057503884141f4ebf6086f27f0ea0b, type: 3}
   visualModelScale: 0.7
   visualModelRotationOffset: {x: 0, y: 0, z: 90}
