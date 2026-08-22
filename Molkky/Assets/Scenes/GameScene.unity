@@ -675,6 +675,9 @@ MonoBehaviour:
   itemSound: {fileID: 8300000, guid: c5ed358aa441dc242bbc62cce9d82177, type: 3}
   winSound: {fileID: 8300000, guid: 3cb67e7459be1ee499624f25e33e2d45, type: 3}
   buttonSound: {fileID: 8300000, guid: 1e83a8fa8903ef74d864df0a3e1709d9, type: 3}
+  startSoundVolume: 0.2
+  turnEndSoundVolume: 0.2
+  winSoundVolume: 0.2
   nextTurnButtonUI: {fileID: 174167672064916640}
   nextButtonUI: {fileID: 252424932}
   resultUI: {fileID: 765951749}

@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
     public AudioClip winSound;          // 勝利
     public AudioClip buttonSound;       // ボタン
 
+    [Header("音量調整（開始/ターン終了/勝利のみ個別に下げられる）")]
+    [Range(0f, 1f)] public float startSoundVolume = 1f;
+    [Range(0f, 1f)] public float turnEndSoundVolume = 1f;
+    [Range(0f, 1f)] public float winSoundVolume = 1f;
+
     [Header("ターン交代UI")]
     public GameObject nextTurnButtonUI;
 
@@ -127,7 +132,7 @@ public class GameManager : MonoBehaviour
     {
         isGameFinished = false;
         isGameStarted = true;
-        audioSource.PlayOneShot(startSound);
+        audioSource.PlayOneShot(startSound, startSoundVolume);
         currentPlayer = 1;
         p1Score = 0; p1Misses = 0;
         p2Score = 0; p2Misses = 0;
@@ -471,7 +476,7 @@ public class GameManager : MonoBehaviour
         }
 
         playerController.ResetMolkky();
-        PlaySound(turnEndSound);
+        PlaySound(turnEndSound, turnEndSoundVolume);
         // ★モルックが手元に戻ったので、保留していた風向き選択画面を開く
         //   風を選択した場合は、選択が終わるまで交代ボタンの表示を保留する
         bool openedWindSelector = false;
@@ -560,7 +565,7 @@ public class GameManager : MonoBehaviour
         
         if (isGameFinished)
         {
-            PlaySound(winSound);
+            PlaySound(winSound, winSoundVolume);
             // ★スコア表示は「次へ」→結果画面まで残す。消すのは再戦/タイトルへ遷移する時（OnRematchButtonPressed/OnTitleButtonPressed）。
 
             if (winnerText != null)
@@ -721,11 +726,11 @@ public class GameManager : MonoBehaviour
         if (startMenuUI != null) startMenuUI.SetActive(false);
     }
 
-    void PlaySound(AudioClip clip)
+    void PlaySound(AudioClip clip, float volumeScale = 1f)
     {
         if (audioSource != null && clip != null)
         {
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, volumeScale);
         }
     }
     public void OnRematchButtonPressed()
