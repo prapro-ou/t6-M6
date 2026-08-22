@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5567191436503751985}
   - component: {fileID: 2870378095995698933}
   - component: {fileID: 3906108424242825436}
+  - component: {fileID: 4447657125977277924}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -5384,7 +5385,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944288205204426218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbc927788b3d96d4ebc4ed01c7e5c060, type: 3}
   m_Name: 
@@ -5493,3 +5494,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4447657125977277924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944288205204426218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3f8fa1f33b21f44a15eb64c9ca2db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BombImpact2
+  radius: 8
+  force: 5
+  upwardsModifier: 0.5
+  fuseTime: 0.8
+  explosionEffectPrefab: {fileID: 4019138406418489463, guid: ecb5e71e3d3ed164386848775572931b, type: 3}
+  explosionAudioSource: {fileID: 0}
+  explosionSound: {fileID: 0}
