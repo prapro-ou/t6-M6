@@ -27,6 +27,9 @@ public class ItemData : ScriptableObject
     [Tooltip("出現しやすさの重み。数値が大きいほど抽選されやすくなる（全アイテム同じ値なら完全ランダムと同じ）")]
     public float spawnWeight = 1f;
 
+    [Tooltip("チェックを入れると、1ゲーム中に1回スポーンしたら以降は抽選対象から外れる（レアアイテム用）")]
+    public bool isRare = false;
+
     [Header("見た目上書き（任意）")]
     [Tooltip("設定すると、色付きの球の代わりにこのモデルをフィールド上のアイテムとして表示する")]
     public GameObject visualModelPrefab;

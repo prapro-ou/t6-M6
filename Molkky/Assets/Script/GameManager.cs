@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     [Header("UI設定")]
     public TextMeshProUGUI scoreText;
 
+    [Header("連続ターンUI（AllSkittles取得時、次のターン開始時に画面中央に表示）")]
+    public TextMeshProUGUI bonusTurnText;
+    [SerializeField] private float bonusTurnTextDuration = 2.5f;
+    private Coroutine bonusTurnTextCoroutine;
+
     /// <summary>
     /// 効果音
     /// </summary>
@@ -138,6 +143,11 @@ public class GameManager : MonoBehaviour
         p2Score = 0; p2Misses = 0;
         hasPendingExtraTurn = false;
         isBonusTurnInProgress = false;
+
+        if (bonusTurnText != null)
+        {
+            bonusTurnText.gameObject.SetActive(false);
+        }
 
         if (nextTurnButtonUI != null)
         {
@@ -611,6 +621,7 @@ public class GameManager : MonoBehaviour
             hasPendingExtraTurn = false;
             isBonusTurnInProgress = true;
             isRealPlayerSwitch = false;
+            ShowBonusTurnText();
         }
         else
         {
@@ -724,6 +735,30 @@ public class GameManager : MonoBehaviour
     {
         isGameStarted = true;
         if (startMenuUI != null) startMenuUI.SetActive(false);
+    }
+
+    // ★連続ターン開始時に画面中央へ「ターン継続」を表示し、数秒後に自動で消す
+    private void ShowBonusTurnText()
+    {
+        if (bonusTurnText == null) return;
+
+        bonusTurnText.text = "ターン継続";
+        bonusTurnText.gameObject.SetActive(true);
+
+        if (bonusTurnTextCoroutine != null)
+        {
+            StopCoroutine(bonusTurnTextCoroutine);
+        }
+        bonusTurnTextCoroutine = StartCoroutine(HideBonusTurnTextAfterDelay());
+    }
+
+    private IEnumerator HideBonusTurnTextAfterDelay()
+    {
+        yield return new WaitForSeconds(bonusTurnTextDuration);
+        if (bonusTurnText != null)
+        {
+            bonusTurnText.gameObject.SetActive(false);
+        }
     }
 
     void PlaySound(AudioClip clip, float volumeScale = 1f)

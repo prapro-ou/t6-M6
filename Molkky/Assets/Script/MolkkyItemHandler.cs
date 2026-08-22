@@ -67,6 +67,14 @@ public class MolkkyItemHandler : MonoBehaviour
         if (normalModel != null) normalModel.SetActive(isNormal);
         if (bombModel != null) bombModel.SetActive(type == MolkkyType.Bomb);
         if (rocketModel != null) rocketModel.SetActive(type == MolkkyType.Rocket);
+
+        // ★2回目以降のボムだと、前回の爆発で消したままの見た目(Renderer/Collider無効)が
+        //   投げるまで残ってしまうため、手元に構えた時点で見た目を復元しておく
+        if (type == MolkkyType.Bomb && bombModel != null)
+        {
+            BombImpact bomb = bombModel.GetComponent<BombImpact>();
+            if (bomb != null) bomb.Arm();
+        }
     }
 
     // このGameObject（Rigidbody本体）が何かに衝突した瞬間に呼ばれる

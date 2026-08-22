@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ItemManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class ItemManager : MonoBehaviour
 
     // ★追加: OnTurnStart()の呼び出し回数（1巡目はスポーンさせず、2巡目以降からスポーンさせるため）
     private int turnStartCount = 0;
+
+    // ★追加: isRareなItemDataが1回スポーンしたら、以降は抽選対象から外すためのフラグ
+    private bool rareItemSpawned = false;
 
     private void Awake()
     {
@@ -87,8 +91,13 @@ public class ItemManager : MonoBehaviour
         }
 
         // 3. 生成とデータのセット
-        GameObject spawnedObj = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
         ItemData selectedData = ChooseWeightedRandomItem();
+        if (selectedData.isRare)
+        {
+            rareItemSpawned = true;
+        }
+
+        GameObject spawnedObj = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
 
         SpawnedItem spawnedItemScript = spawnedObj.GetComponent<SpawnedItem>();
         if (spawnedItemScript != null)
@@ -104,22 +113,35 @@ public class ItemManager : MonoBehaviour
     }
 
     // ★各ItemDataのspawnWeightに応じた重み付き抽選（重みが同じなら完全ランダムと同じ結果になる）
+    //   isRareなアイテムは、1ゲーム中に既に1回スポーン済みなら抽選対象から除外する
     private ItemData ChooseWeightedRandomItem()
     {
-        float totalWeight = 0f;
+        List<ItemData> eligibleItems = new List<ItemData>();
         foreach (ItemData item in availableItems)
+        {
+            if (item.isRare && rareItemSpawned) continue;
+            eligibleItems.Add(item);
+        }
+
+        if (eligibleItems.Count == 0)
+        {
+            return availableItems[Random.Range(0, availableItems.Length)];
+        }
+
+        float totalWeight = 0f;
+        foreach (ItemData item in eligibleItems)
         {
             totalWeight += Mathf.Max(0f, item.spawnWeight);
         }
 
         if (totalWeight <= 0f)
         {
-            return availableItems[Random.Range(0, availableItems.Length)];
+            return eligibleItems[Random.Range(0, eligibleItems.Count)];
         }
 
         float pick = Random.Range(0f, totalWeight);
         float cumulative = 0f;
-        foreach (ItemData item in availableItems)
+        foreach (ItemData item in eligibleItems)
         {
             cumulative += Mathf.Max(0f, item.spawnWeight);
             if (pick <= cumulative)
@@ -128,7 +150,7 @@ public class ItemManager : MonoBehaviour
             }
         }
 
-        return availableItems[availableItems.Length - 1];
+        return eligibleItems[eligibleItems.Count - 1];
     }
 
     // ★ bool を返し、すでに取得済みなら false を返す
