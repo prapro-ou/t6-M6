@@ -643,6 +643,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 987501110}
+    - target: {fileID: 6882007397969668360, guid: 8e3198168ee40104799415f60d70d0b1, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882007397969668360, guid: 8e3198168ee40104799415f60d70d0b1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7338324175379902448, guid: 8e3198168ee40104799415f60d70d0b1, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1316,6 +1324,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1246901043}
+    - target: {fileID: 6587992686372797225, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587992686372797225, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7888555971384592286, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
       propertyPath: m_Name
       value: SnowTree (1)
@@ -1835,13 +1851,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 5, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1276775292}
-  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17097,8 +17113,6 @@ MonoBehaviour:
   rocketModel: {fileID: 1356359302}
   currentType: 0
   groundedDebounce: 0.1
-  allSkittlesForce: 6
-  allSkittlesUpwardsModifier: 0.4
 --- !u!54 &462945776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26225,6 +26239,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 271922019}
+    - target: {fileID: 6587992686372797225, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587992686372797225, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7888555971384592286, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
       propertyPath: m_Name
       value: SnowTree
@@ -27424,6 +27446,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 263257408}
+    - target: {fileID: 6587992686372797225, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587992686372797225, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7888555971384592286, guid: 34708362bc5942544b315f1f477eeafc, type: 3}
       propertyPath: m_Name
       value: SnowTree (2)
@@ -32884,6 +32914,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 475125025}
+    - target: {fileID: 95815568035908255, guid: db4efbf587faecb4bbb632ce481f5235, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95815568035908255, guid: db4efbf587faecb4bbb632ce481f5235, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 105812254229966990, guid: db4efbf587faecb4bbb632ce481f5235, type: 3}
       propertyPath: m_LocalPosition.x
       value: 92

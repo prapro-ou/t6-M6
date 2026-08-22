@@ -8,7 +8,7 @@ public enum MolkkyType
     Darkness,
     Wind,
     MovingWall,
-    AllSkittles // ★レアアイテム: 着地した瞬間、場の全スキットルを倒す
+    AllSkittles // ★レアアイテム: 着地した瞬間、取得したプレイヤーがもう1ターン連続でプレイできる
 }
 
 public class MolkkyItemHandler : MonoBehaviour
@@ -26,10 +26,6 @@ public class MolkkyItemHandler : MonoBehaviour
     //   さらに、物理エンジンの都合で接触が1フレームだけ途切れることがあるため、
     //   groundedDebounce秒以内の再接触は「接地し続けていた」ものとして扱う
     [SerializeField] private float groundedDebounce = 0.1f;
-
-    [Header("★レアアイテム: 全スキットル一撃の力")]
-    [SerializeField] private float allSkittlesForce = 6f;
-    [SerializeField] private float allSkittlesUpwardsModifier = 0.4f;
     private int contactCount = 0;
     private float lastContactTime = -1f;
     public bool IsGrounded => contactCount > 0 || (Time.time - lastContactTime) <= groundedDebounce;
@@ -92,7 +88,7 @@ public class MolkkyItemHandler : MonoBehaviour
         else if (currentType == MolkkyType.AllSkittles && !allSkittlesTriggered)
         {
             allSkittlesTriggered = true;
-            AllSkittlesEffect.KnockDownAll(allSkittlesForce, allSkittlesUpwardsModifier);
+            if (GameManager.instance != null) GameManager.instance.GrantExtraTurn();
         }
     }
 

@@ -30,10 +30,12 @@ public class WallObstacleManager : MonoBehaviour
 
     public void RegisterObstacle() => isPendingForNextTurn = true;
 
-    public void OnSkittlesResetComplete()
+    // allowSpawn: 本当にプレイヤーが交代した時だけtrue。連続ターン中(交代なし)はfalseにして、
+    //             isPendingForNextTurnを消費せず次の本当の交代まで持ち越す
+    public void OnSkittlesResetComplete(bool allowSpawn = true)
     {
         ClearWalls();
-        if (isPendingForNextTurn)
+        if (allowSpawn && isPendingForNextTurn)
         {
             SpawnWalls();
             isPendingForNextTurn = false;

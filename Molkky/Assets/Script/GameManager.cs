@@ -67,6 +67,12 @@ public class GameManager : MonoBehaviour
     private bool p1IsBlinded = false;
     private bool p2IsBlinded = false;
 
+    // ★レアアイテム(AllSkittles)：着地した瞬間に立てるフラグ。次のOnNextTurnButtonPressedで
+    //   プレイヤー交代をキャンセルし、同じプレイヤーがもう1ターン続けてプレイできるようにする
+    private bool hasPendingExtraTurn = false;
+    // ★交代ボタン以降、同じプレイヤーの連続ターン中かどうか（UI表示用）
+    private bool isBonusTurnInProgress = false;
+
     // ★風アイテム：獲得済みで、モルックが手元に戻ったら選択画面を開く必要があるかどうか
     private bool hasPendingWindSelection = false;
     // ★風向き選択待ちのため、選択完了後に交代ボタンを表示する必要があるかどうか
@@ -125,6 +131,8 @@ public class GameManager : MonoBehaviour
         currentPlayer = 1;
         p1Score = 0; p1Misses = 0;
         p2Score = 0; p2Misses = 0;
+        hasPendingExtraTurn = false;
+        isBonusTurnInProgress = false;
 
         if (nextTurnButtonUI != null)
         {
@@ -196,6 +204,17 @@ public class GameManager : MonoBehaviour
             p2NextItem = item;
         }
         Debug.Log($"Player {currentPlayer} が {item} を獲得！ 次のターンで発動します。");
+    }
+
+    // ★レアアイテム(AllSkittles)が着地した瞬間にMolkkyItemHandlerから呼ばれる
+    //   次のOnNextTurnButtonPressedでプレイヤー交代をキャンセルする
+    public void GrantExtraTurn()
+    {
+        hasPendingExtraTurn = true;
+        if (ItemManager.Instance != null)
+        {
+            ItemManager.Instance.ShowNotice($"プレイヤー {currentPlayer} もう1ターン連続！");
+        }
     }
 
     // ★風向きの選択が完了した時にWindManagerから呼ばれる
@@ -580,13 +599,27 @@ public class GameManager : MonoBehaviour
             if (s != null) s.StandUp();
         }
 
-        if (WallObstacleManager.Instance != null) // ★追加
+        // 1. ターン交代（P1 ⇆ P2）。ただしAllSkittlesで連続ターン権を得ていれば交代しない
+        bool isRealPlayerSwitch;
+        if (hasPendingExtraTurn)
         {
-            WallObstacleManager.Instance.OnSkittlesResetComplete();
+            hasPendingExtraTurn = false;
+            isBonusTurnInProgress = true;
+            isRealPlayerSwitch = false;
+        }
+        else
+        {
+            isBonusTurnInProgress = false;
+            currentPlayer = (currentPlayer == 1) ? 2 : 1;
+            isRealPlayerSwitch = true;
         }
 
-        // 1. ターン交代（P1 ⇆ P2）
-        currentPlayer = (currentPlayer == 1) ? 2 : 1;
+        // ★壁は「相手の次のターン」に出るはずのものなので、連続ターン中(交代なし)は
+        //   出現させずに次の本当の交代まで持ち越す（isPendingForNextTurnはtrueのまま維持される）
+        if (WallObstacleManager.Instance != null)
+        {
+            WallObstacleManager.Instance.OnSkittlesResetComplete(isRealPlayerSwitch);
+        }
 
         PlaySound(buttonSound);
         // 2. 予約アイテムの発動＋新アイテムのスポーン
@@ -595,8 +628,8 @@ public class GameManager : MonoBehaviour
             ItemManager.Instance.OnTurnStart();
         }
 
-        // 3. 風処理（残りターンのカウントダウン等）
-        if (WindManager.instance != null)
+        // 3. 風処理（残りターンのカウントダウン等）：同様に、本当にプレイヤーが交代した時だけ進める
+        if (isRealPlayerSwitch && WindManager.instance != null)
         {
             WindManager.instance.OnTurnAdvance();
         }
@@ -673,7 +706,8 @@ public class GameManager : MonoBehaviour
         if (scoreText != null)
         {
 
-            scoreText.text = $"<color=blue>ターン: プレイヤー {currentPlayer}</color>\n" +
+            string bonusTurnLabel = isBonusTurnInProgress ? " <color=orange>(連続ターン！)</color>" : "";
+            scoreText.text = $"<color=yellow>ターン: プレイヤー {currentPlayer}</color>{bonusTurnLabel}\n" +
                              $"<color=white>プレイヤー 1: {p1Score} / 50</color>\n" +
                              $"<color=white>(ミス: {p1Misses}/3)</color>\n" +
                              $"<color=white>プレイヤー 2: {p2Score} / 50</color>\n" +

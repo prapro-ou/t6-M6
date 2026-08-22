@@ -18,7 +18,6 @@ public class ItemManager : MonoBehaviour
     [Header("UI参照")]
     [SerializeField] private TextMeshProUGUI noticeText;
 
-    private ItemData reservedItem;
     private Coroutine hideTextCoroutine;
 
     // ★追加: 1ターンに1つのみ取得を制限するフラグ
@@ -145,33 +144,20 @@ public class ItemManager : MonoBehaviour
         isItemAcquiredThisTurn = true; // 獲得済みに更新
         ShowNotice($"{item.itemName} Get!");
 
-        // ★Bomb/Rocketは既存のMolkkyType機構（ItemBoxと同じ仕組み）に乗せて、
-        //   自分の次の投球で見た目・能力が変わるよう即座に反映する（ターン開始時の予約効果とは別扱い）
-        if (item.effectType == ItemEffectType.Bomb ||
-        item.effectType == ItemEffectType.Rocket ||
-        item.effectType == ItemEffectType.Wind ||
-        item.effectType == ItemEffectType.Darkness ||
-        item.effectType == ItemEffectType.MovingWall || // ★ 追加
-        item.effectType == ItemEffectType.AllSkittles) // ★レアアイテム追加
+        // ★既存のMolkkyType機構（ItemBoxと同じ仕組み）に乗せて、
+        //   自分の次の投球で見た目・能力が変わるよう即座に反映する
+        MolkkyType molkkyType = item.effectType switch
         {
-            MolkkyType molkkyType = item.effectType switch
-            {
-                ItemEffectType.Bomb => MolkkyType.Bomb,
-                ItemEffectType.Rocket => MolkkyType.Rocket,
-                ItemEffectType.Wind => MolkkyType.Wind,
-                ItemEffectType.Darkness => MolkkyType.Darkness,
-                ItemEffectType.MovingWall => MolkkyType.MovingWall, // ★ 追加
-                ItemEffectType.AllSkittles => MolkkyType.AllSkittles, // ★レアアイテム追加
-                _ => MolkkyType.Normal
-            };
+            ItemEffectType.Bomb => MolkkyType.Bomb,
+            ItemEffectType.Rocket => MolkkyType.Rocket,
+            ItemEffectType.Wind => MolkkyType.Wind,
+            ItemEffectType.Darkness => MolkkyType.Darkness,
+            ItemEffectType.MovingWall => MolkkyType.MovingWall,
+            ItemEffectType.AllSkittles => MolkkyType.AllSkittles,
+            _ => MolkkyType.Normal
+        };
 
-            if (GameManager.instance != null) GameManager.instance.GetItem(molkkyType);
-        }
-        else
-        {
-            reservedItem = item;
-            Debug.Log($"[ItemManager] アイテム予約完了: {item.itemName}");
-        }
+        if (GameManager.instance != null) GameManager.instance.GetItem(molkkyType);
 
         return true; // 登録成功 (true)
     }
@@ -207,15 +193,7 @@ public class ItemManager : MonoBehaviour
         // 1. フィールド上の既存アイテムに1ターン経過したことを通知
         UpdateFieldItems();
 
-        // 2. 予約されていたアイテム効果の発動処理
-        if (reservedItem != null)
-        {
-            ExecuteEffect(reservedItem.effectType);
-            ShowNotice($"効果発動: {reservedItem.itemName}！");
-            reservedItem = null;
-        }
-
-        // 3. 2巡目以降のみ、毎ターン新しいアイテムを1つスポーン
+        // 2. 2巡目以降のみ、毎ターン新しいアイテムを1つスポーン
         turnStartCount++;
         if (turnStartCount >= 2)
         {
@@ -229,28 +207,6 @@ public class ItemManager : MonoBehaviour
         foreach (SpawnedItem item in activeItems)
         {
             item.OnTurnPassed();
-        }
-    }
-
-    private void ExecuteEffect(ItemEffectType effectType)
-    {
-        switch (effectType)
-        {
-            case ItemEffectType.ScoreDouble:
-                Debug.Log("【効果発動】得点2倍！");
-                break;
-            case ItemEffectType.BigMolkky:
-                Debug.Log("【効果発動】モルック巨大化！");
-                break;
-            case ItemEffectType.SmallMolkky:
-                Debug.Log("【効果発動】モルック小型化！");
-                break;
-            case ItemEffectType.SkittleGroup:
-                Debug.Log("【効果発動】スキットル密集！");
-                break;
-            case ItemEffectType.SkittleSpread:
-                Debug.Log("【効果発動】スキットル分散！");
-                break;
         }
     }
 

@@ -1,26 +1,23 @@
 using UnityEngine;
 
 // アイテムの効果タイプ一覧
+// ★数値を明示しているのは、既存のItemData(.asset)がこの数値でシリアライズされているため。
+//   歯抜けのまま維持しないと、既存アイテムの効果が別の効果にズレてしまう。
 public enum ItemEffectType
 {
-    ScoreDouble,  // 得点2倍
-    BigMolkky,    // モルック巨大化
-    SmallMolkky,  // モルック小型化
-    SkittleGroup, // スキットル密集
-    SkittleSpread,// スキットル分散
-    Bomb,         // 次に投げるモルックがボムになる
-    Rocket,       // 次に投げるモルックがロケットになる
-    Wind,         // 風が起こる
-    Darkness,     // 相手の次のターンが暗闇になる（既存の値を維持するため末尾に追加）
-    MovingWall,   // 壁を発生
-    AllSkittles   // ★レアアイテム: 次に投げたモルックが着地した瞬間、場の全スキットルを倒す（末尾に追加）
+    Bomb = 5,         // 次に投げるモルックがボムになる
+    Rocket = 6,       // 次に投げるモルックがロケットになる
+    Wind = 7,         // 風が起こる
+    Darkness = 8,     // 相手の次のターンが暗闇になる
+    MovingWall = 9,   // 壁を発生
+    AllSkittles = 10  // ★レアアイテム: 取得した人がもう1ターン連続でプレイできる
 }
 
 // Unityの右クリックメニューからこのデータを作成できるようにする属性
 [CreateAssetMenu(fileName = "NewItemData", menuName = "Mölkky/ItemData")]
 public class ItemData : ScriptableObject
 {
-    public string itemId;                 // 例: "ScoreDouble", "BigMolkky" など
+    public string itemId;                 // 例: "Bomb", "AllSkittles" など
     public string itemName;               // 例: "得点2倍"
     public Color itemColor = Color.white; // 5色のカラー
     [TextArea] public string description; // 説明文

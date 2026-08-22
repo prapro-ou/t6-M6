@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ItemData_Gold
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: AllSkittles
-  itemName: "\u5168\u6EC5"
+  itemName: "\u9023\u7D9A\u30BF\u30FC\u30F3"
   itemColor: {r: 1, g: 0.84313726, b: 0, a: 1}
-  description: "\u6B21\u306B\u6295\u3052\u305F\u30E2\u30EB\u30C3\u30AF\u304C\u7740\u5730\u3057\u305F\u77AC\u9593\u3001\u5834\u306E\u5168\u30B9\u30AD\u30C3\u30C8\u30EB\u3092\u5012\u3059\uFF01"
+  description: "\u6B21\u306B\u6295\u3052\u305F\u30E2\u30EB\u30C3\u30AF\u304C\u7740\u5730\u3057\u305F\u77AC\u9593\u3001\u81EA\u5206\u304C\u3082\u30461\u30BF\u30FC\u30F3\u9023\u7D9A\u3067\u30D7\u30EC\u30A4\u3067\u304D\u308B\uFF01"
   effectType: 10
   spawnWeight: 100
   visualModelPrefab: {fileID: 3895335712807973178, guid: 4411575441415f94780c9df49bf9e2ca, type: 3}
