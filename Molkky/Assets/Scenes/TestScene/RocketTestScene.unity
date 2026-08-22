@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RocketCinematicLauncher
   molkkyRb: {fileID: 100031}
-  launchDirection: {x: 0, y: 0, z: 1}
+  launchDirection: {x: 0, y: 1, z: 1}
   launchSpeed: 5
 --- !u!1001 &119161455
 PrefabInstance:
