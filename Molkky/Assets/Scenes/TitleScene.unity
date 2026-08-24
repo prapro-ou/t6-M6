@@ -1633,7 +1633,6 @@ MonoBehaviour:
   videoPlayer: {fileID: 327253821}
   posterOverlay: {fileID: 500000103}
   fadeOutDuration: 0.4
-  settleDelayAfterPlay: 0.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

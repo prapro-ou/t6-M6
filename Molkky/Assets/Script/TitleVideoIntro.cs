@@ -2,18 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
-// ★タイトル背景：静止画（動画の1フレーム目）→動画再生への切り替えを
-//   ハードカットではなくフェードにすることで、デコーダー準備中の色/タイミングの
-//   わずかなズレが目立たないようにする
+// ★タイトル背景：動画のデコード準備が終わるまで静止画（動画の1フレーム目）を表示し、
+//   静止画が完全に消えてから動画を再生する（静止画と動画が重なる期間を作らない）
 public class TitleVideoIntro : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public CanvasGroup posterOverlay;
 
     [SerializeField] private float fadeOutDuration = 0.4f;
-    // ★Play()直後は数フレーム分の再生が安定するまで色/tearingが乱れることがあるため、
-    //   フェード開始を少しだけ遅らせて安定してから切り替える
-    [SerializeField] private float settleDelayAfterPlay = 0.15f;
 
     void Start()
     {
@@ -30,29 +26,28 @@ public class TitleVideoIntro : MonoBehaviour
     private void OnVideoPrepared(VideoPlayer vp)
     {
         vp.prepareCompleted -= OnVideoPrepared;
-        vp.Play();
-        StartCoroutine(FadeOutPosterAfterDelay());
+        StartCoroutine(FadeOutPosterThenPlay(vp));
     }
 
-    private IEnumerator FadeOutPosterAfterDelay()
+    private IEnumerator FadeOutPosterThenPlay(VideoPlayer vp)
     {
-        yield return new WaitForSeconds(settleDelayAfterPlay);
-
-        if (posterOverlay == null)
+        if (posterOverlay != null)
         {
-            yield break;
+            float startAlpha = posterOverlay.alpha;
+            float elapsed = 0f;
+            while (elapsed < fadeOutDuration)
+            {
+                elapsed += Time.deltaTime;
+                posterOverlay.alpha = Mathf.Lerp(startAlpha, 0f, elapsed / fadeOutDuration);
+                yield return null;
+            }
+
+            posterOverlay.alpha = 0f;
+            posterOverlay.gameObject.SetActive(false);
         }
 
-        float startAlpha = posterOverlay.alpha;
-        float elapsed = 0f;
-        while (elapsed < fadeOutDuration)
-        {
-            elapsed += Time.deltaTime;
-            posterOverlay.alpha = Mathf.Lerp(startAlpha, 0f, elapsed / fadeOutDuration);
-            yield return null;
-        }
-
-        posterOverlay.alpha = 0f;
-        posterOverlay.gameObject.SetActive(false);
+        // ★この時点で静止画は完全に消えている。動画はすでにPrepare済みなので、
+        //   ここでPlay()してもデコード待ちの止まりは発生しない
+        vp.Play();
     }
 }
