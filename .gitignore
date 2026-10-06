@@ -12,3 +12,7 @@
 **/.vscode/
 *.csproj
 *.sln
+
+# ビルドのデバッグ情報・配布用zip
+*_BurstDebugInformation_DoNotShip/
+Molkky_Game.zip

@@ -3314,6 +3314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RocketFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 1547438470961276151, guid: 747df189fb9a4f44592b08c84bccfc57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4439445559178300592, guid: 747df189fb9a4f44592b08c84bccfc57, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
